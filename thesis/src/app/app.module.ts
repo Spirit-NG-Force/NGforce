@@ -15,6 +15,8 @@ import { PresentationModule } from './presentation/presentation.module';
 import { LandingComponent } from './views/landing/landing.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProfilComponent } from './views/profil/profil.component';
+import { CreateCvComponent } from './views/create-cv/create-cv.component';
+import { Nav2Component } from './components/nav2/nav2.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +24,9 @@ import { ProfilComponent } from './views/profil/profil.component';
         NavbarComponent,
         LandingComponent,
         LoginComponent,
-        ProfilComponent
+        ProfilComponent,
+        CreateCvComponent,
+        Nav2Component
     ],
     imports: [
         BrowserAnimationsModule,
