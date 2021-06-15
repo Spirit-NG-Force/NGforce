@@ -11,11 +11,11 @@ import { SectionsComponent } from './sections/sections.component';
 // import { BlogpostsComponent } from './examples/blogposts/blogposts.component';
 // import { ContactusComponent } from './examples/contactus/contactus.component';
 // import { EcommerceComponent } from './examples/ecommerce/ecommerce.component';
-import { LandingComponent } from './views/landing/landing.component';
-import { LoginComponent } from './views/login/login.component';
-// import { ProductpageComponent } from './examples/productpage/productpage.component';
-import { ProfilComponent } from './views/profil/profil.component';
-// import { RegisterComponent } from './examples/register/register.component';
+ import { LandingComponent } from './views/landing/landing.component';
+ import { LoginComponent } from './views/login/login.component';
+ import { CompanyComponent } from './views/company/company.component';
+ import { SearchcComponent } from './views/searchc/searchc.component';
+import { SignupComponent } from './views/signup/signup-u.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
 // import { PricingComponent } from './examples/pricing/pricing.component';
 
@@ -30,12 +30,12 @@ const routes: Routes =[
     // { path: 'examples/blogposts',   component: BlogpostsComponent },
     // { path: 'examples/contactus',   component: ContactusComponent },
     // { path: 'examples/ecommerce',   component: EcommerceComponent },
-    { path: 'views/landing',     component: LandingComponent },
-    { path: 'views/login',       component: LoginComponent },
-    // { path: 'examples/pricing',     component: PricingComponent },
-    // { path: 'examples/productpage', component: ProductpageComponent },
-    { path: 'views/profil',     component: ProfilComponent },
-    // { path: 'examples/register',    component: RegisterComponent }
+     { path: 'views/landing',     component: LandingComponent },
+     { path: 'views/login',       component: LoginComponent },
+     { path: 'views/company',     component: CompanyComponent },
+    { path: 'views/searchc', component: SearchcComponent },
+    // { path: 'examples/profile',     component: ProfileComponent },
+     { path: 'views/signup',    component: SignupComponent }
 ];
 
 @NgModule({

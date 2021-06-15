@@ -9,11 +9,15 @@ import { ElementsModule } from './elements/elements.module';
 import { ExamplesModule } from './examples/examples.module';
 
 import { AppComponent } from './app.component';
+import { PresentationComponent } from './presentation/presentation.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { PresentationModule } from './presentation/presentation.module';
 import { LandingComponent } from './views/landing/landing.component';
 import { LoginComponent } from './views/login/login.component';
+import { SignupComponent } from './views/signup/signup-u.component';
+import { CompanyComponent } from './views/company/company.component';
+import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
 
 @NgModule({
@@ -22,6 +26,9 @@ import { ProfilComponent } from './views/profil/profil.component';
         NavbarComponent,
         LandingComponent,
         LoginComponent,
+        SignupComponent,
+        CompanyComponent,
+        SearchcComponent,
         ProfilComponent
     ],
     imports: [
