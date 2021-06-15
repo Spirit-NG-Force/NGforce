@@ -20,6 +20,8 @@ import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.compone
 // import { PricingComponent } from './examples/pricing/pricing.component';
 import {CreateCvComponent} from "./views/create-cv/create-cv.component"
 import {Nav2Component} from "./components/nav2/nav2.component"
+import {CalenderComponent} from "./views/calender/calender.component"
+
 
 
 const routes: Routes =[
@@ -39,7 +41,8 @@ const routes: Routes =[
     // { path: 'examples/productpage', component: ProductpageComponent },
     { path: 'views/profil',     component: ProfilComponent },
     { path: 'views/createcv',    component: CreateCvComponent },
-    { path: 'views/nav2',    component: Nav2Component }
+    { path: 'views/nav2',    component: Nav2Component },
+    { path: 'views/calender',    component: CalenderComponent }
 ];
 
 @NgModule({

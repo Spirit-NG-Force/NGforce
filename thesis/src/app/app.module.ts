@@ -17,6 +17,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ProfilComponent } from './views/profil/profil.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
 import { Nav2Component } from './components/nav2/nav2.component';
+import { CalenderComponent } from './views/calender/calender.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { Nav2Component } from './components/nav2/nav2.component';
         LoginComponent,
         ProfilComponent,
         CreateCvComponent,
-        Nav2Component
+        Nav2Component,
+        CalenderComponent
     ],
     imports: [
         BrowserAnimationsModule,
