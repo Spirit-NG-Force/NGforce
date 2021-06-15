@@ -9,15 +9,19 @@ import { ElementsModule } from './elements/elements.module';
 import { ExamplesModule } from './examples/examples.module';
 
 import { AppComponent } from './app.component';
+import { PresentationComponent } from './presentation/presentation.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { PresentationModule } from './presentation/presentation.module';
 import { LandingComponent } from './views/landing/landing.component';
 import { LoginComponent } from './views/login/login.component';
+import { SignupComponent } from './views/signup/signup-u.component';
+import { CompanyComponent } from './views/company/company.component';
+import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
 import { Nav2Component } from './components/nav2/nav2.component';
-import { CalenderComponent } from './views/calender/calender.component';
+import { CalendarComponent } from './views/calendar/calendar.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +32,10 @@ import { CalenderComponent } from './views/calender/calender.component';
         ProfilComponent,
         CreateCvComponent,
         Nav2Component,
-        CalenderComponent
+        CalendarComponent,
+        SignupComponent,
+        CompanyComponent,
+        SearchcComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -39,7 +46,8 @@ import { CalenderComponent } from './views/calender/calender.component';
         PresentationModule,
         SectionsModule,
         ElementsModule,
-        ExamplesModule
+        ExamplesModule,
+         
     ],
     providers: [],
     bootstrap: [AppComponent]

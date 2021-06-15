@@ -31,6 +31,7 @@
     "copy-webpack-plugin": "7.0.0",
     "core-js": "2.5.7",
     "font-awesome": "4.7.0",
+    "fullcalendar": "^4.0.0-alpha.4",
     "fullcalendar-scheduler": "^4.0.0-alpha.4",
     "jquery": "3.5.1",
     "jw-bootstrap-switch-ng2": "2.0.5",

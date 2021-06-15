@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert2';
-// import { Calendar } from 'fullcalendar';
+import {Component, OnInit} from "@angular/core";
+import { Calendar } from 'fullcalendar';
 declare const require: any;
 const FullCalendar= require('fullcalendar')
+import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-calender',
-  templateUrl: './calender.component.html',
-  styleUrls: ['./calender.component.css']
+  selector: "app-calendar",
+  templateUrl: "./calendar.component.html",
+  styleUrls: ["./calendar.component.css"]
 })
-export class CalenderComponent implements OnInit {
+export class CalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     let today = new Date();
@@ -121,7 +121,4 @@ export class CalenderComponent implements OnInit {
     });
     calendar.render();
   }
-}
-
-
 }
