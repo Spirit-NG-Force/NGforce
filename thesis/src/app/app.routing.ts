@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from "@angular/forms";
 
 import { PresentationComponent } from './presentation/presentation.component';
 import { ElementsComponent } from './elements/elements.component';
@@ -19,9 +20,9 @@ import { SectionsComponent } from './sections/sections.component';
 import { SignupComponent } from './views/signup/signup-u.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
 // import { PricingComponent } from './examples/pricing/pricing.component';
-import {CreateCvComponent} from "./views/create-cv/create-cv.component"
-import {Nav2Component} from "./components/nav2/nav2.component"
-import {CalendarComponent} from "./views/calendar/calendar.component"
+import {CreateCvComponent} from "./views/create-cv/create-cv.component";
+import {PostJobComponent} from "./views/post-job/post-job.component";
+import {CalendarComponent} from "./views/calendar/calendar.component";
 
 
 
@@ -40,7 +41,8 @@ const routes: Routes =[
     // { path: 'examples/productpage', component: ProductpageComponent },
     { path: 'views/profil',     component: ProfilComponent },
     { path: 'views/createcv',    component: CreateCvComponent },
-    { path: 'views/nav2',    component: Nav2Component },
+    { path: 'views/postJob',    component: PostJobComponent },
+
     { path: 'views/calendar',    component: CalendarComponent },
      { path: 'views/landing',     component: LandingComponent },
      { path: 'views/login',       component: LoginComponent },
@@ -54,6 +56,7 @@ const routes: Routes =[
     imports: [
         CommonModule,
         BrowserModule,
+        FormsModule,
         RouterModule.forRoot(routes,{
           useHash: true
         })

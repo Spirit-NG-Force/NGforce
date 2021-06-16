@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing';
 import { SectionsModule } from './sections/sections.module';
 import { ElementsModule } from './elements/elements.module';
 import { ExamplesModule } from './examples/examples.module';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
@@ -20,8 +21,9 @@ import { CompanyComponent } from './views/company/company.component';
 import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
-import { Nav2Component } from './components/nav2/nav2.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
+import { PostJobComponent } from './views/post-job/post-job.component';
+import { MultiselectComponent } from './components/multiselect/multiselect.component';
 
 @NgModule({
     declarations: [
@@ -31,14 +33,16 @@ import { CalendarComponent } from './views/calendar/calendar.component';
         LoginComponent,
         ProfilComponent,
         CreateCvComponent,
-        Nav2Component,
         CalendarComponent,
         SignupComponent,
         CompanyComponent,
         SearchcComponent,
+        PostJobComponent,
+        MultiselectComponent,
     ],
     imports: [
         BrowserAnimationsModule,
+        AngularMultiSelectModule,
         NgbModule,
         FormsModule,
         RouterModule,
