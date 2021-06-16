@@ -21,6 +21,8 @@ import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
 import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { SearchuComponent } from './views/searchu/searchu.component';
+import { Navbar3Component } from './shared/navbar3/navbar3.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,9 @@ import { JwtModule } from '@auth0/angular-jwt';
         SignupComponent,
         CompanyComponent,
         SearchcComponent,
-        ProfilComponent
+        ProfilComponent,
+        SearchuComponent,
+        Navbar3Component
     ],
     imports: [
         BrowserAnimationsModule,

@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
     
     constructor(private jobservice :JobofferService, public router: Router) { }
 
-    ngOnInit() {
+    ngOnInit() { 
+        if(localStorage.getItem("email")){
+        this.router.navigate(['views/profil'])
+        }
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('login-page');
         var navbar = document.getElementsByTagName('nav')[0];
