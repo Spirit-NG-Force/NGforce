@@ -15,7 +15,9 @@ import { SectionsComponent } from './sections/sections.component';
  import { LoginComponent } from './views/login/login.component';
  import { CompanyComponent } from './views/company/company.component';
  import { SearchcComponent } from './views/searchc/searchc.component';
+ import { SearchuComponent } from './views/searchu/searchu.component';
 import { SignupComponent } from './views/signup/signup-u.component';
+import { ProfilComponent } from './views/profil/profil.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
 // import { PricingComponent } from './examples/pricing/pricing.component';
 
@@ -34,8 +36,10 @@ const routes: Routes =[
      { path: 'views/login',       component: LoginComponent },
      { path: 'views/company',     component: CompanyComponent },
     { path: 'views/searchc', component: SearchcComponent },
+    { path: 'views/profil', component: ProfilComponent },
     // { path: 'examples/profile',     component: ProfileComponent },
-     { path: 'views/signup',    component: SignupComponent }
+     { path: 'views/signup',    component: SignupComponent },
+     { path: 'views/searchu', component: SearchuComponent }
 ];
 
 @NgModule({
