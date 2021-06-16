@@ -19,6 +19,7 @@ import { SignupComponent } from './views/signup/signup-u.component';
 import { CompanyComponent } from './views/company/company.component';
 import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
+import { SearchuComponent } from './views/searchu/searchu.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { ProfilComponent } from './views/profil/profil.component';
         SignupComponent,
         CompanyComponent,
         SearchcComponent,
-        ProfilComponent
+        ProfilComponent,
+        SearchuComponent
     ],
     imports: [
         BrowserAnimationsModule,
