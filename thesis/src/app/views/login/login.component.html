@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="page-header" filter-color="orange">
     <div class="page-header-image" style="background-image:url(assets/img/project6.jpg)"></div>
     <div class="content-center">
@@ -6,8 +7,8 @@
                 <div class="card card-login card-plain">
                     <form class="form" method="" action="">
                         <div class="card-header text-center">
-                            <div class="logo-container">
-                                <img src="assets/img/now-logo.png" alt="">
+                            <div id="logo-container">
+                                <img id="logo" src="assets/img/ng.Blanc_transparent.png" alt="">
                             </div>
                         </div>
                         <div class="card-body">
@@ -28,7 +29,7 @@
                             <a [routerLink]="['/views/profil']" class="btn btn-primary btn-round btn-lg btn-block">LOGIN</a>
                         </div>
                         <a [routerLink]="['/views/landing']">
-                            About Uss
+                            About Us
                         </a>
                     </form>
                 </div>

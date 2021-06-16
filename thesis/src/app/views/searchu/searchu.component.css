@@ -12,4 +12,9 @@
 #card{
     height: 200px;
     width: 50%;
+    margin-left: 60%;
+}
+#card-description{
+   margin-right: 300%;
+    width: 50%;
 }
