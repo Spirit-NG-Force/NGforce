@@ -2,14 +2,13 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar3',
+    templateUrl: './navbar3.component.html',
+    styleUrls: ['./navbar3.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class Navbar3Component implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
-    // storage : boolean = false
 
     constructor(public location: Location, private element : ElementRef) {
         this.sidebarVisible = false;
@@ -18,11 +17,11 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-        // if(localStorage.getItem("email")){
-        //     this.storage=true
-        // }
     }
-   
+    logout(){
+      localStorage.removeItem("email")
+      
+  }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];

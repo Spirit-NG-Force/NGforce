@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -11,9 +11,12 @@ export class LandingComponent implements OnInit {
   focus;
   focus1;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
+    if(localStorage.getItem("email")){
+      this.router.navigate(['views/profil'])
+      }
     var rellaxHeader = new Rellax('.rellax-header');
 
     var body = document.getElementsByTagName('body')[0];
