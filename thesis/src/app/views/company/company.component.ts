@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {JobofferService} from '../../services/joboffer.service'
 
 @Component({
   selector: 'app-company',
@@ -10,10 +11,15 @@ export class CompanyComponent implements OnInit {
   focus1;
   focus2;
 
+  name:string ; 
+  adress:string; 
+  phonenumber:number;
+  email:string;
+  password:string;
 
     data : Date = new Date();
 
-    constructor() { }
+    constructor(private taskservice :JobofferService) { }
 
     ngOnInit() {
         var body = document.getElementsByTagName('body')[0];
@@ -22,6 +28,18 @@ export class CompanyComponent implements OnInit {
         navbar.classList.add('navbar-absolute');
         navbar.classList.remove('fixed-top');
 
+    }
+    onSubmit(){
+      const obj={
+        name : this.name ,
+        adress: this.adress , 
+        phonenumber : this.password ,
+        email : this.email ,
+        password : this.password 
+      }
+      this.taskservice.postCompany(obj).subscribe((company)=>{
+        console.log(company)
+      })
     }
     ngOnDestroy(){
         var body = document.getElementsByTagName('body')[0];

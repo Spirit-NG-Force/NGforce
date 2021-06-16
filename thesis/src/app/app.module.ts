@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { SectionsModule } from './sections/sections.module';
 import { ElementsModule } from './elements/elements.module';
@@ -40,7 +41,8 @@ import { ProfilComponent } from './views/profil/profil.component';
         PresentationModule,
         SectionsModule,
         ElementsModule,
-        ExamplesModule
+        ExamplesModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
