@@ -9,8 +9,8 @@ import { SectionsComponent } from './sections/sections.component';
 // import { AboutusComponent } from './examples/aboutus/aboutus.component';
 // import { BlogpostComponent } from './examples/blogpost/blogpost.component';
 // import { BlogpostsComponent } from './examples/blogposts/blogposts.component';
-// import { ContactusComponent } from './examples/contactus/contactus.component';
-// import { EcommerceComponent } from './examples/ecommerce/ecommerce.component';
+import { PostComponent } from './views/post/post.component';
+ import {  HomeComponent } from './views/home/home.component';
  import { LandingComponent } from './views/landing/landing.component';
  import { LoginComponent } from './views/login/login.component';
  import { CompanyComponent } from './views/company/company.component';
@@ -31,13 +31,13 @@ const routes: Routes =[
     // { path: 'examples/blogpost',    component: BlogpostComponent },
     // { path: 'examples/blogposts',   component: BlogpostsComponent },
     // { path: 'examples/contactus',   component: ContactusComponent },
-    // { path: 'examples/ecommerce',   component: EcommerceComponent },
+     { path: 'views/post',   component: PostComponent },
      { path: 'views/landing',     component: LandingComponent },
      { path: 'views/login',       component: LoginComponent },
      { path: 'views/company',     component: CompanyComponent },
     { path: 'views/searchc', component: SearchcComponent },
     { path: 'views/profil', component: ProfilComponent },
-    // { path: 'examples/profile',     component: ProfileComponent },
+     { path: 'views/home',     component:  HomeComponent },
      { path: 'views/signup',    component: SignupComponent },
      { path: 'views/searchu', component: SearchuComponent }
 ];

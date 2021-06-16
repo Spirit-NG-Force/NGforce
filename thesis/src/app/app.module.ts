@@ -20,6 +20,10 @@ import { CompanyComponent } from './views/company/company.component';
 import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
 import { SearchuComponent } from './views/searchu/searchu.component';
+import { Navbar2Component } from './shared/navbar2/navbar2.component';
+import { Navbar3Component } from './shared/navbar3/navbar3.component';
+import { HomeComponent } from './views/home/home.component';
+import { PostComponent } from './views/post/post.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +35,11 @@ import { SearchuComponent } from './views/searchu/searchu.component';
         CompanyComponent,
         SearchcComponent,
         ProfilComponent,
-        SearchuComponent
+        SearchuComponent,
+        Navbar2Component,
+        Navbar3Component,
+        HomeComponent,
+        PostComponent
     ],
     imports: [
         BrowserAnimationsModule,
