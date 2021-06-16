@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {JobofferService} from '../../service/joboffer.service'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup-u.component.html',
@@ -9,11 +9,15 @@ export class SignupComponent implements OnInit {
   focus;
   focus1;
   focus2;
-
+  name : string;
+  lastname : string;
+  email: string;
+  password : string;
+  status : string= "";
 
     data : Date = new Date();
 
-    constructor() { }
+    constructor(private jobservice :JobofferService) { }
 
     ngOnInit() {
         var body = document.getElementsByTagName('body')[0];
@@ -22,6 +26,18 @@ export class SignupComponent implements OnInit {
         navbar.classList.add('navbar-absolute');
         navbar.classList.remove('fixed-top');
 
+    }
+    onSubmit(){
+      const obj={
+        name : this.name,
+        lastname : this.lastname,
+        email : this.email,
+        password : this.password ,
+      status : "user" 
+    }
+      this.jobservice.postUser(obj).subscribe((users)=>{
+        console.log(users)
+      })
     }
     ngOnDestroy(){
         var body = document.getElementsByTagName('body')[0];
