@@ -2,11 +2,11 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @Component({
-    selector: 'app-navbar3',
-    templateUrl: './navbar3.component.html',
-    styleUrls: ['./navbar3.component.css']
+    selector: 'app-navbar2',
+    templateUrl: './navbar2.component.html',
+    styleUrls: ['./navbar2.component.css']
 })
-export class Navbar3Component implements OnInit {
+export class Navbar2Component implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
@@ -18,10 +18,6 @@ export class Navbar3Component implements OnInit {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
-    logout(){
-      localStorage.removeItem("email")
-      
-  }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
@@ -67,5 +63,4 @@ export class Navbar3Component implements OnInit {
             return false;
         }
     }
-    
 }
