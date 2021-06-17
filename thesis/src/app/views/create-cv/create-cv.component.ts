@@ -83,35 +83,21 @@ export class CreateCvComponent implements OnInit {
   focus3;
   focus4;
   dropdownList = [
-    { id: 1, itemName: "Roman" },
-    { id: 2, itemName: "Paris" },
-    { id: 3, itemName: "Bucharest" },
-    { id: 4, itemName: "Rome" },
-    { id: 5, itemName: "New York" },
-    { id: 6, itemName: "Miami" },
-    { id: 7, itemName: "Piatra Neamt" },
-    { id: 8, itemName: "Paris" },
-    { id: 9, itemName: "Bucharest" },
-    { id: 10, itemName: "Rome" },
-    { id: 11, itemName: "New York" },
-    { id: 12, itemName: "Miami" },
-    { id: 13, itemName: "Piatra Neamt" },
+    { id: 1, itemName: "Post Baccalauréat" },
+    { id: 2, itemName: "Baccalauréat" },
+    { id: 3, itemName: "Baccalauréat" },
+    { id: 4, itemName: "Baccalauréat+3" },
+    { id: 5, itemName: "Baccalauréat+5" },
+    { id: 6, itemName: " More then 5" },
+    
   ];
   selectedItems = [];
   dropdownList1 = [
-    { id: 1, itemName: "Roman" },
-    { id: 2, itemName: "Paris" },
-    { id: 3, itemName: "Bucharest" },
-    { id: 4, itemName: "Rome" },
-    { id: 5, itemName: "New York" },
-    { id: 6, itemName: "Miami" },
-    { id: 7, itemName: "Piatra Neamt" },
-    { id: 8, itemName: "Paris" },
-    { id: 9, itemName: "Bucharest" },
-    { id: 10, itemName: "Rome" },
-    { id: 11, itemName: "New York" },
-    { id: 12, itemName: "Miami" },
-    { id: 13, itemName: "Piatra Neamt" },
+    { id: 1, itemName: "Less than 1 year" },
+    { id: 2, itemName: "Between 1 and 2 years" },
+    { id: 3, itemName: "between 2 and 5 years" },
+    { id: 4, itemName: "More than 5 years" },
+  
   ];
   selectedItems1 = [];
 

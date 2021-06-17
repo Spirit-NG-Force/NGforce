@@ -9,16 +9,14 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 ml-auto mr-auto">
-            <h2 class="title">Send us a message</h2>
-            <p class="description">You can contact us with anything related to our Products. We'll get in touch with you
-              as soon as possible.
+            <h2 class="title">Build Your Profil</h2>
+            <p class="description">Campany will be able to see your Profil To know about your skills
               <br>
               <br>
             </p>
-            <div class="row">
-              <div class="col-md-6">
-
-                <label>Your name</label>
+          <div class="row" id="space">
+              <div class="col-md-4">
+                <label>Name</label>
                 <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
@@ -27,7 +25,31 @@
                     (blur)="focus=false">
                 </div>
               </div>
-              <div class="col-md-6">
+
+              <div class="col-md-4">
+                 <label>Last Name</label>
+                 <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Your Last Name..." (focus)="focus=true"
+                  (blur)="focus=false">
+                </div>
+             </div>
+             <div class="col-md-4">
+              <label>Age</label>
+              <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+             <div class="input-group-prepend">
+               <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+             </div>
+             <input type="number" class="form-control" placeholder="Your Age..." (focus)="focus=true"
+               (blur)="focus=false">
+             </div>
+          </div>
+        </div>
+
+          <div class="row" id="space">
+             <div class="col-md-6">
                 <label>Email address</label>
                 <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
                   <div class="input-group-prepend">
@@ -35,10 +57,11 @@
                   </div>
                   <input type="email" class="form-control" placeholder="Email Here..." (focus)="focus1=true"
                     (blur)="focus1=false">
-                </div>
-
               </div>
-            </div>
+             </div>
+
+            
+            <div class="col-md-6">
             <label>Phone</label>
             <div class="input-group" [ngClass]="{'input-group-focus':focus2===true}">
               <div class="input-group-prepend">
@@ -47,15 +70,40 @@
               <input type="text" placeholder="Number Here..." class="form-control" (focus)="focus2=true"
                 (blur)="focus2=false">
             </div>
-            <div class="form-group">
+          </div> 
+         </div>
+
+         <div class="row" id="space">
+          <div class="col-md-12">
+             <label>Home Address</label>
+             <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+               <div class="input-group-prepend">
+                 <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+               </div>
+               <input type="email" class="form-control" placeholder="Adress Here..." (focus)="focus1=true"
+                 (blur)="focus1=false">
+           </div>
+          </div>
+      </div>
+
+
+            <div class="form-group" id="space">
               <label>Profil Presentation</label>
               <textarea name="message" class="form-control" id="message" rows="6"></textarea>
             </div>
-            <div class="row">
+            
+            
+            <div class="form-group" id="space">
+              <label>Your hight school degree</label>
+              <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+            </div>
+
+
+              <div class="row" id="space">
               <div class="col-lg-6 col-md-8 col-sm-5">
                 <app-multiselect
                 [single]="true"
-                [text]="'Select Single test'"
+                [text]="'Study Level'"
                 [dropdownList]="dropdownList"
                 [selectedItems]="selectedItems"
                 (itemSelect)="console.log($event)"
@@ -64,10 +112,18 @@
                 (deSelectAll)="console.log($event)"
                 ></app-multiselect>
               </div> 
+              </div>
+
+            <div class="form-group" id="space">
+              <label>Profesionnal Experience</label>
+              <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+            </div>
+
+              <div class="row" id="space">
               <div class="col-lg-6 col-md-8 col-sm-5">
                 <app-multiselect
                 [single]="false"
-                [text]="'Select Multiple test'"
+                [text]="'Years of experience'"
                 [dropdownList]="dropdownList1"
                 [selectedItems]="selectedItems1"
                 (itemSelect)="test($event)"
@@ -78,9 +134,11 @@
               </div>
             </div>
 
+            
+
 
             <div class="submit text-center">
-              <input type="submit" class="btn btn-primary btn-raised btn-round" value="Contact Us" />
+              <input type="submit" class="btn btn-primary btn-raised btn-round" value="Submit" />
             </div>
 
           </div>
@@ -118,7 +176,7 @@
       <div class="copyright">
         © {{data | date: 'yyyy'}}, Designed by
         <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+        <a href="#" target="_blank">NG.FORCE</a>.
       </div>
     </div>
   </footer>
