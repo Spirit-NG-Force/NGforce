@@ -29,6 +29,7 @@ import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SearchuComponent } from './views/searchu/searchu.component';
 import { Navbar3Component } from './shared/navbar3/navbar3.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import { Navbar3Component } from './shared/navbar3/navbar3.component';
         MultiselectComponent,
         ProfilComponent,
         SearchuComponent,
-        Navbar3Component
+        Navbar3Component,
+        ImageComponent
     ],
     imports: [
         BrowserAnimationsModule,
