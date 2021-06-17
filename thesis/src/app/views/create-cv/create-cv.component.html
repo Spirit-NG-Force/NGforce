@@ -94,7 +94,7 @@
             
             
             <div class="row" id="space">
-              <div class="col-lg-6 col-md-8 col-sm-5">
+              <div class="col-lg-6 col-md-5 col-sm-5">
                 <app-multiselect
                 [single]="true"
                 [text]="'Field'"
@@ -115,7 +115,7 @@
 
 
               <div class="row" id="space">
-              <div class="col-lg-6 col-md-8 col-sm-5">
+              <div class="col-lg-6 col-md-5 col-sm-5">
                 <app-multiselect
                 [single]="true"
                 [text]="'Study Level'"
@@ -135,7 +135,7 @@
             </div>
 
               <div class="row" id="space">
-              <div class="col-lg-6 col-md-8 col-sm-5">
+              <div class="col-lg-6 col-md-5 col-sm-5">
                 <app-multiselect
                 [single]="false"
                 [text]="'Years of experience'"
@@ -147,6 +147,9 @@
                 (deSelectAll)="test($event)"
                 ></app-multiselect>
               </div>
+              <div>
+                <app-image [isRound]="true"></app-image>
+            </div>
             </div>
 
             
