@@ -9,7 +9,7 @@
                 <i class="now-ui-icons ui-1_zoom-bold"></i>
                 Search
               </a>
-             <a class="navbar-brand" [routerLink]="['/views/landing']" placement="bottom" ngbTooltip="Designed by Invision. Coded by Creative Tim">
+             <a class="navbar-brand" [routerLink]="['/views/Calendar']" placement="bottom" ngbTooltip="Designed by Invision. Coded by Creative Tim">
                 <i class="now-ui-icons ui-1_calendar-60"></i>
                 Calender
              </a>
@@ -30,6 +30,10 @@
         <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
            
         </div>
+        <li  class="nav-item">
+            <a class="nav-link btn btn-primary" (click)="logout()" [routerLink]="['/views/login']">
+               <p>LOGOUT</p>
+               </a>
+            </li>
     </div>
 </nav>
-

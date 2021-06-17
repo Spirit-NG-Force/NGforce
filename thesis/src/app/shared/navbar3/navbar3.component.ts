@@ -18,6 +18,10 @@ export class Navbar3Component implements OnInit {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
+    logout(){
+      localStorage.removeItem("email")
+      
+  }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
@@ -63,4 +67,5 @@ export class Navbar3Component implements OnInit {
             return false;
         }
     }
+    
 }

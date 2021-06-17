@@ -27,7 +27,10 @@
               "src/assets/sass/demo.scss"
             ],
             "scripts": [
-              "node_modules/rellax/rellax.min.js"
+              "node_modules/rellax/rellax.min.js",
+              "node_modules/fullcalendar/dist/fullcalendar.min.js"
+
+
             ]
           },
           "configurations": {

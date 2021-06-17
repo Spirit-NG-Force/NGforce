@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app.routing';
 import { SectionsModule } from './sections/sections.module';
 import { ElementsModule } from './elements/elements.module';
 import { ExamplesModule } from './examples/examples.module';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
+import { AuthGuardService } from './auth/auth-guard.service';
 import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-
+import {HttpClientModule} from '@angular/common/http'
 import { PresentationModule } from './presentation/presentation.module';
 import { LandingComponent } from './views/landing/landing.component';
 import { LoginComponent } from './views/login/login.component';
@@ -19,6 +21,11 @@ import { SignupComponent } from './views/signup/signup-u.component';
 import { CompanyComponent } from './views/company/company.component';
 import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
+import { CreateCvComponent } from './views/create-cv/create-cv.component';
+import { CalendarComponent } from './views/calendar/calendar.component';
+import { MultiselectComponent } from './components/multiselect/multiselect.component';
+import { AuthService } from './auth/auth.service';
+import { JwtModule } from '@auth0/angular-jwt';
 import { SearchuComponent } from './views/searchu/searchu.component';
 import { Navbar2Component } from './shared/navbar2/navbar2.component';
 import { Navbar3Component } from './shared/navbar3/navbar3.component';
@@ -31,9 +38,13 @@ import { PostComponent } from './views/post/post.component';
         NavbarComponent,
         LandingComponent,
         LoginComponent,
+        ProfilComponent,
+        CreateCvComponent,
+        CalendarComponent,
         SignupComponent,
         CompanyComponent,
         SearchcComponent,
+        MultiselectComponent,
         ProfilComponent,
         SearchuComponent,
         Navbar2Component,
@@ -43,6 +54,7 @@ import { PostComponent } from './views/post/post.component';
     ],
     imports: [
         BrowserAnimationsModule,
+        AngularMultiSelectModule,
         NgbModule,
         FormsModule,
         RouterModule,
@@ -50,9 +62,12 @@ import { PostComponent } from './views/post/post.component';
         PresentationModule,
         SectionsModule,
         ElementsModule,
-        ExamplesModule
+        ExamplesModule,
+         
+        HttpClientModule,
+        JwtModule
     ],
-    providers: [],
+    providers: [AuthGuardService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
