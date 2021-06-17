@@ -1,4 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
+import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from 'constants';
 
 import { AppComponent } from './app.component';
 
@@ -16,7 +17,7 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-
+SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS
   it(`should have as title 'app'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;

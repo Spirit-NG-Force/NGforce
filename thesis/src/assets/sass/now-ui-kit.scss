@@ -18,6 +18,7 @@
 @import 'now-ui-kit/variables';
 @import 'now-ui-kit/mixins';
 
+
 // Plugins CSS
 @import "now-ui-kit/plugins/plugin-bootstrap-switch";
 @import "now-ui-kit/plugins/plugin-nouislider";
@@ -26,6 +27,7 @@
 @import "now-ui-kit/plugins/plugin-tagsinput";
 @import "now-ui-kit/plugins/plugin-fileupload";
 @import "now-ui-kit/plugins/plugin-datetimepicker";
+ @import "now-ui-kit/plugins/plugin-fullcalendar";
 
 // Core CSS
 @import "now-ui-kit/buttons";

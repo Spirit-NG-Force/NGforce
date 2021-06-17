@@ -2156,6 +2156,50 @@ select.selectpicker {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+/* icon calendar */
+.now-ui-icons.ui-1_calendar-60:before {
+    content: "\ea1a"; }
+
+.card-calendar table td {
+     text-align: right; }
+
+.card-calendar .content {
+ padding: 0 !important; }
+
+ .card-calendar .fc td:first-child {
+    border-left: 0; }
+
+    .card-calendar .fc td:last-child {
+        border-right: 0; }
+      
+      .card-calendar .fc .fc-day-header:last-child {
+        padding-right: 15px; }
+      
+      .card-calendar .fc .fc-widget-header {
+        border: 0; }
+        .card-calendar .fc .fc-widget-header .fc-title {
+          color: #FFFFFF; }
+      
+      .card-calendar .fc th {
+        text-align: right;
+        color: #888; }
+      
+      .card-calendar .title {
+        margin-top: -9px; }
+      
+      .card-calendar .fc .fc-row:last-child td {
+        border-bottom: 0; }
+      
+      .card-calendar .fc .fc-body .fc-widget-content {
+        border-bottom: 0; }
+      
+
+
+
+
+
+
+
 
 .bootstrap-datetimepicker-widget {
     list-style: none;

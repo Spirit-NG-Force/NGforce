@@ -32,6 +32,8 @@
     "copy-webpack-plugin": "7.0.0",
     "core-js": "2.5.7",
     "font-awesome": "4.7.0",
+    "fullcalendar": "^4.0.0-alpha.4",
+    "fullcalendar-scheduler": "^4.0.0-alpha.4",
     "install": "^0.13.0",
     "jquery": "3.5.1",
     "jw-bootstrap-switch-ng2": "2.0.5",
@@ -44,6 +46,7 @@
     "rellax": "1.12.1",
     "rxjs": "6.6.3",
     "rxjs-compat": "6.6.3",
+    "sweetalert2": "^11.0.17",
     "zone.js": "0.11.3"
   },
   "devDependencies": {
