@@ -10,6 +10,11 @@ export class CompanyComponent implements OnInit {
   focus1;
   focus2;
 
+  name:string ; 
+  adress:string; 
+  phonenumber:number;
+  email:string;
+  password:string;
 
     data : Date = new Date();
 
@@ -27,6 +32,18 @@ export class CompanyComponent implements OnInit {
        
 
     }
+    // onSubmit(){
+    //   const obj={
+    //     name : this.name ,
+    //     adress: this.adress , 
+    //     phonenumber : this.password ,
+    //     email : this.email ,
+    //     password : this.password 
+    //   }
+    //   this.taskservice.postCompany(obj).subscribe((company)=>{
+    //     console.log(company)
+    //   })
+    // }
     ngOnDestroy(){
         var body = document.getElementsByTagName('body')[0];
         body.classList.remove('signup-page');
