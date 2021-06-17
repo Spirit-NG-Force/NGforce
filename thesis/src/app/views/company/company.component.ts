@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -13,14 +13,18 @@ export class CompanyComponent implements OnInit {
 
     data : Date = new Date();
 
-    constructor() { }
+    constructor(public router: Router) { }
 
     ngOnInit() {
+      if(localStorage.getItem("email")){
+        this.router.navigate(['views/profil'])
+        }
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('signup-page');
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.add('navbar-absolute');
         navbar.classList.remove('fixed-top');
+       
 
     }
     ngOnDestroy(){

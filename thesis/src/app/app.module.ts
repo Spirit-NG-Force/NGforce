@@ -9,10 +9,11 @@ import { ElementsModule } from './elements/elements.module';
 import { ExamplesModule } from './examples/examples.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
+import { AuthGuardService } from './auth/auth-guard.service';
 import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-
+import {HttpClientModule} from '@angular/common/http'
 import { PresentationModule } from './presentation/presentation.module';
 import { LandingComponent } from './views/landing/landing.component';
 import { LoginComponent } from './views/login/login.component';
@@ -24,6 +25,10 @@ import { CreateCvComponent } from './views/create-cv/create-cv.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
 import { PostJobComponent } from './views/post-job/post-job.component';
 import { MultiselectComponent } from './components/multiselect/multiselect.component';
+import { AuthService } from './auth/auth.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { SearchuComponent } from './views/searchu/searchu.component';
+import { Navbar3Component } from './shared/navbar3/navbar3.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +44,9 @@ import { MultiselectComponent } from './components/multiselect/multiselect.compo
         SearchcComponent,
         PostJobComponent,
         MultiselectComponent,
+        ProfilComponent,
+        SearchuComponent,
+        Navbar3Component
     ],
     imports: [
         BrowserAnimationsModule,
@@ -52,8 +60,10 @@ import { MultiselectComponent } from './components/multiselect/multiselect.compo
         ElementsModule,
         ExamplesModule,
          
+        HttpClientModule,
+        JwtModule
     ],
-    providers: [],
+    providers: [AuthGuardService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
