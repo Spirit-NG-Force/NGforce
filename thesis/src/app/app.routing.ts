@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
+import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule, RoutesRecognized , CanActivate } from '@angular/router';
 
 import { PresentationComponent } from './presentation/presentation.component';
@@ -13,11 +14,14 @@ import { SectionsComponent } from './sections/sections.component';
 // import { EcommerceComponent } from './examples/ecommerce/ecommerce.component';
  import { LandingComponent } from './views/landing/landing.component';
  import { LoginComponent } from './views/login/login.component';
+ import { ProfilComponent } from './views/profil/profil.component';
  import { CompanyComponent } from './views/company/company.component';
  import { SearchcComponent } from './views/searchc/searchc.component';
  import { SearchuComponent } from './views/searchu/searchu.component';
 import { SignupComponent } from './views/signup/signup-u.component';
-import { ProfilComponent } from './views/profil/profil.component';
+import { CreateCvComponent } from './views/create-cv/create-cv.component';
+import { PostJobComponent } from './views/post-job/post-job.component';
+import { CalendarComponent } from './views/calendar/calendar.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
 // import { PricingComponent } from './examples/pricing/pricing.component';
 import { 
@@ -37,6 +41,17 @@ let routes: Routes =[
     // { path: 'examples/blogposts',   component: BlogpostsComponent },
     // { path: 'examples/contactus',   component: ContactusComponent },
     // { path: 'examples/ecommerce',   component: EcommerceComponent },
+    // { path: 'examples/pricing',     component: PricingComponent },
+    // { path: 'examples/productpage', component: ProductpageComponent },
+    { path: 'views/profil',     component: ProfilComponent },
+    { path: 'views/createcv',    component: CreateCvComponent },
+    { path: 'views/postJob',    component: PostJobComponent },
+
+    { path: 'views/calendar',    component: CalendarComponent },
+     { path: 'views/landing',     component: LandingComponent },
+     { path: 'views/login',       component: LoginComponent },
+     { path: 'views/company',     component: CompanyComponent },
+    { path: 'views/searchc', component: SearchcComponent },
      { path: 'views/landing',component: LandingComponent  },
      { path: 'views/login',component: LoginComponent },
      { path: 'views/company',component: CompanyComponent },
@@ -51,6 +66,7 @@ let routes: Routes =[
     imports: [
         CommonModule,
         BrowserModule,
+        FormsModule,
         
         RouterModule.forRoot(routes,{
           useHash: true

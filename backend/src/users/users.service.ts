@@ -26,7 +26,7 @@ export class UsersService {
     const findlogin = await  this.userModel.findOne({email : emaill}).exec()
     
       if (findlogin) {
-        return 'This email exists';
+        return JSON.stringify({msg : 'This email exists'});
       }
     
 
@@ -37,7 +37,7 @@ export class UsersService {
       password: hash,
       status: createUserDto.status,
     });
-    return createdUser;
+    return JSON.stringify({msg : "right"});
   }
   async login(updateUserDto: UpdateUserDto) {
     const user = await this.userModel
