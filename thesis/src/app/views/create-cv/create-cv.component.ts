@@ -82,6 +82,7 @@ export class CreateCvComponent implements OnInit {
   focus2;
   focus3;
   focus4;
+  select : string;
   dropdownList = [
     { id: 1, itemName: "Post Baccalauréat" },
     { id: 2, itemName: "Baccalauréat" },
@@ -91,7 +92,10 @@ export class CreateCvComponent implements OnInit {
     { id: 6, itemName: " More then 5" },
     
   ];
-  selectedItems = [];
+
+  selectedItems  =  [];
+  
+  
   dropdownList1 = [
     { id: 1, itemName: "Less than 1 year" },
     { id: 2, itemName: "Between 1 and 2 years" },
@@ -101,8 +105,22 @@ export class CreateCvComponent implements OnInit {
   ];
   selectedItems1 = [];
 
-  constructor() {}
+  selectedItems2 = [];
 
+  dropdownList2 = [
+    { id: 1, itemName: "Software Solution" },
+    { id: 2, itemName: "Design" },
+    { id: 3, itemName: "Marketing" },
+   
+  ];
+  
+  
+
+  constructor() {}
+click(event){
+  
+  console.log(event)
+}
   ngOnInit() {
     var rellaxHeader = new Rellax(".rellax-header");
 
@@ -110,6 +128,7 @@ export class CreateCvComponent implements OnInit {
     body.classList.add("contact-page");
     var navbar = document.getElementsByTagName("nav")[0];
     navbar.classList.add("navbar-transparent");
+   
   }
 
   ngOnDestroy() {
@@ -117,5 +136,6 @@ export class CreateCvComponent implements OnInit {
     body.classList.remove("contact-page");
     var navbar = document.getElementsByTagName("nav")[0];
     navbar.classList.remove("navbar-transparent");
+    
   }
 }
