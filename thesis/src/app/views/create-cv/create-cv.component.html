@@ -94,6 +94,21 @@
             </div>
             
             
+            <div class="row" id="space">
+              <div class="col-lg-6 col-md-5 col-sm-5">
+                <app-multiselect
+                [single]="true"
+                [text]="'Field'"
+                [dropdownList]="dropdownList2"
+                [selectedItems]="selectedItems2"
+                (itemSelect)="click($event)"
+                (itemDeSelect)="click($event)"
+                (selectAll)="console.log($event)"
+                (deSelectAll)="console.log($event)"
+                ></app-multiselect>
+              </div> 
+              </div>
+
             <div class="form-group" id="space">
               <label>Your hight school degree</label>
               <textarea name="message" class="form-control" id="message" rows="6"></textarea>
@@ -101,7 +116,7 @@
 
 
               <div class="row" id="space">
-              <div class="col-lg-6 col-md-8 col-sm-5">
+              <div class="col-lg-6 col-md-5 col-sm-5">
                 <app-multiselect
                 [single]="true"
                 [text]="'Study Level'"
@@ -121,7 +136,7 @@
             </div>
 
               <div class="row" id="space">
-              <div class="col-lg-6 col-md-8 col-sm-5">
+              <div class="col-lg-6 col-md-5 col-sm-5">
                 <app-multiselect
                 [single]="false"
                 [text]="'Years of experience'"
@@ -133,6 +148,9 @@
                 (deSelectAll)="test($event)"
                 ></app-multiselect>
               </div>
+              <div>
+                <app-image [isRound]="true"></app-image>
+            </div>
             </div>
 
             

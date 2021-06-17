@@ -31,6 +31,7 @@ import { Navbar2Component } from './shared/navbar2/navbar2.component';
 import { Navbar3Component } from './shared/navbar3/navbar3.component';
 import { HomeComponent } from './views/home/home.component';
 import { PostComponent } from './views/post/post.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import { PostComponent } from './views/post/post.component';
         Navbar2Component,
         Navbar3Component,
         HomeComponent,
-        PostComponent
+        PostComponent,
+        ImageComponent
     ],
     imports: [
         BrowserAnimationsModule,
