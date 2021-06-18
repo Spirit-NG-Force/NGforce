@@ -14,7 +14,19 @@ export class ProfilComponent implements OnInit {
     data : Date = new Date();
     focus;
     focus1;
-    cv : any;
+    cv : any={id : "none",
+      name: "none",
+      lastName:"none",
+      age: "none",
+      email: "none",
+      adress: "none",
+      descProfil: "none",
+      ProfExp: "none",
+      studylevel: "none",
+      expyear :"none ",
+      field: "none",
+      phone:"none"
+    };
     datas : any;
     token : string=localStorage.getItem("email")
     id : string="";
@@ -22,7 +34,7 @@ export class ProfilComponent implements OnInit {
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
-
+    
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('profile-page');
         var navbar = document.getElementsByTagName('nav')[0];
@@ -34,9 +46,26 @@ export class ProfilComponent implements OnInit {
           this.datas=datas
           console.log( this.datas)
           })
-          this.jobservice.getonecv(id.email).subscribe((cv)=>
-          this.cv=cv
-          )
+          this.jobservice.getonecv(id.email).subscribe((cv)=>{
+            if(!cv){
+              this.cv={id : "none",
+              name: "none",
+              lastName:"none",
+              age: "none",
+              email: "none",
+              adress: "none",
+              descProfil: "none",
+              ProfExp: "none",
+              studylevel: "none",
+              expyear :"none ",
+              field: "none",
+              phone:"none"
+            };
+            }
+            else{
+            this.cv=cv
+            }
+        })
 
           
         })
