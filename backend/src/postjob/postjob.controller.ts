@@ -27,8 +27,8 @@ export class PostjobController {
     return this.postjobService.update(id, updatePostjobDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.postjobService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.postjobService.remove(id);
+  // }
 }

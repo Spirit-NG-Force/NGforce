@@ -30,7 +30,13 @@ export class CreateCvService {
     });
     return update;
   }
+<<<<<<< HEAD
+  // remove(id: number) {
+  //   return this.createCv.deleteOne({_id : id});
+  // }
+=======
   remove(id: string) {
     return this.createCv.deleteOne({_id : id});
   }
+>>>>>>> 3f74908ab5cd116f8f0cd18d382c7810ad481cc8
 }
