@@ -34,7 +34,7 @@
                         <div class="description">
                             <h5 class="info-title">Built Audience</h5>
                             <p class="description">
-                                There is also a Fully Customizable CMS Admin Dashboard for this product.
+                                There is also a Fully ble CMS Admin Dashboard for this product.
                             </p>
                         </div>
                     </div>
@@ -47,37 +47,44 @@
                                
                                 <h5 class="card-description"> Campany </h5>
                             </div>
-                            <form class="form" method="" action="">
+                            <form class="form" method="" action="" (ngSubmit)="onSubmit()" >
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text">  <i class="now-ui-icons users_circle-08"></i></span>
                                   </div>
-                                    <input type="text" class="form-control" placeholder="Company Name..." (focus)="focus=true" (blur)="focus=false">
+                                    <input type="text" name="name" [(ngModel)]="name" class="form-control" placeholder="Name..." (focus)="focus=true" (blur)="focus=false">
                                 </div>
+    
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text">  <i class="now-ui-icons text_caps-small"></i></span>
                                   </div>
-                                    <input type="text" placeholder=" Email..." class="form-control" (focus)="focus1=true" (blur)="focus1=false">
+                                    <input type="text" name="adress" [(ngModel)]="adress" placeholder="Adress..." class="form-control" (focus)="focus1=true" (blur)="focus1=false">
                                 </div>
                                 <div class="input-group" [ngClass]="{'input-group-focus':focus2===true}">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text"> <i class="now-ui-icons ui-1_email-85"></i></span>
                                   </div>
-                                    <input type="text" class="form-control" placeholder=" phone number..." (focus)="focus2=true" (blur)="focus2=false">
+                                <input type="text" name="phonenumber" [(ngModel)]="phonenumber" class="form-control" placeholder="Phone Number..." (focus)="focus2=true" (blur)="focus2=false">
                                 </div>
 
-
-                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group" [ngClass]="{'input-group-focus':focus2===true}">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">  <i class="now-ui-icons users_circle-08"></i></span>
+                                        <span class="input-group-text"> <i class="now-ui-icons ui-1_email-85"></i></span>
                                     </div>
-                                      <input type="text" class="form-control" placeholder="Your password..." (focus)="focus=true" (blur)="focus=false">
+                                  <input type="text" name="email" [(ngModel)]="email" class="form-control" placeholder="Your Email..." (focus)="focus2=true" (blur)="focus2=false">
+                                  </div>
+                                  <div class="input-group" [ngClass]="{'input-group-focus':focus2===true}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="now-ui-icons ui-1_email-85"></i></span>
+                                    </div>
+                                  <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Your Password..." (focus)="focus2=true" (blur)="focus2=false">
                                   </div>
 
                                  
+                                 
 
-                                
+
                                 <!-- If you want to add a checkbox to this form, uncomment this code -->
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -87,9 +94,11 @@
                                         <a href="#something">conditions</a>.
                                     </label>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <a href="#pablo" class="btn btn-primary btn-round btn-lg">Get Started</a>
-                                </div>
+                                <!-- <div class="card-footer text-center">
+
+
+                                </div> -->
+                                <input type="submit" value="Get started" class="btn btn-primary btn-round btn-lg">
                             </form>
                         </div>
                     </div>
@@ -101,21 +110,13 @@
 </div>
 
 
+
 <div class="pricing-2">
     <div class="container">
         <div class="row">
             <div class="col-md-6 ml-auto mr-auto text-center">
                 <h2 class="title">Pick the best plan for you</h2>
-                <ngb-tabset type="pills" class="nav nav-pills nav-pills-primary justify-content-center">
-                    <ngb-tab title="Legal Entity">
-                        <ng-template ngbTabContent>
-                        </ng-template>
-                    </ngb-tab>
-                    <ngb-tab title="Individual">
-                        <ng-template ngbTabContent>
-                        </ng-template>
-                    </ngb-tab>
-                </ngb-tabset>
+                
             </div>
         </div>
         <div class="row">
@@ -124,7 +125,7 @@
                     <div class="card-body">
                         <h6 class="category">Enterprise</h6>
                         <h1 class="card-title">
-                            <small>$</small>59</h1>
+                            <small>DT</small>59</h1>
                         <ul>
                             <li>
                                 <b>10GB</b> Disk Space</li>
@@ -146,7 +147,7 @@
                     <div class="card-body">
                         <h6 class="category text-info">Professional</h6>
                         <h1 class="card-title">
-                            <small>$</small>29</h1>
+                            <small>DT</small>29</h1>
                         <ul>
                             <li>
                                 <b>5GB</b> Disk Space</li>
@@ -168,7 +169,7 @@
                     <div class="card-body">
                         <h6 class="category">Standard</h6>
                         <h1 class="card-title">
-                            <small>$</small>17</h1>
+                            <small>DT</small>17</h1>
                         <ul>
                             <li>
                                 <b>2GB</b> Disk Space</li>
@@ -188,4 +189,3 @@
         </div>
     </div>
 </div>
-
