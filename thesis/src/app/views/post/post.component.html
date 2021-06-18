@@ -1,0 +1,146 @@
+<app-navbar2></app-navbar2>
+<div class="wrapper">
+    <div class="page-header page-header-small">
+      <div class="page-header-image rellax-header" data-rellax-speed="-8"
+        style="background-image:  url('assets/img/bg24.jpg');">
+      </div>
+    </div>
+    <div class="main">
+      <div class="contact-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 ml-auto mr-auto">
+              <h2 class="title">Post a job </h2>
+              <p class="description">Candidate will be able to see your Offer 
+                <br>
+                <br>
+              </p>
+           <form class="form" method="" action=""  (ngSubmit)="onSubmit()">
+  
+            <div class="row" id="space">
+               <div class="col-md-6">
+                  <label>Company Name</label>
+                  <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                    </div>
+                    <input type="text"  name="CompanyName" [(ngModel)]="CompanyName"class="form-control" placeholder="Company Name..." (focus)="focus1=true"
+                      (blur)="focus1=false">
+                </div>
+               </div>
+  
+              
+              <div class="col-md-6">
+              <label>Offer Title</label>
+              <div class="input-group" [ngClass]="{'input-group-focus':focus2===true}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="now-ui-icons tech_mobile"></i></span>
+                </div>
+                <input type="text" name="OfferTitle" [(ngModel)]="OfferTitle" placeholder="OfferTitle Here..." class="form-control" (focus)="focus2=true"
+                  (blur)="focus2=false">
+              </div>
+            </div> 
+           </div>
+  
+           
+  
+  
+              <div class="form-group" id="space">
+                <label>Offer description</label>
+                <input type="text" name="OfferDescription" [(ngModel)]="OfferDescription" placeholder="Offer description..." class="form-control" (focus)="focus2=true"
+                (blur)="focus2=false">
+              </div>
+              
+            
+                <div class="row" id="space">
+                <div class="col-lg-6 col-md-8 col-sm-5">
+                  <app-multiselect
+                  [single]="true"
+                  [text]="'Type of contract'"
+                  [dropdownList]="dropdownList"
+                  [selectedItems]="selectedItems"
+                  (itemSelect)="click($event)"
+                  (itemDeSelect)="click($event)"
+                  (selectAll)="console.log($event)"
+                  (deSelectAll)="console.log($event)"
+                  ></app-multiselect>
+                </div> 
+                </div>
+  
+                <div class="row" id="space">
+                  <div class="col-lg-6 col-md-8 col-sm-5">
+                    <app-multiselect
+                    [single]="true"
+                    [text]="'Salary'"
+                    [dropdownList]="dropdownList2"
+                    [selectedItems]="selectedItems2"
+                    (itemSelect)="click1($event)"
+                    (itemDeSelect)="click1($event)"
+                    (selectAll)="test($event)"
+                    (deSelectAll)="test($event)"
+                    ></app-multiselect>
+                  </div>
+                </div>
+  
+                <div class="row" id="space">
+                <div class="col-lg-6 col-md-8 col-sm-5">
+                  <app-multiselect
+                  [single]="true"
+                  [text]="'Years of experience'"
+                  [dropdownList]="dropdownList1"
+                  [selectedItems]="selectedItems1"
+                  (itemSelect)="click2($event)"
+                  (itemDeSelect)="click2($event)"
+                  (selectAll)="test($event)"
+                  (deSelectAll)="test($event)"
+                  ></app-multiselect>
+                </div>
+              </div>
+  
+              
+  
+  
+              <div class="submit text-center">
+                <input type="submit" class="btn btn-primary btn-raised btn-round" value="Post" />
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <footer class="footer footer-default ">
+      <div class="container">
+        <nav>
+          <ul>
+            <li>
+              <a href="https://www.creative-tim.com">
+                Creative Tim
+              </a>
+            </li>
+            <li>
+              <a href="https://www.creative-tim.com/about-us">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="http://blog.creative-tim.com">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="https://www.creative-tim.com/license">
+                License
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright">
+          © {{data | date: 'yyyy'}}, Designed by
+          <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+          <a href="#" target="_blank">NG.FORCE</a>.
+        </div>
+      </div>
+    </footer>
+  </div>

@@ -7,6 +7,9 @@ import { Signup } from "../Signup";
 })
 export class JobofferService {
   private apiUrl = "http://localhost:3000/users";
+  private apiUrl1 = "http://localhost:3000/company";
+  private apiUrl2 = "http://localhost:3000/create-cv";
+  private apiUrl3 = "http://localhost:3000/postjob"; 
   constructor(private http: HttpClient) {}
 
   postUser(option: Signup): Observable<any> {
@@ -15,4 +18,45 @@ export class JobofferService {
   getUser(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + "/login", option);
   }
+  getCompany(option: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl1 + "/login" , option);
+  }
+  postCompany(option: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl1 +"/signup", option);
+  }
+  decode(option : any): Observable<any> {
+    return this.http.get<any>(this.apiUrl +`/decode/${option}`);
+  }
+  iduser(option: any): Observable<any> {
+    return this.http.get<any>(this.apiUrl + `/${option}`);
+  }
+  getonecv(option: any): Observable<any> {
+    return this.http.get<any>(this.apiUrl2 + `/${option}`);
+  }
+  createcv(option: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl2 , option);
+  }
+  updatecv(option: any,option1 : any ): Observable<any> {
+    return this.http.patch<any>(this.apiUrl2 + `/${option}`,option1);
+  }
+  updatuser(option: any,option1 : any ): Observable<any> {
+    return this.http.patch<any>(this.apiUrl + `/${option}`,option1);
+  }
+  idcompany(option:any):Observable<any> {
+    return this.http.get<any>(this.apiUrl1 + `/${option}`); 
+  }
+  getonepostjob(option: any) : Observable<any> {
+    return this.http.get<any>(this.apiUrl3 + `/${option}`);
+  }
+  createpostjob(option: any) : Observable<any> {
+    return this.http.post<any>(this.apiUrl3 , option);
+  }
+  updatepostjob (option: any,option1 : any ): Observable<any> {
+    return this.http.patch<any>(this.apiUrl3 + `/${option}`,option1);
+  }
+  updatecompany(option: any,option1 : any ): Observable<any> {
+    return this.http.patch<any>(this.apiUrl1 + `/${option}`,option1);
+  }
+ 
+  // getallpostjob
 }
