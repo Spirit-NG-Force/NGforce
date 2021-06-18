@@ -27,7 +27,7 @@ export class CompanyService {
     const findlogin = await  this.companyModel.findOne({email : emaill}).exec()
     
       if (findlogin) {
-        return 'This email exists';
+        return JSON.stringify({msg : 'This email exists'});
       }
     
 
@@ -35,14 +35,13 @@ export class CompanyService {
       name:createCompanyDto.name,
       adress:createCompanyDto.adress,
       phonenumber:createCompanyDto.phonenumber,
-      logo:createCompanyDto.logo,
       website:createCompanyDto.website,
       email:createCompanyDto.email,
       password:hash,
       status:createCompanyDto.status,
       
     });
-    return createdCompany;
+    return JSON.stringify({msg : "right"});
   }
   async login(updateCompanyDto: UpdateCompanyDto) {
     const company = await this.companyModel
@@ -53,7 +52,7 @@ export class CompanyService {
     const { password } = company;
     const isMatch = await bcrypt.compare(updateCompanyDto.password, password);
     if (isMatch) {
-      const payload = { email: company.email };
+      const payload = { email1: company._id };
 
       const token = this.jwtService.sign(payload);
       return JSON.stringify({ token });

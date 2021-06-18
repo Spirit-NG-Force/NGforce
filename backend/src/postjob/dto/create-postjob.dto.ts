@@ -1,6 +1,7 @@
 import { Postjob } from "../postjob.schema";
 
 export class CreatePostjobDto {
+    id : string;
     CompanyName: string;
     OfferTitle: string;
     OfferDescription: string;

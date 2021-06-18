@@ -28,6 +28,9 @@ export class SignupComponent implements OnInit {
     if (localStorage.getItem("email")) {
       this.router.navigate(["views/profil"]);
     }
+    else if (localStorage.getItem("email1")) {
+      this.router.navigate(["views/home"]);
+    }
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("signup-page");
     var navbar = document.getElementsByTagName("nav")[0];
@@ -43,12 +46,12 @@ export class SignupComponent implements OnInit {
       password: this.password,
       status: "user",
     };
-    this.jobservice.postUser(obj).subscribe((users) => 
-     this.msg=users.msg
-    );
-    if(this.msg==="right"){
-      this.router.navigate(["views/login"])
+    this.jobservice.postUser(obj).subscribe((users) => {
+    if(users.msg === "right"){
+      this.router.navigate(['views/login'])
      }
+    });
+    
     
     this.name=""
     this.lastname=""
