@@ -11,5 +11,4 @@ export interface CreateCv extends Document{
   lang: string;
   field: string;
   phone:number;
-
 }
