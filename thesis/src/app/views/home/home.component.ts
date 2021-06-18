@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   focus;
   focus1;
  token : string=localStorage.getItem("email1")
+ datas : any=["NO POST"]
   constructor(public router: Router,private jobservice :JobofferService) { }
 
   ngOnInit() {
@@ -22,7 +23,12 @@ export class HomeComponent implements OnInit {
     var navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.add('navbar-transparent');
     this.jobservice.decode(this.token).subscribe((id)=>{
+      console.log(id)
+     this.jobservice.getpostjobs(id.email1).subscribe((data)=>{
      
+     this.datas=data
+     console.log(data)
+    })
 
 
     })
