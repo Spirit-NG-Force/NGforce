@@ -4,6 +4,7 @@ import { UpdatePostjobDto } from './dto/update-postjob.dto';
 import { Postjob } from './postjob.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 
 
 @Injectable()
@@ -22,6 +23,12 @@ export class PostjobService {
 
   findOne(id: string) {
     return this.postjobModel.findById({ _id: id }).exec();
+  }
+  findOne1(updateUserDto : UpdateUserDto) {
+    return this.postjobModel.find(updateUserDto).exec();
+  }
+  findOne2(id: string) {
+    return this.postjobModel.find({id});
   }
 
    async update(id: string, updatePostjobDto: UpdatePostjobDto) {

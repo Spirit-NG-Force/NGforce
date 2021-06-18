@@ -27,8 +27,8 @@ export class CreateCvController {
     return this.createCvService.update(id, updateCreateCvDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.createCvService.remove(id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.createCvService.remove(id);
+  // }
 }

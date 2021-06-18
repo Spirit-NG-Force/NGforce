@@ -12,6 +12,8 @@ export class UpdateCreateCvDto extends PartialType(CreateCreateCvDto) {
   descProfil?: string;
   ProfExp?: string;
   studylevel: string;
-  expyear :string
+  expyear? :string
   field?: string;
+  img?:string;
+
 }

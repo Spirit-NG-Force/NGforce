@@ -30,7 +30,7 @@ export class CreateCvService {
     });
     return update;
   }
-  remove(id: string) {
-    return this.createCv.deleteOne({_id : id});
-  }
+  // remove(id: number) {
+  //   return this.createCv.deleteOne({_id : id});
+  // }
 }
