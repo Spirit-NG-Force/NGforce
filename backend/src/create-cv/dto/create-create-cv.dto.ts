@@ -11,5 +11,7 @@ export class CreateCreateCvDto {
   expyear :string
   field: string;
   phone:number;
+  img:string;
+
 
 }

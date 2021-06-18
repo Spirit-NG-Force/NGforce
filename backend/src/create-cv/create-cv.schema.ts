@@ -36,6 +36,8 @@ export class CreateCv {
   @Prop()
   phone:number;
 
+  @Prop()
+  img:string;
 
 }
 export const CreateCvSchema = SchemaFactory.createForClass(CreateCv)
