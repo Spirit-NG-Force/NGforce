@@ -46,7 +46,7 @@ let routes: Routes =[
     // { path: 'examples/productpage', component: ProductpageComponent },
     { path: 'views/createcv',    component: CreateCvComponent,canActivate: [AuthGuard] },
    
-    { path: 'views/calendar',    component: CalendarComponent,canActivate: [AuthGuard,AuthroleGuard] },
+    { path: 'views/calendar',    component: CalendarComponent },
      { path: 'views/landing',     component: LandingComponent },
      { path: 'views/login',       component: LoginComponent },
      { path: 'views/company',     component: CompanyComponent },
