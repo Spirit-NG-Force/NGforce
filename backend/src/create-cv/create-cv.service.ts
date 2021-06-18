@@ -10,7 +10,7 @@ import {InjectModel} from "@nestjs/mongoose";
 @Injectable()
 
 export class CreateCvService {
-  constructor(@InjectModel('CreateCv') private readonly createCv: Model<CreateCv>) {}
+  constructor(@InjectModel('createCv') private readonly createCv: Model<CreateCv>) {}
   create(createCreateCvDto: CreateCreateCvDto) {
     return this.createCv.create(createCreateCvDto);
   }
@@ -30,7 +30,7 @@ export class CreateCvService {
     });
     return update;
   }
-  remove(id: number) {
-    return this.createCv.deleteOne({_id : id});
-  }
+  // remove(id: number) {
+  //   return this.createCv.deleteOne({_id : id});
+  // }
 }
