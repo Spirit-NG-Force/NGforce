@@ -6,7 +6,6 @@ import {PostjobSchema} from "./postjob.schema"
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'postjob', schema: PostjobSchema }]),
-    
   ],
   controllers: [PostjobController],
   providers: [PostjobService]

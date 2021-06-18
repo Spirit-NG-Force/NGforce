@@ -57,6 +57,18 @@ export class JobofferService {
   updatecompany(option: any,option1 : any ): Observable<any> {
     return this.http.patch<any>(this.apiUrl1 + `/${option}`,option1);
   }
+  getallpostjob() : Observable<any> {
+    return this.http.get<any>(this.apiUrl3);
+  }
+  getallcv() : Observable<any> {
+    return this.http.get<any>(this.apiUrl2);
+  }
+  search(option : any) : Observable<any> {
+    return this.http.post<any>(this.apiUrl3+"/search",option);
+  }
+  getpostjobs(option : any) : Observable<any> {
+    return this.http.get<any>(this.apiUrl3+`/${option}/find`);
+  }
  
   // getallpostjob
 }

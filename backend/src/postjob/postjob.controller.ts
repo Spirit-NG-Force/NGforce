@@ -11,6 +11,10 @@ export class PostjobController {
   create(@Body() createPostjobDto: CreatePostjobDto) {
     return this.postjobService.create(createPostjobDto);
   }
+  @Post("/search")
+  find( @Body() updatePostjobDto: any) {
+    return this.postjobService.findOne1(updatePostjobDto);
+  }
 
   @Get()
   findAll() {
@@ -21,14 +25,18 @@ export class PostjobController {
   findOne(@Param('id') id: string) {
     return this.postjobService.findOne(id);
   }
+  @Get('/:id/find')
+  findTwo(@Param('id') id: string) {
+    return this.postjobService.findOne2(id);
+  }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePostjobDto: UpdatePostjobDto) {
     return this.postjobService.update(id, updatePostjobDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.postjobService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.postjobService.remove(id);
+  // }
 }

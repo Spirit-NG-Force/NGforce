@@ -5,11 +5,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <h2 class="title">Welcome  ALPHA</h2>
-                    <h4 class="description text-white">If you’re selected for ALPHA you’ll also get 3 tickets, opportunity to access Investor Office Hours and Mentor Hours and much more all for €850.</h4>
+                    <h2 class="title">Welcome  Company</h2>
+                    <h4 class="description text-white">Manage your professional image. Build and communicate with your professional network.</h4>
                 </div>
             </div>
-            <div class="row">
+            <div *ngFor="let data of datas">
+            <div class="row" >
                 <div class="col-md-4">
                     <div class="card card-testimonial">
                         <div class="card-avatar">
@@ -19,63 +20,23 @@
                         </div>
                         <div class="card-body">
                             <p class="card-description">
-                                The networking at Web Summit is like no other European tech conference.
+                                {{data.OfferDescription}}
                             </p>
                         </div>
-                        <div class="icon icon-primary">
-                            <i class="fa fa-quote-right"></i>
-                        </div>
+                        
                         <div class="card-footer">
-                            <h4 class="card-title">Michael Elijah</h4>
-                            <p class="category">@michaelelijah</p>
+                            <h4 class="card-title"> {{data.OfferTitle}}</h4>
+                            <p class="category">{{data.Salary}}</p>
+                            <p class="category">{{data.YearsOfExperience}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-testimonial">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img img-raised" src="assets/img/olivia.jpg">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-description">
-                                The connections you make at Web Summit are unparalleled, we met users all over the world.
-                            </p>
-                        </div>
-                        <div class="icon icon-primary">
-                            <i class="fa fa-quote-right"></i>
-                        </div>
-                        <div class="card-footer">
-                            <h4 class="card-title">Olivia Harper</h4>
-                            <p class="category">@oliviaharper</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-testimonial">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img img-raised" src="assets/img/james.jpg">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-description">
-                                Web Summit will increase your appetite, your inspiration, and your network.
-                            </p>
-                        </div>
-                        <div class="icon icon-primary">
-                            <i class="fa fa-quote-right"></i>
-                        </div>
-                        <div class="card-footer">
-                            <h4 class="card-title">James Logan</h4>
-                            <p class="category">@jameslogan</p>
-                        </div>
-                    </div>
-                </div>
+               
+                
             </div>
         </div>
     </div>
+</div>
     <div class="pricing-2">
         <div class="container">
             <div class="row">
