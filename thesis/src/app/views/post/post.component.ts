@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
+import * as Rellax from "rellax";
 import { JobofferService } from "app/service/joboffer.service";
 import {Router} from '@angular/router'
-import * as Rellax from "rellax";
 
 @Component({
-  selector: "app-create-cv",
-  templateUrl: "./create-cv.component.html",
-  styleUrls: ["./create-cv.component.css"],
+  selector: "app-post",
+  templateUrl: "./post.component.html",
+  styleUrls: ["./post.component.css"],
 })
-export class CreateCvComponent implements OnInit {
+export class PostComponent implements OnInit {
   zoom: number = 14;
   lat: number = 44.445248;
   lng: number = 26.099672;
@@ -84,20 +84,16 @@ export class CreateCvComponent implements OnInit {
   focus2;
   focus3;
   focus4;
-  select : string;
   dropdownList = [
-    { id: 1, itemName: "Post Baccalauréat" },
-    { id: 2, itemName: "Baccalauréat" },
-    { id: 3, itemName: "Baccalauréat" },
-    { id: 4, itemName: "Baccalauréat+3" },
-    { id: 5, itemName: "Baccalauréat+5" },
-    { id: 6, itemName: " More then 5" },
+    { id: 1, itemName: "CDI" },
+    { id: 2, itemName: "CDD" },
+    { id: 3, itemName: "Traineeship" },
+    { id: 4, itemName: "Freelance" },
+    { id: 5, itemName: "Alernation" },
+    
     
   ];
-
-  selectedItems  =  [];
-  
-  
+  selectedItems = [];
   dropdownList1 = [
     { id: 1, itemName: "Less than 1 year" },
     { id: 2, itemName: "Between 1 and 2 years" },
@@ -106,105 +102,64 @@ export class CreateCvComponent implements OnInit {
   
   ];
   selectedItems1 = [];
-
-  selectedItems2 = [];
-
-  dropdownList2 = [
-    { id: 1, itemName: "Software Solution" },
-    { id: 2, itemName: "Design" },
-    { id: 3, itemName: "Marketing" },
-   
+  dropdownList2= [
+    { id: 1, itemName: "Less than 600DT " },
+    { id: 2, itemName: "Between 600DT and 1200DT" },
+    { id: 3, itemName: "between 1200DT and 1500DT" },
+    { id: 4, itemName: "More than 1500DT" },
+  
   ];
-  token : string=localStorage.getItem("email")
-  name: string;
-  lastName: string;
-  age: number;
-  email: string;
-  adress: string;
-  descProfil: string;
-  ProfExp: string;
-  studylevel: string;
-  expyear :string;
-  field: string;
-  phone:number;
-  
-  email1 : string
-  name1 :string;
-  lastname1 : string;
-  password1 : string;
-  
+  selectedItems2 = [];
+  token : string = localStorage.getItem("email1")
+  CompanyName:string ; 
+  OfferTitle:string ; 
+  OfferDescription:string ; 
+  TypeOfContract:string ; 
+  Salary:string ; 
+  YearsOfExperience:string ; 
+
+
 
   constructor(public router: Router,private jobservice :JobofferService) {}
   click(event){
-    
     console.log(event.itemName)
-    this.field=event.itemName
+    this.TypeOfContract=event.itemName
   }
+
   click1(event){
-    
     console.log(event.itemName)
-    this.studylevel=event.itemName
+    this.Salary=event.itemName
   }
+
   click2(event){
-    
     console.log(event.itemName)
-    this.expyear=event.itemName
+    this.YearsOfExperience=event.itemName
   }
-onSubmit(){
+  onSubmit(){
  
-  this.jobservice.decode(this.token).subscribe((id)=>{
-    console.log(id.email)
-    const obj={
-     id : id.email,
-     name : this.name,
-     lastname : this.lastName,
-     age: this.age,
-     email: this.email ,
-     adress: this.adress,
-     descProfil: this.descProfil,
-     ProfExp: this.ProfExp,
-     studylevel: this.studylevel,
-     expyear :this.expyear,
-     field: this.field,
-     phone:this.phone
-    }
-   this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
-   if(!update){
-    this.jobservice.createcv(obj).subscribe((create)=>{
-      this.router.navigate(['views/profil'])
-      console.log(create)
-      })
-  
-   }
-   })
+    this.jobservice.decode(this.token).subscribe((id)=>{
+      console.log(id.email1)
+      const obj={
+       id : id.email1,
+       CompanyName: this.CompanyName,
+       OfferTitle: this.OfferTitle,
+       OfferDescription: this.OfferDescription,
+       TypeOfContract: this.TypeOfContract,
+       Salary: this.Salary,
+       YearsOfExperience: this.YearsOfExperience,
+      }
+      this.jobservice.createpostjob(obj).subscribe((create)=>{
+        this.router.navigate(['views/home'])
+        console.log(create)
+        })
+    
+     
+     
+    
   })
-   
-}
-onSubmit1(){
-  const obj={
-    name : this.name1,
-    lastname: this.lastname1,
-    email : this.email1,
-    password : this.password1
+     
   }
-  if(!this.name1 ){
-    delete obj.name
-  }
-  if(!this.lastname1 ){
-    delete obj.lastname
-  }
-  if(!this.email1){
-    delete obj.email
-  }
-  if(!this.password1){
-    delete obj.password
-  }
-  this.jobservice.decode(this.token).subscribe((id)=>{
-this.jobservice.updatuser(id.email,obj).subscribe((upd)=>
-console.log(upd)
-)
-  })
-}
+
   ngOnInit() {
     var rellaxHeader = new Rellax(".rellax-header");
 
@@ -212,7 +167,6 @@ console.log(upd)
     body.classList.add("contact-page");
     var navbar = document.getElementsByTagName("nav")[0];
     navbar.classList.add("navbar-transparent");
-   
   }
 
   ngOnDestroy() {
@@ -220,6 +174,5 @@ console.log(upd)
     body.classList.remove("contact-page");
     var navbar = document.getElementsByTagName("nav")[0];
     navbar.classList.remove("navbar-transparent");
-    
   }
 }

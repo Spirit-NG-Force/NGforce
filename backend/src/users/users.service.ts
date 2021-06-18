@@ -48,7 +48,7 @@ export class UsersService {
     const { password } = user;
     const isMatch = await bcrypt.compare(updateUserDto.password, password);
     if (isMatch) {
-      const payload = { email: user.email };
+      const payload = { email: user._id };
 
       const token = this.jwtService.sign(payload);
       return JSON.stringify({ token });
@@ -60,7 +60,11 @@ export class UsersService {
   async findAll() {
     return this.userModel.find();
   }
+async decode(id : string){
+  const payload=await this.jwtService.verify(id)
+return JSON.stringify(payload)
 
+}
   // @Injectable()
   // export class UsersService {
   //   constructor(@InjectModel(User.name) private UserModel: Model<UserDocument>) {}
@@ -75,10 +79,15 @@ export class UsersService {
   //   }
 
   async findOne(id: string) {
-    return this.userModel.findById({ _id: id }).exec();
+    return this.userModel.findById({ _id: id });
   }
 
   async update(id: string, updateUserDto): Promise<User> {
+    if(updateUserDto.password){
+      const saltOrRounds = 10;
+      const hash = await bcrypt.hash(updateUserDto.password, saltOrRounds)
+      updateUserDto.password=hash
+    }
     const hello = this.userModel.findOneAndUpdate({ _id: id }, updateUserDto, {
       new: true,
       useFindAndModify: false,

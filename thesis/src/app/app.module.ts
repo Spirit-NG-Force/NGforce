@@ -23,12 +23,14 @@ import { SearchcComponent } from './views/searchc/searchc.component';
 import { ProfilComponent } from './views/profil/profil.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
-import { PostJobComponent } from './views/post-job/post-job.component';
 import { MultiselectComponent } from './components/multiselect/multiselect.component';
 import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SearchuComponent } from './views/searchu/searchu.component';
+import { Navbar2Component } from './shared/navbar2/navbar2.component';
 import { Navbar3Component } from './shared/navbar3/navbar3.component';
+import { HomeComponent } from './views/home/home.component';
+import { PostComponent } from './views/post/post.component';
 import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
@@ -43,11 +45,13 @@ import { ImageComponent } from './components/image/image.component';
         SignupComponent,
         CompanyComponent,
         SearchcComponent,
-        PostJobComponent,
         MultiselectComponent,
         ProfilComponent,
         SearchuComponent,
+        Navbar2Component,
         Navbar3Component,
+        HomeComponent,
+        PostComponent,
         ImageComponent
     ],
     imports: [
