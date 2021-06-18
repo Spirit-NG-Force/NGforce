@@ -19,16 +19,16 @@ export class PostjobController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.postjobService.findOne(+id);
+    return this.postjobService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePostjobDto: UpdatePostjobDto) {
-    return this.postjobService.update(+id, updatePostjobDto);
+    return this.postjobService.update(id, updatePostjobDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.postjobService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.postjobService.remove(id);
+  // }
 }

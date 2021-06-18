@@ -10,7 +10,7 @@ import {InjectModel} from "@nestjs/mongoose";
 @Injectable()
 
 export class CreateCvService {
-  constructor(@InjectModel('CreateCv') private readonly createCv: Model<CreateCv>) {}
+  constructor(@InjectModel('createcv') private readonly createCv: Model<CreateCv>) {}
   create(createCreateCvDto: CreateCreateCvDto) {
     return this.createCv.create(createCreateCvDto);
   }
@@ -20,17 +20,23 @@ export class CreateCvService {
   }
 
   async findOne(id: string) {
-    return this.createCv.findById({ _id: id }).exec();
+    return this.createCv.findOne({ id: id });
   }
 
   async update(id: string, updatecreateCvDto : UpdateCreateCvDto){
-    const update = this.createCv.findOneAndUpdate({ _id: id }, updatecreateCvDto, {
+    const update = this.createCv.findOneAndUpdate({ id: id }, updatecreateCvDto, {
       new: true,
       useFindAndModify: false,
     });
     return update;
   }
-  remove(id: number) {
+<<<<<<< HEAD
+  // remove(id: number) {
+  //   return this.createCv.deleteOne({_id : id});
+  // }
+=======
+  remove(id: string) {
     return this.createCv.deleteOne({_id : id});
   }
+>>>>>>> 3f74908ab5cd116f8f0cd18d382c7810ad481cc8
 }

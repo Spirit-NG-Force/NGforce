@@ -4,7 +4,6 @@ export class CreateCompanyDto {
     name:string ;
     adress:string ;
     phonenumber:number ;
-    logo:string ;
     website:string ;
     email:string;
     password:string ;

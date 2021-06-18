@@ -5,6 +5,8 @@ export type PostjobDocument = Postjob & Document ;
 
 @Schema()
 export class Postjob {
+    @Prop()
+id: string;
 @Prop()
 CompanyName: string;
 @Prop()
