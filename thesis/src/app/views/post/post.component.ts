@@ -97,7 +97,7 @@ export class PostComponent implements OnInit {
   dropdownList1 = [
     { id: 1, itemName: "Less than 1 year" },
     { id: 2, itemName: "Between 1 and 2 years" },
-    { id: 3, itemName: "between 2 and 5 years" },
+    { id: 3, itemName: "Between 2 and 5 years" },
     { id: 4, itemName: "More than 5 years" },
   
   ];
@@ -105,7 +105,7 @@ export class PostComponent implements OnInit {
   dropdownList2= [
     { id: 1, itemName: "Less than 600DT " },
     { id: 2, itemName: "Between 600DT and 1200DT" },
-    { id: 3, itemName: "between 1200DT and 1500DT" },
+    { id: 3, itemName: "Between 1200DT and 1500DT" },
     { id: 4, itemName: "More than 1500DT" },
   
   ];
