@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
     constructor(public location: Location, private element : ElementRef) {
         this.sidebarVisible = false;
     }
-
+   
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];

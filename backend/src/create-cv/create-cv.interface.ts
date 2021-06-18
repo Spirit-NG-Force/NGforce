@@ -9,7 +9,6 @@ export interface CreateCv extends Document{
   descProfil: string;
   ProfExp: string;
   lang: string;
-  img: string;
   field: string;
   phone:number;
 

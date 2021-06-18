@@ -1,5 +1,5 @@
 export class CreateCreateCvDto {
-  id? : string
+  id : string
   name: string;
   lastName: string;
   age: number;
@@ -7,8 +7,8 @@ export class CreateCreateCvDto {
   adress: string;
   descProfil: string;
   ProfExp: string;
-  lang: string;
-  img: string;
+  studylevel: string;
+  expyear :string
   field: string;
   phone:number;
 
