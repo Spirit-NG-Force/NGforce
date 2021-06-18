@@ -10,7 +10,7 @@ import {InjectModel} from "@nestjs/mongoose";
 @Injectable()
 
 export class CreateCvService {
-  constructor(@InjectModel('CreateCv') private readonly createCv: Model<CreateCv>) {}
+  constructor(@InjectModel('createcv') private readonly createCv: Model<CreateCv>) {}
   create(createCreateCvDto: CreateCreateCvDto) {
     return this.createCv.create(createCreateCvDto);
   }
