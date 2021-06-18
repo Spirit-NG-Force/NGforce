@@ -20,17 +20,17 @@ export class CreateCvService {
   }
 
   async findOne(id: string) {
-    return this.createCv.findById({ _id: id }).exec();
+    return this.createCv.findOne({ id: id });
   }
 
   async update(id: string, updatecreateCvDto : UpdateCreateCvDto){
-    const update = this.createCv.findOneAndUpdate({ _id: id }, updatecreateCvDto, {
+    const update = this.createCv.findOneAndUpdate({ id: id }, updatecreateCvDto, {
       new: true,
       useFindAndModify: false,
     });
     return update;
   }
-  remove(id: number) {
+  remove(id: string) {
     return this.createCv.deleteOne({_id : id});
   }
 }

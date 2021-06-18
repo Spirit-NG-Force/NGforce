@@ -13,14 +13,18 @@ export class LoginComponent implements OnInit {
     focus1;
     email : string;
     password : string;
-    
+    bolean : boolean=false;
     
     constructor(private jobservice :JobofferService, public router: Router) { }
 
     ngOnInit() { 
-        if(localStorage.getItem("email")){
-        this.router.navigate(['views/profil'])
-        }
+        this.bolean=false
+        if (localStorage.getItem("email")) {
+            this.router.navigate(["views/profil"]);
+          }
+        if (localStorage.getItem("email1")) {
+            this.router.navigate(["views/home"]);
+          }
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('login-page');
         var navbar = document.getElementsByTagName('nav')[0];
@@ -37,7 +41,7 @@ export class LoginComponent implements OnInit {
           if(users.token!== 'incorrect password' && users.token!== `email don't exist`){
             this.router.navigate(['views/profil'])
             localStorage.setItem("email",users.token)
-
+             this.bolean=true
            
           }
           else{
@@ -46,6 +50,21 @@ export class LoginComponent implements OnInit {
           }
          
         })
+        if(this.bolean===false){
+            this.jobservice.getCompany(obj).subscribe((users)=>{
+                if(users.token!== 'incorrect password' && users.token!== `email don't exist`){
+                  this.router.navigate(['views/home'])
+                  localStorage.setItem("email1",users.token)
+                   this.bolean=true
+                 
+                }
+                else{
+                    this.email=""
+                    this.password=""
+                }
+               
+              })
+        }
        
       }
    

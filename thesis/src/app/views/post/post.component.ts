@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as Rellax from "rellax";
+import { JobofferService } from "app/service/joboffer.service";
+import {Router} from '@angular/router'
 
 @Component({
   selector: "app-post",
@@ -108,8 +110,55 @@ export class PostComponent implements OnInit {
   
   ];
   selectedItems2 = [];
+  token : string = localStorage.getItem("email1")
+  CompanyName:string ; 
+  OfferTitle:string ; 
+  OfferDescription:string ; 
+  TypeOfContract:string ; 
+  Salary:string ; 
+  YearsOfExperience:string ; 
 
-  constructor() {}
+
+
+  constructor(public router: Router,private jobservice :JobofferService) {}
+  click(event){
+    console.log(event.itemName)
+    this.TypeOfContract=event.itemName
+  }
+
+  click1(event){
+    console.log(event.itemName)
+    this.Salary=event.itemName
+  }
+
+  click2(event){
+    console.log(event.itemName)
+    this.YearsOfExperience=event.itemName
+  }
+  onSubmit(){
+ 
+    this.jobservice.decode(this.token).subscribe((id)=>{
+      console.log(id.email1)
+      const obj={
+       id : id.email1,
+       CompanyName: this.CompanyName,
+       OfferTitle: this.OfferTitle,
+       OfferDescription: this.OfferDescription,
+       TypeOfContract: this.TypeOfContract,
+       Salary: this.Salary,
+       YearsOfExperience: this.YearsOfExperience,
+      }
+      this.jobservice.createpostjob(obj).subscribe((create)=>{
+        this.router.navigate(['views/home'])
+        console.log(create)
+        })
+    
+     
+     
+    
+  })
+     
+  }
 
   ngOnInit() {
     var rellaxHeader = new Rellax(".rellax-header");

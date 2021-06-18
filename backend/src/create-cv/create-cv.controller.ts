@@ -19,16 +19,16 @@ export class CreateCvController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.createCvService.findOne(+id);
+    return this.createCvService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCreateCvDto: UpdateCreateCvDto) {
-    return this.createCvService.update(+id, updateCreateCvDto);
+    return this.createCvService.update(id, updateCreateCvDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.createCvService.remove(+id);
+    return this.createCvService.remove(id);
   }
 }

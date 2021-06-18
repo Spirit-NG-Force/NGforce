@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { JobofferService } from "app/service/joboffer.service";
+import {Router} from '@angular/router'
 import * as Rellax from "rellax";
 
 @Component({
@@ -113,13 +115,95 @@ export class CreateCvComponent implements OnInit {
     { id: 3, itemName: "Marketing" },
    
   ];
+  token : string=localStorage.getItem("email")
+  name: string;
+  lastName: string;
+  age: number;
+  email: string;
+  adress: string;
+  descProfil: string;
+  ProfExp: string;
+  studylevel: string;
+  expyear :string;
+  field: string;
+  phone:number;
   
+  email1 : string
+  name1 :string;
+  lastname1 : string;
+  password1 : string;
   
 
-  constructor() {}
-click(event){
+  constructor(public router: Router,private jobservice :JobofferService) {}
+  click(event){
+    
+    console.log(event.itemName)
+    this.field=event.itemName
+  }
+  click1(event){
+    
+    console.log(event.itemName)
+    this.studylevel=event.itemName
+  }
+  click2(event){
+    
+    console.log(event.itemName)
+    this.expyear=event.itemName
+  }
+onSubmit(){
+ 
+  this.jobservice.decode(this.token).subscribe((id)=>{
+    console.log(id.email)
+    const obj={
+     id : id.email,
+     name : this.name,
+     lastname : this.lastName,
+     age: this.age,
+     email: this.email ,
+     adress: this.adress,
+     descProfil: this.descProfil,
+     ProfExp: this.ProfExp,
+     studylevel: this.studylevel,
+     expyear :this.expyear,
+     field: this.field,
+     phone:this.phone
+    }
+   this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
+   if(!update){
+    this.jobservice.createcv(obj).subscribe((create)=>{
+      this.router.navigate(['views/profil'])
+      console.log(create)
+      })
   
-  console.log(event)
+   }
+   })
+  })
+   
+}
+onSubmit1(){
+  const obj={
+    name : this.name1,
+    lastname: this.lastname1,
+    email : this.email1,
+    password : this.password1
+  }
+  if(!this.name1 ){
+    delete obj.name
+  }
+  if(!this.lastname1 ){
+    delete obj.lastname
+  }
+  if(!this.email1){
+    delete obj.email
+  }
+  if(!this.password1){
+    delete obj.password
+  }
+  this.jobservice.decode(this.token).subscribe((id)=>{
+this.jobservice.updatuser(id.email,obj).subscribe((upd)=>
+console.log(upd)
+)
+  })
 }
   ngOnInit() {
     var rellaxHeader = new Rellax(".rellax-header");

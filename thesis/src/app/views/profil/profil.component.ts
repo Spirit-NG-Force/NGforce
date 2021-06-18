@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
-
+import {JobofferService} from '../../service/joboffer.service'
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -14,8 +14,11 @@ export class ProfilComponent implements OnInit {
     data : Date = new Date();
     focus;
     focus1;
-
-    constructor() { }
+    cv : any;
+    datas : any;
+    token : string=localStorage.getItem("email")
+    id : string="";
+    constructor(private jobservice :JobofferService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -24,6 +27,22 @@ export class ProfilComponent implements OnInit {
         body.classList.add('profile-page');
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.add('navbar-transparent');
+        this.jobservice.decode(this.token).subscribe((id)=>{
+        this.id=id.email
+        console.log(this.id)
+        this.jobservice.iduser(id.email).subscribe((datas)=>{
+          this.datas=datas
+          console.log( this.datas)
+          })
+          this.jobservice.getonecv(id.email).subscribe((cv)=>
+          this.cv=cv
+          )
+
+          
+        })
+       
+        
+       
     }
     ngOnDestroy(){
         var body = document.getElementsByTagName('body')[0];

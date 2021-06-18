@@ -21,6 +21,7 @@ export class Navbar3Component implements OnInit {
     logout(){
       localStorage.removeItem("email")
       
+      
   }
     sidebarOpen() {
         const toggleButton = this.toggleButton;

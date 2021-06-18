@@ -10,11 +10,63 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 ml-auto mr-auto">
-            <h2 class="title">Build Your Profil</h2>
+            <h2 class="title">Modify Your Profil</h2>
+            <form class="form" method="" action=""  (ngSubmit)="onSubmit1()">
+              <div class="col-md-4">
+                <label>Email</label>
+                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+               <div class="input-group-prepend">
+                 <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+               </div>
+               <input type="text" class="form-control"  name="email1" [(ngModel)]="email1" placeholder="Your Email..." (focus)="focus=true"
+               (blur)="focus=false">
+               </div>
+            
+               </div>
+            
+            <div class="col-md-4">
+              <label>Name</label>
+              <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+             <div class="input-group-prepend">
+               <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+             </div>
+             <input type="text" class="form-control"  name="name1" [(ngModel)]="name1" placeholder="Your Name..." (focus)="focus=true"
+               (blur)="focus=false">
+             </div>
+             
+             </div>
+          
+          <div class="col-md-4">
+            <label>Last Name</label>
+            <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+           <div class="input-group-prepend">
+             <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+           </div>
+           <input type="text" class="form-control"  name="lastname1" [(ngModel)]="lastname1" placeholder="Your Last Name..." (focus)="focus=true"
+             (blur)="focus=false">
+           </div>
+           
+           </div>
+           <div class="col-md-4">
+            <label>Passowrd</label>
+            <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+           <div class="input-group-prepend">
+             <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+           </div>
+           <input type="password" class="form-control"  name="password1" [(ngModel)]="password1" placeholder="Your Password..." (focus)="focus=true"
+             (blur)="focus=false">
+           </div>
+           
+           </div>
+           <input type="submit" class="btn btn-primary btn-raised btn-round" value="Modify">
+        
+            </form>
+            <h2 class="title">Build Your CV</h2>
             <p class="description">Campany will be able to see your Profil To know about your skills
               <br>
               <br>
             </p>
+            <form class="form" method="" action=""  (ngSubmit)="onSubmit()">
           <div class="row" id="space">
               <div class="col-md-4">
                 <label>Name</label>
@@ -22,7 +74,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Your Name..." (focus)="focus=true"
+                  <input type="text" class="form-control"  name="name" [(ngModel)]="name" placeholder="Your Name..." (focus)="focus=true"
                     (blur)="focus=false">
                 </div>
               </div>
@@ -33,7 +85,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Your Last Name..." (focus)="focus=true"
+                <input type="text" class="form-control" name="lastname" [(ngModel)]="lastname" placeholder="Your Last Name..." (focus)="focus=true"
                   (blur)="focus=false">
                 </div>
              </div>
@@ -43,7 +95,7 @@
              <div class="input-group-prepend">
                <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
              </div>
-             <input type="number" class="form-control" placeholder="Your Age..." (focus)="focus=true"
+             <input type="number" class="form-control"  name="age" [(ngModel)]="age" placeholder="Your Age..." (focus)="focus=true"
                (blur)="focus=false">
              </div>
           </div>
@@ -56,7 +108,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
                   </div>
-                  <input type="email" class="form-control" placeholder="Email Here..." (focus)="focus1=true"
+                  <input type="text" class="form-control" name="email" [(ngModel)]="email" placeholder="Email Here..." (focus)="focus1=true"
                     (blur)="focus1=false">
               </div>
              </div>
@@ -68,7 +120,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="now-ui-icons tech_mobile"></i></span>
               </div>
-              <input type="text" placeholder="Number Here..." class="form-control" (focus)="focus2=true"
+              <input type="number" name="phone" [(ngModel)]="phone" placeholder="Number Here..." class="form-control" (focus)="focus2=true"
                 (blur)="focus2=false">
             </div>
           </div> 
@@ -81,7 +133,7 @@
                <div class="input-group-prepend">
                  <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
                </div>
-               <input type="email" class="form-control" placeholder="Adress Here..." (focus)="focus1=true"
+               <input type="text" class="form-control" name="adress" [(ngModel)]="adress" placeholder="Adress Here..." (focus)="focus1=true"
                  (blur)="focus1=false">
            </div>
           </div>
@@ -90,8 +142,11 @@
 
             <div class="form-group" id="space">
               <label>Profil Presentation</label>
-              <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+              <input type="text" class="form-control"  name="descProfil" [(ngModel)]="descProfil" placeholder="Your Profesionnal Presentation..." (focus)="focus=true"
+              (blur)="focus=false">
             </div>
+            
+            
             
             
             <div class="row" id="space">
@@ -109,10 +164,7 @@
               </div> 
               </div>
 
-            <div class="form-group" id="space">
-              <label>Your hight school degree</label>
-              <textarea name="message" class="form-control" id="message" rows="6"></textarea>
-            </div>
+            
 
 
               <div class="row" id="space">
@@ -122,8 +174,8 @@
                 [text]="'Study Level'"
                 [dropdownList]="dropdownList"
                 [selectedItems]="selectedItems"
-                (itemSelect)="console.log($event)"
-                (itemDeSelect)="console.log($event)"
+                (itemSelect)="click1($event)"
+                (itemDeSelect)="click1($event)"
                 (selectAll)="console.log($event)"
                 (deSelectAll)="console.log($event)"
                 ></app-multiselect>
@@ -132,18 +184,19 @@
 
             <div class="form-group" id="space">
               <label>Profesionnal Experience</label>
-              <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+              <input type="text" class="form-control"  name="ProfExp" [(ngModel)]="ProfExp" placeholder="Your Profesionnal Presentation..." (focus)="focus=true"
+              (blur)="focus=false">
             </div>
 
               <div class="row" id="space">
               <div class="col-lg-6 col-md-5 col-sm-5">
                 <app-multiselect
-                [single]="false"
+                [single]="true"
                 [text]="'Years of experience'"
                 [dropdownList]="dropdownList1"
                 [selectedItems]="selectedItems1"
-                (itemSelect)="test($event)"
-                (itemDeSelect)="test($event)"
+                (itemSelect)="click2($event)"
+                (itemDeSelect)="click2($event)"
                 (selectAll)="test($event)"
                 (deSelectAll)="test($event)"
                 ></app-multiselect>
@@ -159,7 +212,7 @@
             <div class="submit text-center">
               <input type="submit" class="btn btn-primary btn-raised btn-round" value="Submit" />
             </div>
-
+</form>
           </div>
         </div>
       </div>
