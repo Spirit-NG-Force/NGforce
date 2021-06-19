@@ -6,15 +6,15 @@ import { User } from '../users/user.interface';
 export class MailService {
   constructor(private mailerService: MailerService) {}
 
-  async sendUserConfirmation(user , token: string) {
+  async sendUserConfirmation(user :User , token: string) {
     const url = `example.com/auth/confirm?token=${token}`;
 
     await this.mailerService.sendMail({
-      to: user,
-      subject: 'Welcome to Nice App! Confirm your Email',
+      to: user.email,
+      subject: 'Welcome to NGForce ! Confirm your Email to activate your account ',
       template: './confirmation', 
       context: {
-        name: user,
+        name: user.name,
         url,
       },
     });
