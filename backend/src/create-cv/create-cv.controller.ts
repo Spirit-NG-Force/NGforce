@@ -11,11 +11,16 @@ export class CreateCvController {
   create(@Body() createCreateCvDto: CreateCreateCvDto) {
     return this.createCvService.create(createCreateCvDto);
   }
+  @Post("/searchcv")
+  find( @Body() UpdateCreateCvDto: any) {
+    return this.createCvService.findTwo(UpdateCreateCvDto);
+  }
 
   @Get()
   findAll() {
     return this.createCvService.findAll();
   }
+
 
   @Get(':id')
   findOne(@Param('id') id: string) {

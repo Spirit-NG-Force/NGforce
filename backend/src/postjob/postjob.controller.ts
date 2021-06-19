@@ -11,7 +11,7 @@ export class PostjobController {
   create(@Body() createPostjobDto: CreatePostjobDto) {
     return this.postjobService.create(createPostjobDto);
   }
-  @Post("/search")
+  @Post("/searchps")
   find( @Body() updatePostjobDto: any) {
     return this.postjobService.findOne1(updatePostjobDto);
   }
@@ -35,8 +35,8 @@ export class PostjobController {
     return this.postjobService.update(id, updatePostjobDto);
   }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.postjobService.remove(id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.postjobService.remove(id);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as Rellax from 'rellax';
-
+import {JobofferService} from '../../service/joboffer.service'
 @Component({
   selector: 'app-searchc',
   templateUrl: './searchc.component.html',
@@ -17,8 +17,15 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     focus;
     focus1;
     data : Date = new Date();
+    alldatas : any;
+    datas : any;
+    descProfil : string;
+    field : string ;
+    expyear : string;
+    studylevel : string;
 
-    constructor() { }
+
+    constructor(private jobservice :JobofferService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -46,7 +53,73 @@ export class  SearchcComponent implements OnInit, OnDestroy {
                                   lazyLoading: true,
                                   maxHeight: 100
                                 };
+
+       this.jobservice.getallcv().subscribe((post)=>{
+       this.alldatas=post  
+       this.datas=post})
+
+
     }
+    click(event){
+        console.log(event.target.innerText)
+        this.field=event.target.innerText
+    }
+    click1(event){
+        console.log(event.target.innerText)
+        this.studylevel=event.target.innerText
+      
+    }
+    click2(event){
+        console.log(event.target.innerText)
+        this.expyear=event.target.innerText
+    }
+
+    onSubmit(){
+        console.log(this.datas)
+        console.log(this.descProfil)
+        const obj={
+         descProfil:this.descProfil,
+         field:this.field,
+         expyear :this.expyear,
+         studylevel:this.studylevel
+        }
+        if(!this.descProfil){
+            delete obj.descProfil
+        }
+        if(!this.field){
+        delete obj.field
+        }
+        if(!this.expyear){
+            delete obj.expyear
+        }
+    
+        this.jobservice.searchcv(obj).subscribe((search)=>{
+        if(search){
+            this.datas=search
+        }
+        else if(!search){
+            this.datas=this.alldatas
+        }
+        if(this.descProfil){
+            let result=[]
+        for(let i=0;i<this.datas.length;i++){
+            let dat=this.datas[i].descProfil
+         if(dat.indexOf(this.descProfil)===0){
+          result.push(this.datas[i])
+          console.log(result)
+         }
+        }
+        if(result){
+           this.datas=result 
+        }
+        }
+        
+        })
+       
+        
+
+    }
+
     onItemSelect(item:any){
         console.log(item);
         console.log(this.selectedItems);
