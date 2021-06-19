@@ -7,12 +7,14 @@ import { User, UserDocument } from './user.schema';
 import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { JwtService } from '@nestjs/jwt';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectModel('User') private userModel: Model<User>,
     private readonly jwtService: JwtService,
+    private mailService: MailService
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -30,13 +32,14 @@ export class UsersService {
       }
     
 
-    const createdUser = this.userModel.create({
+    const createdUser = await this.userModel.create({
       name: createUserDto.name,
       lastname: createUserDto.lastname,
       email: createUserDto.email,
       password: hash,
       status: createUserDto.status,
     });
+    this.mailService.sendUserConfirmation(createdUser ,"hello")
     return JSON.stringify({msg : "right"});
   }
   async login(updateUserDto: UpdateUserDto) {

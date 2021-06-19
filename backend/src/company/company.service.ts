@@ -13,6 +13,7 @@ export class CompanyService {
   constructor(
     @InjectModel('company') private companyModel: Model<Company>,
     private readonly jwtService: JwtService,
+    
   ) {}
 
   create(createCompanyDto: CreateCompanyDto) : Promise<Company> {
@@ -31,7 +32,7 @@ export class CompanyService {
       }
     
 
-    const createdCompany = this.companyModel.create({
+    const createdCompany = await this.companyModel.create({
       name:createCompanyDto.name,
       adress:createCompanyDto.adress,
       phonenumber:createCompanyDto.phonenumber,
@@ -41,6 +42,7 @@ export class CompanyService {
       status:createCompanyDto.status,
       
     });
+
     return JSON.stringify({msg : "right"});
   }
   async login(updateCompanyDto: UpdateCompanyDto) {
