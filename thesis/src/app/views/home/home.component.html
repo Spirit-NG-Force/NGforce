@@ -9,7 +9,8 @@
                     <h4 class="description text-white">Manage your professional image. Build and communicate with your professional network.</h4>
                 </div>
             </div>
-            <div class="row">
+            <div *ngFor="let data of datas">
+            <div class="row" >
                 <div class="col-md-4">
                     <div class="card card-testimonial">
                         <div class="card-avatar">
@@ -19,13 +20,14 @@
                         </div>
                         <div class="card-body">
                             <p class="card-description">
-                                Company Description
+                                {{data.OfferDescription}}
                             </p>
                         </div>
                         
                         <div class="card-footer">
-                            <h4 class="card-title"> Name</h4>
-                            <p class="category">@email</p>
+                            <h4 class="card-title"> {{data.OfferTitle}}</h4>
+                            <p class="category">{{data.Salary}}</p>
+                            <p class="category">{{data.YearsOfExperience}}</p>
                         </div>
                     </div>
                 </div>
@@ -34,6 +36,7 @@
             </div>
         </div>
     </div>
+</div>
     <div class="pricing-2">
         <div class="container">
             <div class="row">

@@ -7,9 +7,11 @@ import { UsersModule } from './users/users.module';
 import { CompanyModule } from './company/company.module';
 import { PostjobModule } from './postjob/postjob.module';
 import { CreateCvModule } from './create-cv/create-cv.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
-  imports: [UsersModule,MongooseModule.forRoot('mongodb+srv://ngForce:OLXrHGZaaevq0VQX@cluster0.k56k7.mongodb.net/ng_force?retryWrites=true&w=majority'), CompanyModule, CreateCvModule,PostjobModule],
+  imports: [UsersModule,
+    MongooseModule.forRoot('mongodb+srv://ngForce:OLXrHGZaaevq0VQX@cluster0.k56k7.mongodb.net/ng_force?retryWrites=true&w=majority'), CompanyModule, CreateCvModule,PostjobModule, MailModule],
   controllers: [AppController],
   providers: [AppService],
 })
