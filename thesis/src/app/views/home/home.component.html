@@ -29,7 +29,80 @@
                             <p class="category">{{data.Salary}}</p>
                             <p class="category">{{data.YearsOfExperience}}</p>
                         </div>
-                    </div>
+
+                        <form class="form" method="" action=""  (ngSubmit)="onSubmit(data)">
+                            <div class="col-md-7">
+                                <label>OfferTitle</label>
+                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                                      </div>
+                                 <input type="text" class="form-control"  name="OfferTitle" [(ngModel)]="OfferTitle" placeholder="Your OfferTitle..." (focus)="focus=true"
+                               (blur)="focus=false">
+                                
+                             
+                               </div>
+                            
+                               </div>
+                               <div class="col-md-7">
+                                <label>OfferDescription</label>
+                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                               <div class="input-group-prepend">
+                                 <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                               </div>
+                               <input type="text" class="form-control"  name="OfferDescription" [(ngModel)]="OfferDescription" placeholder="Your OfferTitle..." (focus)="focus=true"
+                               (blur)="focus=false">
+                               </div>
+                            
+                               </div>
+                               <div class="row" id="space">
+                                <div class="col-lg-6 col-md-8 col-sm-5">
+                                  <app-multiselect
+                                  [single]="true"
+                                  [text]="'Type of contract'"
+                                  [dropdownList]="dropdownList"
+                                  [selectedItems]="selectedItems"
+                                  (itemSelect)="click($event)"
+                                  (itemDeSelect)="click($event)"
+                                  (selectAll)="console.log($event)"
+                                  (deSelectAll)="console.log($event)"
+                                  ></app-multiselect>
+                                </div> 
+                                </div>
+                  
+                                <div class="row" id="space">
+                                  <div class="col-lg-6 col-md-8 col-sm-5">
+                                    <app-multiselect
+                                    [single]="true"
+                                    [text]="'Salary'"
+                                    [dropdownList]="dropdownList2"
+                                    [selectedItems]="selectedItems2"
+                                    (itemSelect)="click1($event)"
+                                    (itemDeSelect)="click1($event)"
+                                    (selectAll)="test($event)"
+                                    (deSelectAll)="test($event)"
+                                    ></app-multiselect>
+                                  </div>
+                                </div>
+                  
+                                <div class="row" id="space">
+                                <div class="col-lg-6 col-md-8 col-sm-5">
+                                  <app-multiselect
+                                  [single]="true"
+                                  [text]="'Years of experience'"
+                                  [dropdownList]="dropdownList1"
+                                  [selectedItems]="selectedItems1"
+                                  (itemSelect)="click2($event)"
+                                  (itemDeSelect)="click2($event)"
+                                  (selectAll)="test($event)"
+                                  (deSelectAll)="test($event)"
+                                  ></app-multiselect>
+                                </div>
+                              </div>
+                              <input type="submit" class="btn btn-primary btn-raised btn-round" value="Post" />
+                          <input (click)="delete(data)" class="btn btn-primary btn-raised btn-round" value="Delete" />
+                            </form>
+                    </div> 
                 </div>
                
                 

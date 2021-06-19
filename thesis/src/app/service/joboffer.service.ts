@@ -69,6 +69,12 @@ export class JobofferService {
   getpostjobs(option : any) : Observable<any> {
     return this.http.get<any>(this.apiUrl3+`/${option}/find`);
   }
- 
+  deletepostjob(option : any) : Observable<any> {
+    return this.http.delete<any>(this.apiUrl3+ `/${option}`);
+  }
+  
+  searchcv(option : any) : Observable<any> {
+    return this.http.get<any>(this.apiUrl2+"/searchps",option);
+  }
   // getallpostjob
 }

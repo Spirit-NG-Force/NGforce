@@ -17,7 +17,10 @@
         <div class="row">
             <div class="col-sm-6 col-lg-4">
                 <div class="form-group">
-                    <input type="text" value="" placeholder="Search" class="form-control" />
+                    <form class="form" method="" action=""  (ngSubmit)="onSubmit()">
+                        <input type="text" name="descProfil" [(ngModel)]="descProfil" placeholder="Search" class="form-control" >
+                        <input type="submit" value="Search">
+                        </form>
                 </div>
             </div>
             <!-- <button type="button" class="btn btn-primary">Search</button> -->
@@ -28,27 +31,27 @@
         <div ngbDropdown class="dropdown" placement="bottom-right">
             <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Field</button>
             <div ngbDropdownMenu>
-            <a class="dropdown-item" href="#">Marketing</a>
-            <a class="dropdown-item" href="#">IT</a>
-            <a class="dropdown-item" href="#">Design</a>
+            <a class="dropdown-item"  (click)="click($event)"  >Marketing</a>
+            <a class="dropdown-item" (click)="click($event)" >IT</a>
+            <a class="dropdown-item" (click)="click($event)" >Design</a>
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
             <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Education level</button>
             <div ngbDropdownMenu>
-            <a class="dropdown-item" href="#">Post bac</a>
-            <a class="dropdown-item" href="#">baccalaureate</a>
-            <a class="dropdown-item" href="#">baccalaureate+3</a>
-            <a class="dropdown-item" href="#">baccalaureate+5</a>
+            <a class="dropdown-item" (click)="click1($event)">Post bac</a>
+            <a class="dropdown-item" (click)="click1($event)">baccalaureate</a>
+            <a class="dropdown-item" (click)="click1($event)">baccalaureate+3</a>
+            <a class="dropdown-item" (click)="click1($event)">baccalaureate+5</a>
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
             <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Years of experience</button>
             <div ngbDropdownMenu>
-            <a class="dropdown-item" href="#">Less than 1 year</a>
-            <a class="dropdown-item" href="#">one to 2 years</a>
-            <a class="dropdown-item" href="#">two to 5 years</a>
-            <a class="dropdown-item" href="#">More than 5 years</a>
+            <a class="dropdown-item" (click)="click2($event)">Less than 1 year</a>
+            <a class="dropdown-item" (click)="click2($event)">one to 2 years</a>
+            <a class="dropdown-item" (click)="click2($event)">two to 5 years</a>
+            <a class="dropdown-item" (click)="click2($event)">More than 5 years</a>
             </div>
         </div>
     </div>
@@ -57,12 +60,12 @@
        
         <div class="separator-line separator-primary"></div>
        
-        <div class="about-team team-4">
+        <div class="about-team team-4" *ngFor="let data of datas">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto text-center">
-                        <h2 class="title">Find what you need</h2>
-                        <h4 class="description">This is the paragraph where you can write more details about your team. Keep you user engaged by providing meaningful information.</h4>
+                        <h2 class="title">{{data.name}}</h2>
+                        <h4 class="description">{{data.email}}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -78,10 +81,16 @@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body">
-                                        <h4 class="card-title">Ella Evelyn</h4>
-                                        <h6 class="category">Air Crew Member</h6>
+                                        <h4 class="card-title">{{data.ProfExp}}</h4>
+                                        <h6 class="category">{{data.studylevel}}</h6>
                                         <p class="card-description">
-                                            Think in the morning. Act in the noon. Eat in the evening. Sleep in the night......
+                                            {{data.descProfil}}
+                                        </p>
+                                        <p class="card-description">
+                                            {{data.expyear}}
+                                        </p>
+                                        <p class="card-description">
+                                            {{data.field}}
                                         </p>
                                         <button type="button" class="btn btn-primary btn-link">Send Message</button> 
                                         <button type="button" class="btn btn-primary btn-just-icon" ngbTooltip="add to favorites"><i class="fa fa-heart"></i></button>
@@ -90,35 +99,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
-                        <div class="card card-profile card-plain">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="card-image">
-                                        <a>
-                                            <img class="img img-raised rounded" src="assets/img/emily.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Mila Skylar</h4>
-                                        <h6 class="category">Architect</h6>
-                                        <p class="card-description">
-                                            Love cures people - both the ones who give it and the ones who receive it...
-                                        </p>
-                                        <button type="button" class="btn btn-primary btn-link">Send Message</button>
-                                        <button type="button" class="btn btn-primary btn-just-icon" ngbTooltip="add to favorites"><i class="fa fa-heart"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    
-                </div>
+                   </div> 
             </div>
-        </div>
+        </div>  
+                            
         <div class="about-office">
             <div class="container">
                 <div class="row text-center">
