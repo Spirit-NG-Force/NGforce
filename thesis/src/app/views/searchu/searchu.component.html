@@ -19,43 +19,47 @@
                 <div class="form-group">
                     <form class="form" method="" action=""  (ngSubmit)="onSubmit()">
                         <input type="text" name="OfferTitle" [(ngModel)]="OfferTitle" placeholder="Search" class="form-control" >
-                        <input type="submit" value="Search">
+                        <input   type="submit" value="Search" class = "btn btn-primary btn-sm">
                     </form>
                    
                 </div>
             </div>
+           
             <!-- <button type="button" class="btn btn-primary">Search</button> -->
         </div>
     </div>
         <!-- dropDown -->
         <div id="drop-btn">
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>type of contract</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>type of contract        {{TypeOfContract}}</button>
             <div ngbDropdownMenu>
-            <a class="dropdown-item"  (click)="click($event)">CDI</a>
+            <a class="dropdown-item"  (click)="click($event)">CDI </a>
             <a class="dropdown-item"  (click)="click($event)">CDD</a>
             <a class="dropdown-item"  (click)="click($event)" >Freelance</a>
             <a class="dropdown-item"  (click)="click($event)" >Traineeship</a>
             <a class="dropdown-item"  (click)="click($event)">alternation</a>
+            <a class="dropdown-item"  (click)="click($event)"></a>
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>minimum salary</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>minimum salary        {{salary}}</button>
             <div ngbDropdownMenu>
                 <a class="dropdown-item" (click)="click1($event)" >Less than 600DT</a>
                 <a class="dropdown-item" (click)="click1($event)" >Between 600DT and 1200DT</a>
                 <a class="dropdown-item" (click)="click1($event)">Between 1200DT and 1500DT</a>
                 <a class="dropdown-item" (click)="click1($event)">More than 1500 DT</a>
+                <a class="dropdown-item"  (click)="click1($event)"></a>
         
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Years of experience</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Years of experience    {{YearsOfExperience}}</button>
             <div ngbDropdownMenu>
                 <a class="dropdown-item" (click)="click2($event)">Less than 1 year </a>
                 <a class="dropdown-item" (click)="click2($event)">Between 1 and 2 years</a>
                 <a class="dropdown-item" (click)="click2($event)">Between 2 and 5 years</a>
                 <a class="dropdown-item" (click)="click2($event)">More than 5 years</a>
+                <a class="dropdown-item"  (click)="click2($event)"></a>
               
             </div>
         </div>
@@ -93,6 +97,9 @@
                             </p>
                             <p class="description">
                                 {{data.YearsOfExperience}}
+                              </p>
+                              <p class="card-description">
+                                {{data.TypeOfContract}}
                               </p>
                             <button type="button" class="btn btn-primary btn-link">Apply</button>
                             <button type="button" class="btn btn-primary btn-just-icon"ngbTooltip="follow"><i class="fa fa-heart"></i></button>
