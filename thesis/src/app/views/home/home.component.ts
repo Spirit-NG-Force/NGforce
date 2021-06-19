@@ -157,11 +157,16 @@ export class HomeComponent implements OnInit {
       }
       this.jobservice.updatepostjob(data._id,obj).subscribe((create)=>{
         this.router.navigate(['views/home'])
+        for(var i=0;i<this.datas.length;i++){
+          if(this.datas[i]._id===create._id){
+            this.datas[i]=create
+          }
+        }
         console.log(create)
         })
     
      
-     
+       
     
   })
   }
@@ -172,6 +177,12 @@ this.jobservice.deletepostjob(data._id).subscribe((del)=>
 console.log(del)
 
 )
+for(let i=0;i<this.datas.length;i++){
+if(this.datas[i]._id===data._id){
+this.datas.splice(i,1)
+}
+}
+
 
 
     

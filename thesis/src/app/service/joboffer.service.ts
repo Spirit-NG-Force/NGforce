@@ -64,7 +64,7 @@ export class JobofferService {
     return this.http.get<any>(this.apiUrl2);
   }
   search(option : any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl3+"/search",option);
+    return this.http.post<any>(this.apiUrl3+"/searchps",option);
   }
   getpostjobs(option : any) : Observable<any> {
     return this.http.get<any>(this.apiUrl3+`/${option}/find`);
@@ -74,7 +74,7 @@ export class JobofferService {
   }
   
   searchcv(option : any) : Observable<any> {
-    return this.http.get<any>(this.apiUrl2+"/searchps",option);
+    return this.http.get<any>(this.apiUrl2+"/searchcv",option);
   }
   // getallpostjob
 }

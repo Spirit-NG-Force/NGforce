@@ -11,7 +11,7 @@ export class CreateCvController {
   create(@Body() createCreateCvDto: CreateCreateCvDto) {
     return this.createCvService.create(createCreateCvDto);
   }
-  @Post("/search")
+  @Post("/searchcv")
   find( @Body() UpdateCreateCvDto: any) {
     return this.createCvService.findTwo(UpdateCreateCvDto);
   }

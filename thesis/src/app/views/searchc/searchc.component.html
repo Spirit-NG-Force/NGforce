@@ -19,39 +19,43 @@
                 <div class="form-group">
                     <form class="form" method="" action=""  (ngSubmit)="onSubmit()">
                         <input type="text" name="descProfil" [(ngModel)]="descProfil" placeholder="Search" class="form-control" >
-                        <input type="submit" value="Search">
+                        <input  id = "searchbtn" type="submit" value="Search" class = "btn btn-primary btn-sm">
                         </form>
                 </div>
             </div>
+            
             <!-- <button type="button" class="btn btn-primary">Search</button> -->
         </div>
     </div>
         <!-- dropDown -->
         <div id="drop-btn">
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Field</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Field         {{ field}}</button>
             <div ngbDropdownMenu>
             <a class="dropdown-item"  (click)="click($event)"  >Marketing</a>
             <a class="dropdown-item" (click)="click($event)" >IT</a>
             <a class="dropdown-item" (click)="click($event)" >Design</a>
+            <a class="dropdown-item" (click)="click($event)" ></a>
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Education level</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Education level        studylevel</button>
             <div ngbDropdownMenu>
             <a class="dropdown-item" (click)="click1($event)">Post bac</a>
             <a class="dropdown-item" (click)="click1($event)">baccalaureate</a>
             <a class="dropdown-item" (click)="click1($event)">baccalaureate+3</a>
             <a class="dropdown-item" (click)="click1($event)">baccalaureate+5</a>
+            <a class="dropdown-item" (click1)="click($event)" ></a>
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Years of experience</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Years of experience          {{expyear}}</button>
             <div ngbDropdownMenu>
             <a class="dropdown-item" (click)="click2($event)">Less than 1 year</a>
             <a class="dropdown-item" (click)="click2($event)">one to 2 years</a>
             <a class="dropdown-item" (click)="click2($event)">two to 5 years</a>
             <a class="dropdown-item" (click)="click2($event)">More than 5 years</a>
+            <a class="dropdown-item" (click2)="click($event)" ></a>
             </div>
         </div>
     </div>
@@ -81,17 +85,18 @@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body">
-                                        <h4 class="card-title">{{data.ProfExp}}</h4>
+                                        <h3 class="card-title">{{data.ProfExp}}</h3>
                                         <h6 class="category">{{data.studylevel}}</h6>
                                         <p class="card-description">
                                             {{data.descProfil}}
                                         </p>
-                                        <p class="card-description">
+                                        <h4 class="card-description">
                                             {{data.expyear}}
-                                        </p>
-                                        <p class="card-description">
+                                        </h4>
+                                        <h4 class="card-description">
                                             {{data.field}}
-                                        </p>
+                                        </h4>
+                                      
                                         <button type="button" class="btn btn-primary btn-link">Send Message</button> 
                                         <button type="button" class="btn btn-primary btn-just-icon" ngbTooltip="add to favorites"><i class="fa fa-heart"></i></button>
                                     </div>
