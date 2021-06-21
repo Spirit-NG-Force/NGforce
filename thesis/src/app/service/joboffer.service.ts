@@ -74,7 +74,7 @@ export class JobofferService {
   }
   
   searchcv(option : any) : Observable<any> {
-    return this.http.get<any>(this.apiUrl2+"/searchcv",option);
+    return this.http.post<any>(this.apiUrl2+"/searchcv",option);
   }
   // getallpostjob
 }

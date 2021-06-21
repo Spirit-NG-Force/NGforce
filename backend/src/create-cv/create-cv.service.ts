@@ -23,7 +23,7 @@ export class CreateCvService {
     return this.createCv.findOne({ id: id });
   }
   async findTwo(updateCreateCvDto: UpdateCreateCvDto) {
-    return this.createCv.findOne(updateCreateCvDto);
+    return this.createCv.find(updateCreateCvDto);
   }
 
   async update(id: string, updatecreateCvDto : UpdateCreateCvDto){

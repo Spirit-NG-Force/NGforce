@@ -92,6 +92,9 @@ export class  SearchcComponent implements OnInit, OnDestroy {
         if(!this.expyear){
             delete obj.expyear
         }
+        if(!this.studylevel){
+            delete obj.studylevel
+        }
     
         this.jobservice.searchcv(obj).subscribe((search)=>{
         if(search){
