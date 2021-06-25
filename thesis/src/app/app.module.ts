@@ -65,9 +65,9 @@ import { ImageComponent } from './components/image/image.component';
         SectionsModule,
         ElementsModule,
         ExamplesModule,
-         
         HttpClientModule,
-        JwtModule
+        JwtModule,
+
     ],
     providers: [AuthGuardService],
     bootstrap: [AppComponent]

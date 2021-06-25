@@ -87,10 +87,10 @@ export class CreateCvComponent implements OnInit {
   select : string;
   dropdownList = [
     { id: 1, itemName: "Post Baccalauréat" },
-    { id: 2, itemName: "Baccalauréat" },
-    { id: 3, itemName: "Baccalauréat" },
-    { id: 4, itemName: "Baccalauréat+3" },
-    { id: 5, itemName: "Baccalauréat+5" },
+    { id: 2, itemName: "baccalaureate" },
+    { id: 3, itemName: "baccalaureate" },
+    { id: 4, itemName: "baccalaureate+3" },
+    { id: 5, itemName: "baccalaureate+5" },
     { id: 6, itemName: " More then 5" },
     
   ];
