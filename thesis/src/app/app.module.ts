@@ -71,7 +71,6 @@ import { ChatModule } from './chat/chat.module';
         SectionsModule,
         ElementsModule,
         ExamplesModule,
-         
         HttpClientModule,
         JwtModule,
         ChatModule
