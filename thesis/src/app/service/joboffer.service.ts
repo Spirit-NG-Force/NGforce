@@ -83,6 +83,12 @@ export class JobofferService {
   createcalendar(option : any) : Observable<any> {
     return this.http.post<any>(this.apiUrl4,option);
   }
+  updatecalendar(option : any,option1 : any) : Observable<any> {
+    return this.http.patch<any>(this.apiUrl4+`/${option}`,option1);
+  }
+  deletecalendar(option : any) : Observable<any> {
+    return this.http.delete<any>(this.apiUrl4+`/${option}`);
+  }
 
   // getallpostjob
 }

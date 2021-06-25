@@ -15,6 +15,9 @@ export class CalendarComponent implements OnInit {
 token : string=localStorage.getItem("email") || "";
 calendardetails : any;
 bolean :boolean=true
+title : string;
+time : string;
+color : string;
 
 
 
@@ -77,10 +80,8 @@ bolean :boolean=true
          html:
           '<div class="form-group">' +
            '<input class="form-control" type="title" placeholder="Event Title" id="input-field">' +
-           '<input class="form-control" type="date"  placeholder="End Date" id="input-field1">'+
-           '<input class="form-control"  type="time"  placeholder="Time start" id="input-field2">'+ 
-           '<input class="form-control"  type="time"  placeholder="Time end" id="input-field3">'+
-           '<select  id="input-field4" > <option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option></select>'+  
+           '<input class="form-control"  type="time"  placeholder="Time start" id="input-field1">'+ 
+           '<select  id="input-field2" > <option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option></select>'+  
            '</div>'+
            '</form>',
          showCancelButton: true,
@@ -91,20 +92,27 @@ bolean :boolean=true
          buttonsStyling: false,
        }).then((result)=> {
           console.log(this.token)
+          let bol=true
          let eventData;
          let event_title = (document.getElementById("input-field") as HTMLInputElement).value;
-         let enddate = (document.getElementById("input-field1") as HTMLInputElement).value;
-         let timestart = (document.getElementById("input-field2") as HTMLInputElement).value;
-         let timeend = (document.getElementById("input-field3") as HTMLInputElement).value;
-         let color = (document.getElementById("input-field4") as HTMLInputElement).value;
-         if (event_title) {
+         let timestart = (document.getElementById("input-field1") as HTMLInputElement).value;
+         let color = (document.getElementById("input-field2") as HTMLInputElement).value;
+         console.log(this.calendardetails)
+         for(let i =0;i<this.calendardetails.length;i++){
+           if(this.calendardetails[i].start === info.startStr+" "+timestart){
+           bol=false
+           }
+         }
+         if (event_title && bol) {
            eventData = {
              title: event_title,
              start: info.startStr+" "+timestart,
-             end: enddate+" "+timeend,
+             end: info.startStr,
              color: color
 
            };
+           
+
            this.jobservice.decode(this.token).subscribe((id)=>{
          
             
@@ -139,5 +147,7 @@ bolean :boolean=true
   
   
   }  
- 
+ onSubmit(id){
+console.log(id)
+ }
 }

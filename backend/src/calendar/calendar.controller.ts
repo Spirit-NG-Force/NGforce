@@ -24,7 +24,7 @@ export class CalendarController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCalendarDto: UpdateCalendarDto) {
-    return this.calendarService.update(+id, updateCalendarDto);
+    return this.calendarService.update(id, updateCalendarDto);
   }
 
   @Delete(':id')
