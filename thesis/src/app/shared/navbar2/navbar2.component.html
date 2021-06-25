@@ -16,7 +16,7 @@
                 <i class="now-ui-icons ui-1_calendar-60"></i>
                 Calender
              </a>
-             <a class="navbar-brand" placement="bottom" ngbTooltip="Designed by Invision. Coded by Creative Tim">
+             <a class="navbar-brand" [routerLink]="['/views/chat']" placement="bottom" ngbTooltip="Designed by Invision. Coded by Creative Tim">
                 <i class="now-ui-icons ui-2_chat-round"></i>
                 Chat
              </a>
@@ -31,11 +31,13 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
+         <ul class="navbar-nav ml-auto">
          <li  class="nav-item">
             <a class="nav-link btn btn-primary" (click)="logout()" [routerLink]="['/views/login']">
                <p>LOGOUT</p>
                </a>
             </li>
+            </ul>
         </div>
     </div>
 </nav>

@@ -109,9 +109,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
            this.datas=result 
         }
         }
-        else if(!this.OfferTitle){
-         this.datas=this.datas
-        }
+        
         })
        
         

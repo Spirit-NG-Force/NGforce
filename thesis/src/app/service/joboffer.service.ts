@@ -10,6 +10,7 @@ export class JobofferService {
   private apiUrl1 = "http://localhost:3000/company";
   private apiUrl2 = "http://localhost:3000/create-cv";
   private apiUrl3 = "http://localhost:3000/postjob"; 
+  private apiUrl4 = "http://localhost:3000/calendar"; 
   constructor(private http: HttpClient) {}
 
   postUser(option: Signup): Observable<any> {
@@ -64,11 +65,24 @@ export class JobofferService {
     return this.http.get<any>(this.apiUrl2);
   }
   search(option : any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl3+"/search",option);
+    return this.http.post<any>(this.apiUrl3+"/searchps",option);
   }
   getpostjobs(option : any) : Observable<any> {
     return this.http.get<any>(this.apiUrl3+`/${option}/find`);
   }
- 
+  deletepostjob(option : any) : Observable<any> {
+    return this.http.delete<any>(this.apiUrl3+ `/${option}`);
+  }
+  
+  searchcv(option : any) : Observable<any> {
+    return this.http.post<any>(this.apiUrl2+"/searchcv",option);
+  }
+  getcalendar(option : any) : Observable<any> {
+    return this.http.get<any>(this.apiUrl4+`/${option}`);
+  }
+  createcalendar(option : any) : Observable<any> {
+    return this.http.post<any>(this.apiUrl4,option);
+  }
+
   // getallpostjob
 }
