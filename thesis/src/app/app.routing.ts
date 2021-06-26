@@ -25,7 +25,7 @@ import {
   import { 
     RoleGuardService as AuthroleGuard 
   } from './auth/role-guard.service';
-let routes: Routes =[
+  let routes: Routes =[
     { path: '', redirectTo: 'views/profil', pathMatch: 'full' },
     { path: 'presentation',         component: PresentationComponent },
     { path: 'elements',           component: ElementsComponent },
@@ -42,7 +42,7 @@ let routes: Routes =[
     //  { path: 'views/company',component: CompanyComponent },
     { path: 'views/searchu', component: SearchuComponent ,canActivate: [AuthGuard] },
     { path: 'views/profil', component: ProfilComponent, canActivate: [AuthGuard] },
-     { path: 'views/chat',     component: ChatComponent ,canActivate: [AuthGuard] },
+     { path: 'views/chat',     component: ChatComponent },
      { path: 'views/signup',    component: SignupComponent },
      
 ];

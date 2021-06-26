@@ -17,7 +17,7 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges() {
-    console.log(this.conversation._id)
+    console.log(this.conversation._id._id)
   }
 
   text:string ;
@@ -28,28 +28,32 @@ export class MessagesComponent implements OnInit {
 
   submitMessage(event) {
 
-   
-    !localStorage.getItem("email") ? "Company" : "User"
-
-    // let value = event.target.value.trim();
-    // this.message = '';
-    // if (value.length < 1) return false;
-    //this.conversation.latestMessage = value;
-    // this.conversation.messages.unshift({
-    //   id: 1,
-    //   body: value,
-    //   time: '10:21',
-    //   me: true,
-    // });
+    this.jobof.decode(this.token).subscribe((id) => {
+      
+    if(!localStorage.getItem("email")){
+      this.sender="Company" ;
+       this.company_id = id.email1 ;
+       this.user_id = this.conversation._id._id;
+    }
+    else{
+      this.sender="User" ;
+       this.user_id = id.email;
+       this.company_id = this.conversation._id._id;
+    }
+    let value = event.target.value.trim();
+    
     const msg={
-      text:this.text ,
+      text:value ,
       sender:this.sender,
       company_id:this.company_id,
       user_id:this.user_id
     }
+    this.conversation.messages.unshift(msg)
     this.websocket.postMessages(msg).subscribe((msg)=>{
-
+      console.log(msg)
     })
+    })
+   
   }
 
   emojiClicked(event) {
