@@ -1,5 +1,4 @@
-import { Document } from "mongoose"; 
-
+import { Document } from "mongoose";
 export interface Company extends Document {
     name:String ;
     adress:String ;

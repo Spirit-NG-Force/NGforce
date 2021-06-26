@@ -11,6 +11,7 @@ import {CompanySchema} from "./company.schema"
     JwtModule.register({ secret: "VERY BIG SECRET DON'T SHOW" }),
   ],
   controllers: [CompanyController],
-  providers: [CompanyService]
+  providers: [CompanyService],
+  exports: [CompanyService, MongooseModule]
 })
 export class CompanyModule {}

@@ -4,8 +4,7 @@
         <div class="picture">
           <img src="../../../assets/images/noPic.svg" />
         </div>
-  
-        <div class="nameSection">Ayyaz</div>
+        <div class="nameSection">{{conversation._id.name}}</div>
       </div>
       <div class="actionButtons">
         <img src="../../../assets/images/attached.svg" />
@@ -19,8 +18,8 @@
         *ngFor="let message of conversation.messages"
       >
         <div class="messageContent">
-          {{ message.body }}
-          <div class="time">{{ message.time }}</div>
+          {{ message.text }}
+          <div class="time">{{ message.createdAt}}</div>
         </div>
       </div>
     </div>
