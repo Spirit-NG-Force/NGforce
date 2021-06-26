@@ -4,6 +4,7 @@ declare const require: any;
 const FullCalendar= require('fullcalendar')
 import swal from 'sweetalert2';
 import { JobofferService } from "app/service/joboffer.service";
+import { BrowserJsonp } from "@angular/http/src/backends/browser_jsonp";
 
 
 @Component({
@@ -13,7 +14,8 @@ import { JobofferService } from "app/service/joboffer.service";
 })
 export class CalendarComponent implements OnInit {
 token : string=localStorage.getItem("email") || "";
-calendardetails : any;
+bigcalend : any;
+calendardetails : any=[];
 bolean :boolean=true
 title : string;
 time : string;
@@ -35,11 +37,18 @@ color : string;
      
    
   this.jobservice.getcalendar(id.email).subscribe((cal)=>{
-    this.calendardetails=cal
-    for(let i=0;i<this.calendardetails.length;i++){
-    delete this.calendardetails[i]._id
-    delete this.calendardetails[i].id
+    
+    this.bigcalend=cal
+    console.log(this.bigcalend)
+    for(let i=0;i<cal.length;i++){
+      this.calendardetails.push({
+        title : cal[i].title,
+        start : cal[i].start,
+        end : cal[i].end,
+        color : cal[i].color
+      })
    }
+   console.log(this.calendardetails)
    let today = new Date();
    let y = today.getFullYear();
    let m = today.getMonth();
@@ -92,6 +101,7 @@ color : string;
          buttonsStyling: false,
        }).then((result)=> {
           console.log(this.token)
+          
           let bol=true
          let eventData;
          let event_title = (document.getElementById("input-field") as HTMLInputElement).value;
@@ -147,7 +157,42 @@ color : string;
   
   
   }  
- onSubmit(id){
-console.log(id)
+ onSubmit(start,i){
+  
+   const day=start.split(" ")[0]
+   const obj={
+    title: this.title,
+    start: day+" "+this.time,
+    end:day,
+    color: this.color
+   }
+   if(!this.time){
+     obj.start=start
+   }
+   if(!this.title){
+     delete obj.title
+   }
+this.jobservice.updatecalendar(this.bigcalend[i]._id,obj).subscribe((update)=>{
+  console.log(update)
+  for(let i =0 ; i < this.calendardetails.length ; i++){
+    if(this.calendardetails[i].start===start){
+      
+      this.calendardetails[i]=obj
+    }
+  }
+})
+
  }
+ delete(start,i){
+   this.jobservice.deletecalendar(this.bigcalend[i]._id).subscribe((del)=>{
+     console.log(del)
+    for(let i =0 ; i < this.calendardetails.length ; i++){
+      if(this.calendardetails[i].start === start){
+        this.calendardetails.splice(i,1)
+      }
+    }
+   })
+  
+  }
+
 }

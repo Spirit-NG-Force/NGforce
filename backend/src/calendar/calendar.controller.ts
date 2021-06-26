@@ -29,6 +29,6 @@ export class CalendarController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.calendarService.remove(+id);
+    return this.calendarService.remove(id);
   }
 }

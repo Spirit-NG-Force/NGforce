@@ -26,7 +26,7 @@ export class CalendarService {
     })
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return  this.calendar.findByIdAndDelete({_id : id})
   }
 }

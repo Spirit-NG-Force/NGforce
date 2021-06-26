@@ -18,6 +18,9 @@ export class FollowsService {
   findOne(iduser: string,idcompany : string) {
     return this.follows.find({iduser,idcompany});
   }
+  search(iduser : string){
+    return this.follows.find({iduser});
+  }
 
   update(id: number, updateFollowDto: UpdateFollowDto) {
     return `This action updates a #${id} follow`;

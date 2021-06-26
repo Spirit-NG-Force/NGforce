@@ -16,6 +16,10 @@ export class FollowsController {
   findAll() {
     return this.followsService.findAll();
   }
+  @Get(':iduser')
+  search(@Param('iduser') iduser: string) {
+    return this.followsService.search(iduser);
+  }
 
   @Get(':iduser/:idcompany')
   findOne(@Param('iduser') iduser: string,@Param('idcompany') idcompany: string) {

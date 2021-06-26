@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as Rellax from "rellax";
-import { JobofferService } from "app/service/joboffer.service";
+import { JobofferService } from "app/service/joboffer.service"
+import { JobofferService1 } from "app/service/joboffer1.service";
 import {Router} from '@angular/router'
 
 @Component({
@@ -120,7 +121,7 @@ export class PostComponent implements OnInit {
 
 
 
-  constructor(public router: Router,private jobservice :JobofferService) {}
+  constructor(public router: Router,private jobservice :JobofferService,private jobservice1 :JobofferService1) {}
   click(event){
     console.log(event.itemName)
     this.TypeOfContract=event.itemName
@@ -152,7 +153,9 @@ export class PostComponent implements OnInit {
         this.router.navigate(['views/home'])
         console.log(create)
         })
-    
+        const obj1= {message : this.CompanyName+" has posted a job for "+this.OfferTitle,
+      sender : id.email1 }
+    this.jobservice1.addnotification(obj1).subscribe((add)=>console.log(add))
      
      
     

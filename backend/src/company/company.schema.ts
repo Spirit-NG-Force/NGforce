@@ -18,6 +18,8 @@ export class Company {
     @Prop()
     password : string;
    
+    @Prop({default: 'Company'})
+    status : string;
     
 }
 
