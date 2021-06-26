@@ -37,6 +37,10 @@ import { ChatComponent } from './chat/chat.component';
 // import { SidebarComponent } from './chat/sidebar/sidebar.component';
 import { ChatModule } from './chat/chat.module';
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
+import { SuccessUrlComponent } from './views/success-url/success-url.component';
+import { FailUrlComponent } from './views/fail-url/fail-url.component';
+
+
 @NgModule({
     declarations: [
        
@@ -61,6 +65,8 @@ import { NotificationuserComponent } from './views/notificationuser/notification
         NotificationuserComponent,
         // ChatComponent,
         // MessagesComponent,
+        SuccessUrlComponent,
+        FailUrlComponent
        
     ],
     imports: [

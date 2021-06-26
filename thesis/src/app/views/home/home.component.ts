@@ -78,6 +78,13 @@ export class HomeComponent implements OnInit {
     },
   ];
   data: Date = new Date();
+  
+  amount: number;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  orderId: string;
+  email: string;
   focus;
   focus1;
   focus2;
@@ -205,6 +212,35 @@ this.datas.splice(i,1)
 
     })
   }
+
+
+  onSubmitPayment() {
+    const obj = {
+      receiverWallet: "60d5d753e1add7620c68faf9",
+      amount: 100,
+      selectedPaymentMethod: "gateway",
+      token: "TND",
+      firstName: "Heni",
+      lastName: "Mezrani",
+      phoneNumber: "55555555",
+      email: "heni@mezrani.com",
+      orderId: "1é",
+      successUrl: "http://localhost:4200/#/views/successPayment?user=heni&anyinfo=myinfo",
+      failUrl: "http://localhost:4200/#/views/failPayment?user=heni&anyinfo=myinfo",
+    };
+    this.jobservice.postPayment(obj).subscribe((payment) => {
+      // this.router.navigate(payment);
+      window.location.href = payment.payUrl;
+    });
+
+    this.amount = null;
+    this.firstName = "";
+    this.lastName = "";
+    this.phoneNumber = "";
+    this.email = "";
+    this.orderId = "";
+  }
+
   ngOnDestroy(){
     var body = document.getElementsByTagName('body')[0];
     body.classList.remove('landing-page');
