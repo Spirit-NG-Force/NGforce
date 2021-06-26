@@ -24,6 +24,10 @@ import { CreateCvComponent } from './views/create-cv/create-cv.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
 // import { PricingComponent } from './examples/pricing/pricing.component';
+import  {SuccessUrlComponent} from './views/success-url/success-url.component';
+import { FailUrlComponent } from './views/fail-url/fail-url.component';
+
+
 import { 
     AuthGuardService as AuthGuard 
   } from './auth/auth-guard.service';
@@ -45,7 +49,6 @@ let routes: Routes =[
     // { path: 'examples/pricing',     component: PricingComponent },
     // { path: 'examples/productpage', component: ProductpageComponent },
     { path: 'views/createcv',    component: CreateCvComponent,canActivate: [AuthGuard] },
-   
     { path: 'views/calendar',    component: CalendarComponent },
      { path: 'views/landing',     component: LandingComponent },
      { path: 'views/login',       component: LoginComponent },
@@ -57,6 +60,8 @@ let routes: Routes =[
     { path: 'views/profil', component: ProfilComponent, canActivate: [AuthGuard] },
      { path: 'views/chat',     component: ChatComponent },
      { path: 'views/signup',    component: SignupComponent },
+     { path: 'views/failPayment',    component: FailUrlComponent },
+     { path: 'views/successPayment',    component: SuccessUrlComponent },
      
 ];
 
