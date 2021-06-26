@@ -36,8 +36,14 @@ import { ChatComponent } from './chat/chat.component';
 // import { MessagesComponent } from './chat/messages/messages.component';
 // import { SidebarComponent } from './chat/sidebar/sidebar.component';
 import { ChatModule } from './chat/chat.module';
+import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
+import { SuccessUrlComponent } from './views/success-url/success-url.component';
+import { FailUrlComponent } from './views/fail-url/fail-url.component';
+
+
 @NgModule({
     declarations: [
+       
         AppComponent,
         NavbarComponent,
         LandingComponent,
@@ -56,8 +62,11 @@ import { ChatModule } from './chat/chat.module';
         HomeComponent,
         PostComponent,
         ImageComponent,
+        NotificationuserComponent,
         // ChatComponent,
         // MessagesComponent,
+        SuccessUrlComponent,
+        FailUrlComponent
        
     ],
     imports: [

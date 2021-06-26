@@ -17,8 +17,15 @@ import { PostComponent } from './views/post/post.component';
  import { SearchuComponent } from './views/searchu/searchu.component';
 import { SignupComponent } from './views/signup/signup-u.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
+
+import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
+// import { PricingComponent } from './examples/pricing/pricing.component';
+import  {SuccessUrlComponent} from './views/success-url/success-url.component';
+import { FailUrlComponent } from './views/fail-url/fail-url.component';
+
+
 import { 
     AuthGuardService as AuthGuard 
   } from './auth/auth-guard.service';
@@ -33,7 +40,8 @@ import {
     { path: 'nucleoicons',          component: NucleoiconsComponent },
      { path: 'views/post',   component: PostComponent ,canActivate: [AuthroleGuard]},
     { path: 'views/createcv',    component: CreateCvComponent,canActivate: [AuthGuard] },
-    { path: 'views/calendar',    component: CalendarComponent ,canActivate: [AuthGuard] },
+    { path: 'views/notificationuser',    component: NotificationuserComponent,canActivate: [AuthGuard] },
+    { path: 'views/calendar',    component: CalendarComponent },
      { path: 'views/landing',     component: LandingComponent },
      { path: 'views/login',       component: LoginComponent },
      { path: 'views/company',     component: CompanyComponent },
@@ -44,6 +52,8 @@ import {
     { path: 'views/profil', component: ProfilComponent, canActivate: [AuthGuard] },
      { path: 'views/chat',     component: ChatComponent },
      { path: 'views/signup',    component: SignupComponent },
+     { path: 'views/failPayment',    component: FailUrlComponent },
+     { path: 'views/successPayment',    component: SuccessUrlComponent },
      
 ];
 
