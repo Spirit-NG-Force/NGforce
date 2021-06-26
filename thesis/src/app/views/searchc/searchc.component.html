@@ -30,32 +30,33 @@
         <!-- dropDown -->
         <div id="drop-btn">
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Field         {{ field}}</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Field         {{field}}</button>
             <div ngbDropdownMenu>
             <a class="dropdown-item"  (click)="click($event)"  >Marketing</a>
-            <a class="dropdown-item" (click)="click($event)" >IT</a>
+            <a class="dropdown-item" (click)="click($event)" >Software Solution</a>
             <a class="dropdown-item" (click)="click($event)" >Design</a>
             <a class="dropdown-item" (click)="click($event)" ></a>
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Education level        studylevel</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Education level        {{studylevel}}</button>
             <div ngbDropdownMenu>
             <a class="dropdown-item" (click)="click1($event)">Post bac</a>
             <a class="dropdown-item" (click)="click1($event)">baccalaureate</a>
             <a class="dropdown-item" (click)="click1($event)">baccalaureate+3</a>
             <a class="dropdown-item" (click)="click1($event)">baccalaureate+5</a>
-            <a class="dropdown-item" (click1)="click($event)" ></a>
+            <a class="dropdown-item" (click)="click1($event)">More then 5</a>
+            <a class="dropdown-item" (click)="click1($event)" ></a>
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
             <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Years of experience          {{expyear}}</button>
             <div ngbDropdownMenu>
             <a class="dropdown-item" (click)="click2($event)">Less than 1 year</a>
-            <a class="dropdown-item" (click)="click2($event)">one to 2 years</a>
-            <a class="dropdown-item" (click)="click2($event)">two to 5 years</a>
+            <a class="dropdown-item" (click)="click2($event)">Between one to 2 years</a>
+            <a class="dropdown-item" (click)="click2($event)">Between 2 to 5 years</a>
             <a class="dropdown-item" (click)="click2($event)">More than 5 years</a>
-            <a class="dropdown-item" (click2)="click($event)" ></a>
+            <a class="dropdown-item" (click)="click2($event)" ></a>
             </div>
         </div>
     </div>
@@ -79,7 +80,7 @@
                                 <div class="col-md-5">
                                     <div class="card-image">
                                         <a >
-                                            <img class="img img-raised rounded" src="assets/img/olivia.jpg" />
+                                            <img class="img img-raised rounded" src="assets/images/noPic.svg" />
                                         </a>
                                     </div>
                                 </div>

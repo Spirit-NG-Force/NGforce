@@ -14,6 +14,4 @@ export interface CreateCv extends Document{
   expyear: string;
   img:string;
 
-
-
 }
