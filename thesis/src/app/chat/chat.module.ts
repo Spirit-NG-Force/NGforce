@@ -17,7 +17,7 @@ import { ChatComponent } from './chat.component';
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    PickerModule,
+   
   ]
 })
 

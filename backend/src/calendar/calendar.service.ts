@@ -19,11 +19,14 @@ export class CalendarService {
      return this.calendar.find({ id: id });
   }
 
-  update(id: number, updateCalendarDto: UpdateCalendarDto) {
-    return `This action updates a #${id} calendar`;
+  update(id: string, updateCalendarDto: UpdateCalendarDto) {
+    return this.calendar.findByIdAndUpdate({_id : id},updateCalendarDto, {
+      new: true,
+      useFindAndModify: false,
+    })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} calendar`;
+  remove(id: string) {
+    return  this.calendar.findByIdAndDelete({_id : id})
   }
 }
