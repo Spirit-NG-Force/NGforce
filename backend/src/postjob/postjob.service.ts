@@ -40,7 +40,7 @@ export class PostjobService {
       return job;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} postjob`;
+  remove(id: string) {
+    return this.postjobModel.findByIdAndDelete({ _id: id })
   }
 }

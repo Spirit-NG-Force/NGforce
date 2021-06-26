@@ -13,7 +13,8 @@ export class User {
     email : string;
     @Prop()
     password : string;
-    @Prop()
+    
+    @Prop({default: 'User'})
     status : string;
     
 }

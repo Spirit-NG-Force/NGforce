@@ -32,6 +32,13 @@ import { Navbar3Component } from './shared/navbar3/navbar3.component';
 import { HomeComponent } from './views/home/home.component';
 import { PostComponent } from './views/post/post.component';
 import { ImageComponent } from './components/image/image.component';
+import { ChatComponent } from './chat/chat.component';
+// import { MessagesComponent } from './chat/messages/messages.component';
+// import { SidebarComponent } from './chat/sidebar/sidebar.component';
+import { ChatModule } from './chat/chat.module';
+import { SuccessUrlComponent } from './views/success-url/success-url.component';
+import { FailUrlComponent } from './views/fail-url/fail-url.component';
+
 
 @NgModule({
     declarations: [
@@ -52,7 +59,12 @@ import { ImageComponent } from './components/image/image.component';
         Navbar3Component,
         HomeComponent,
         PostComponent,
-        ImageComponent
+        ImageComponent,
+        // ChatComponent,
+        // MessagesComponent,
+        SuccessUrlComponent,
+        FailUrlComponent
+       
     ],
     imports: [
         BrowserAnimationsModule,
@@ -65,9 +77,9 @@ import { ImageComponent } from './components/image/image.component';
         SectionsModule,
         ElementsModule,
         ExamplesModule,
-         
         HttpClientModule,
-        JwtModule
+        JwtModule,
+        ChatModule
     ],
     providers: [AuthGuardService],
     bootstrap: [AppComponent]
