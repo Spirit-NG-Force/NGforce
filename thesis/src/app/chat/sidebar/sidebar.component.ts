@@ -39,7 +39,7 @@ export class SidebarComponent implements OnInit {
       );
     });
   }
-  token: string = localStorage.getItem("email");
+  token: string = localStorage.getItem("email") ;
   id: string = "";
   status: string = "";
   constructor(
@@ -48,25 +48,29 @@ export class SidebarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.jobservice.decode(this.token).subscribe((id) => {
-      this.id = id.email;
+  
       if (!localStorage.getItem("email")) {
-        console.log(this.id)
+        this.token = localStorage.getItem("email1") 
+        this.jobservice.decodecomp(this.token).subscribe((id) => {
+          this.id = id.email1  
+          console.log(this.id)
         this.websocket.getConversationsCompany(this.id).subscribe((messages) => {
           this.conversations = messages;
           console.log(this.conversations);
           this.ready = true
         });
+        })
+
       } else {
+        this.jobservice.decode(this.token).subscribe((id) => {
+          this.id = id.email ;
         console.log(this.id)
         this.websocket.getConversationsUser(this.id).subscribe((messages) => {
           this.conversations = messages;
           console.log(this.conversations);
           this.ready = true
         });
+      })
       }
-
-    });
-    
-  }
+    }
 }

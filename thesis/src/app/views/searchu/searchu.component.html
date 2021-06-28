@@ -42,7 +42,7 @@
             </div>
         </div>
         <div ngbDropdown class="dropdown" placement="bottom-right">
-            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>minimum salary        {{salary}}</button>
+            <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>minimum salary        {{Salary}}</button>
             <div ngbDropdownMenu>
                 <a class="dropdown-item" (click)="click1($event)" >Less than 600DT</a>
                 <a class="dropdown-item" (click)="click1($event)" >Between 600DT and 1200DT</a>
@@ -72,7 +72,7 @@
         <div class="separator-line separator-primary"></div>
        <!--  -->
        <div class="projects-5">
-        <div class="container" *ngFor="let data of datas">
+        <div class="container" *ngFor="let data of datas; let i = index">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
                     <h2 class="title">{{data.CompanyName}}</h2>
@@ -102,7 +102,8 @@
                                 {{data.TypeOfContract}}
                               </p>
                             <button type="button" class="btn btn-primary btn-link">Apply</button>
-                            <button type="button" class="btn btn-primary btn-just-icon"ngbTooltip="follow"><i class="fa fa-heart"></i></button>
+                            <button *ngIf="!follows[i]" type="button" class="btn btn-primary btn-just-icon" (click)="follow(data,i)" ngbTooltip="follow"><i class="fa fa-heart"></i></button>
+                            <button *ngIf="follows[i]" type="button" class="btn btn-primary btn-just-icon"   (click)="unfollow(data,i)" ngbTooltip="unfollow">unfollow</button>
                         </div>
                     </div>
                     

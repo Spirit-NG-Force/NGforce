@@ -31,7 +31,7 @@ export class WebsocketService {
     }
 
     getConversationsCompany(option:any): Observable<any>{
-      return this.http.get<any>(this.apiUrl + "/conversations/company",option)
+      return this.http.get<any>(this.apiUrl +  `/conversations/company/${option}`,option)
     }
 
     listen(eventName: string) {
