@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <h2 class="title">Welcome  Company</h2>
+                    <h2 class="title">Welcome {{ data.CompanyName }}</h2>
                     <h4 class="description text-white">Manage your professional image. Build and communicate with your professional network.</h4>
                 </div>
             </div>
@@ -13,11 +13,7 @@
             <div class="row" >
                 <div class="col-md-4">
                     <div class="card card-testimonial">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img img-raised" src="assets/images/noPic.svg">
-                            </a>
-                        </div>
+                        
                         <div class="card-body">
                             <p class="card-description">
                                 {{data.OfferDescription}}

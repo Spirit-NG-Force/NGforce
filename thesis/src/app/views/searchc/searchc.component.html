@@ -65,49 +65,35 @@
        
         <div class="separator-line separator-primary"></div>
        
-        <div class="about-team team-4" *ngFor="let data of datas">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 ml-auto mr-auto text-center">
-                        <h2 class="title">{{data.name}}</h2>
-                        <h4 class="description">{{data.email}}</h4>
-                    </div>
+       
+        <!--  -->
+        <div style="display: flex; flex-wrap: wrap">
+            <div class="container" style="max-width: 500px;"  *ngFor="let data of datas">
+          
+              <div class="card">
+                <!-- <img
+                  class="card-img-top"
+                  src="assets/img/PROFIL.jpg"
+                  alt="Card image cap"
+                /> -->
+                <div class="card-body">
+                  <h5 class="card-title">{{data.name}}</h5>
+                  <h4 class="card-title">{{data.email}}</h4>
+                  <p class="card-text">   {{data.descProfil}}</p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{data.ProfExp}}</li>
+                    <li class="list-group-item">{{data.studylevel}}</li>
+                    <li class="list-group-item">  {{data.expyear}}</li>
+                    <li class="list-group-item">  {{data.field}}</li>
+                  </ul>
+                  <button type="button" class="btn btn-primary btn-link">Send Message</button> 
+                  <button type="button" class="btn btn-primary btn-just-icon" ngbTooltip="add to favorites"><i class="fa fa-heart"></i></button>
+                  
                 </div>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
-                        <div class="card card-profile card-plain">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="card-image">
-                                        <a >
-                                            <img class="img img-raised rounded" src="assets/images/noPic.svg" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="card-body">
-                                        <h3 class="card-title">{{data.ProfExp}}</h3>
-                                        <h6 class="category">{{data.studylevel}}</h6>
-                                        <p class="card-description">
-                                            {{data.descProfil}}
-                                        </p>
-                                        <h4 class="card-description">
-                                            {{data.expyear}}
-                                        </h4>
-                                        <h4 class="card-description">
-                                            {{data.field}}
-                                        </h4>
-                                      
-                                        <button type="button" class="btn btn-primary btn-link">Send Message</button> 
-                                        <button type="button" class="btn btn-primary btn-just-icon" ngbTooltip="add to favorites"><i class="fa fa-heart"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   </div> 
+              </div>
+            
             </div>
-        </div>  
+          </div>
                             
         <div class="about-office">
             <div class="container">
