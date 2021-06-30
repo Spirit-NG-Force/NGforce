@@ -11,6 +11,7 @@ export class JobofferService {
   private apiUrl2 = "http://localhost:3000/create-cv";
   private apiUrl3 = "http://localhost:3000/postjob"; 
   private apiUrl4 = "http://localhost:3000/calendar"; 
+  private apiUrl5 = "https://api.preprod.konnect.network/api/v1/payments/init-payment"; 
   constructor(private http: HttpClient) {}
 
   postUser(option: Signup): Observable<any> {
@@ -25,7 +26,7 @@ export class JobofferService {
   postCompany(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl1 +"/signup", option);
   }
-  decode(option : any): Observable<any> {
+  decode(option : any ): Observable<any> {
     return this.http.get<any>(this.apiUrl +`/decode/${option}`);
   }
   iduser(option: any): Observable<any> {
@@ -83,6 +84,16 @@ export class JobofferService {
   createcalendar(option : any) : Observable<any> {
     return this.http.post<any>(this.apiUrl4,option);
   }
+  updatecalendar(option : any,option1 : any) : Observable<any> {
+    return this.http.patch<any>(this.apiUrl4+`/${option}`,option1);
+  }
+  deletecalendar(option : any) : Observable<any> {
+    return this.http.delete<any>(this.apiUrl4+`/${option}`);
+  }
 
+// payment subscription
+postPayment (option:any): Observable<any> {
+  return this.http.post<any>(this.apiUrl5, option);
+}
   // getallpostjob
 }
