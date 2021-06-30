@@ -126,7 +126,9 @@ export class CreateCvComponent implements OnInit {
   expyear :string;
   field: string;
   phone:number;
-  
+  img : string;
+  fileToUpload: File | null = null;
+
   email1 : string
   name1 :string;
   lastname1 : string;
@@ -149,33 +151,63 @@ export class CreateCvComponent implements OnInit {
     console.log(event.itemName)
     this.expyear=event.itemName
   }
-onSubmit(){
- 
-  this.jobservice.decode(this.token).subscribe((id)=>{
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+    console.log(this.fileToUpload)
+  }
+
+  onSubmit(){
+  this.jobservice.decode(this.token).subscribe(id=>{
     console.log(id.email)
-    const obj={
-     id : id.email,
-     name : this.name,
-     lastname : this.lastName,
-     age: this.age,
-     email: this.email ,
-     adress: this.adress,
-     descProfil: this.descProfil,
-     ProfExp: this.ProfExp,
-     studylevel: this.studylevel,
-     expyear :this.expyear,
-     field: this.field,
-     phone:this.phone
+    var obj={
+      id : id.email,
+      name : this.name,
+      lastname : this.lastName,
+      age: this.age,
+      email: this.email ,
+      adress: this.adress,
+      descProfil: this.descProfil,
+      ProfExp: this.ProfExp,
+      studylevel: this.studylevel,
+      expyear :this.expyear,
+      field: this.field,
+      phone:this.phone, 
+      img:"https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
+     }
+     if(this.fileToUpload) {
+     
+    const file = new FormData() 
+    file.append("file",this.fileToUpload)
+    console.log(file)
+    this.jobservice.postimg(file).subscribe(data => {
+      obj.img=data.url 
+      console.log(this.img)
+      console.log("OBJ OF CREATECV3 ",obj)
+    this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
+    if(!update){
+      this.jobservice.createcv(obj).subscribe((create)=>{
+        this.router.navigate(['views/profil'])
+        console.log(create)
+        return 
+        })
     }
-   this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
-   if(!update){
-    this.jobservice.createcv(obj).subscribe((create)=>{
+    this.router.navigate(['views/profil'])
+    return
+    })
+    })
+  }
+    else {
+         this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
+      if(!update){
+        this.jobservice.createcv(obj).subscribe((create)=>{
+          this.router.navigate(['views/profil'])
+          console.log(create)
+          })
+      }
       this.router.navigate(['views/profil'])
-      console.log(create)
       })
-  
-   }
-   })
+    }
   })
    
 }

@@ -97,8 +97,11 @@ export class JobofferService {
   }
 
 // payment subscription
-postPayment (option:any): Observable<any> {
-  return this.http.post<any>(this.apiUrl5, option);
-}
-  // getallpostjob
+  postPayment (option:any): Observable<any> {
+    return this.http.post<any>(this.apiUrl5, option);
+  }
+
+  postimg (option:any) : Observable<any> {
+    return this.http.post<any>(this.apiUrl2+"/testcloudinary",option)
+  }
 }

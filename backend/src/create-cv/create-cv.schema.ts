@@ -4,6 +4,7 @@ import { MongooseModule, Prop,Schema, SchemaFactory } from '@nestjs/mongoose';
 export class CreateCv {
   @Prop()
   id: string;
+  
   @Prop()
   name: string;
 
@@ -27,6 +28,7 @@ export class CreateCv {
 
   @Prop()
   studylevel: string;
+  
   @Prop()
   expyear: string;
 
