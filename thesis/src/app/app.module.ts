@@ -39,6 +39,8 @@ import { ChatModule } from './chat/chat.module';
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { SuccessUrlComponent } from './views/success-url/success-url.component';
 import { FailUrlComponent } from './views/fail-url/fail-url.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { FailUrlComponent } from './views/fail-url/fail-url.component';
         // ChatComponent,
         // MessagesComponent,
         SuccessUrlComponent,
-        FailUrlComponent
+        FailUrlComponent,
+        DashboardComponent,
+   
        
     ],
     imports: [

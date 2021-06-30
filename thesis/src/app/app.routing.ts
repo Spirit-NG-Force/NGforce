@@ -6,7 +6,9 @@ import { Routes, RouterModule, RoutesRecognized , CanActivate } from '@angular/r
 import { PresentationComponent } from './presentation/presentation.component';
 import { ElementsComponent } from './elements/elements.component';
 import { SectionsComponent } from './sections/sections.component';
-import { ChatComponent } from './chat/chat.component';;
+import { ChatComponent } from './chat/chat.component';
+import {DashboardComponent  } from './dashboard/dashboard.component';
+
 import { PostComponent } from './views/post/post.component';
  import {  HomeComponent } from './views/home/home.component';
  import { LandingComponent } from './views/landing/landing.component';
@@ -47,7 +49,8 @@ import {
      { path: 'views/company',     component: CompanyComponent },
     { path: 'views/searchc', component: SearchcComponent,canActivate: [AuthroleGuard] },
      { path: 'views/home',     component:  HomeComponent ,canActivate: [AuthroleGuard]},
-    //  { path: 'views/company',component: CompanyComponent },
+      { path: 'views/dashboard',component: DashboardComponent  },
+     
     { path: 'views/searchu', component: SearchuComponent ,canActivate: [AuthGuard] },
     { path: 'views/profil', component: ProfilComponent, canActivate: [AuthGuard] },
      { path: 'views/chat',     component: ChatComponent },
