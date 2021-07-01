@@ -1,11 +1,16 @@
 import { Document } from "mongoose";
+
 export interface Company extends Document {
-    name:String ;
-    adress:String ;
-    phonenumber:String ;
-    logo:String ;
-    website:String ;
-    email:String;
-    password:String ;
-    status:String ;
+    name:string ;
+    adress:string ;
+    phonenumber:string ;
+    logo:string ;
+    website:string ;
+    email:string;
+    password:string ;
+    status:string ;
+    is_active:boolean;
+    subscription:string ;
+    monthly_count:number;
+    expiration_date:Date;
 }
