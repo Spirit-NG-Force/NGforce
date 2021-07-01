@@ -19,6 +19,7 @@ import { ChatComponent } from './chat.component';
     FormsModule,
    
   ]
+
 })
 
 export class ChatModule { }

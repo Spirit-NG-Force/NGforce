@@ -3,7 +3,7 @@ import * as Rellax from "rellax";
 import { JobofferService } from "app/service/joboffer.service"
 import { JobofferService1 } from "app/service/joboffer1.service";
 import {Router} from '@angular/router'
-
+import io from 'socket.io-client'
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
@@ -118,10 +118,10 @@ export class PostComponent implements OnInit {
   TypeOfContract:string ; 
   Salary:string ; 
   YearsOfExperience:string ; 
+socket : any;
 
 
-
-  constructor(public router: Router,private jobservice :JobofferService,private jobservice1 :JobofferService1) {}
+  constructor(public router: Router,private jobservice :JobofferService,private jobservice1 :JobofferService1) {this.socket = io('http://localhost:4001')}
   click(event){
     console.log(event.itemName)
     this.TypeOfContract=event.itemName
@@ -156,7 +156,7 @@ export class PostComponent implements OnInit {
         const obj1= {message : this.CompanyName+" has posted a job for "+this.OfferTitle,
       sender : id.email1 }
     this.jobservice1.addnotification(obj1).subscribe((add)=>console.log(add))
-     
+    
      
     
   })

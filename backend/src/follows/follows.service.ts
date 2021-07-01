@@ -12,7 +12,7 @@ export class FollowsService {
   }
 
   findAll() {
-    return `This action returns all follows`;
+    return this.follows.find({});
   }
 
   findOne(iduser: string,idcompany : string) {
