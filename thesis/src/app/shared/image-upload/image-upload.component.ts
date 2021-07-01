@@ -44,7 +44,9 @@ export class ImageUploadComponent implements OnInit {
         // you have to call it yourself
     }
     handleClick(){
+        console.log(this.input.nativeElement.children[2])
         this.input.nativeElement.children[2].click();
+        
     }
     handleRemove(){
         this.state.file = null;

@@ -29,6 +29,11 @@ export class JobofferService {
   decode(option : any ): Observable<any> {
     return this.http.get<any>(this.apiUrl +`/decode/${option}`);
   }
+
+  decodecomp(option : any ): Observable<any> {
+    return this.http.get<any>(this.apiUrl1 +`/decodecomp/${option}`);
+  }
+
   iduser(option: any): Observable<any> {
     return this.http.get<any>(this.apiUrl + `/${option}`);
   }
@@ -92,8 +97,11 @@ export class JobofferService {
   }
 
 // payment subscription
-postPayment (option:any): Observable<any> {
-  return this.http.post<any>(this.apiUrl5, option);
-}
-  // getallpostjob
+  postPayment (option:any): Observable<any> {
+    return this.http.post<any>(this.apiUrl5, option);
+  }
+
+  postimg (option:any) : Observable<any> {
+    return this.http.post<any>(this.apiUrl2+"/testcloudinary",option)
+  }
 }
