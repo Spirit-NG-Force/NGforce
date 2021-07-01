@@ -18,6 +18,7 @@ import { ChatComponent } from './chat.component';
     AppRoutingModule,
     FormsModule,
   ]
+
 })
 
 export class ChatModule { }

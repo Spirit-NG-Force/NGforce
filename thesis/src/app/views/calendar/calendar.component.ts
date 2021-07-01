@@ -13,42 +13,37 @@ import { BrowserJsonp } from "@angular/http/src/backends/browser_jsonp";
   styleUrls: ["./calendar.component.css"]
 })
 export class CalendarComponent implements OnInit {
-token : string=localStorage.getItem("email") || "";
-bigcalend : any;
-calendardetails : any=[];
+token : string=localStorage.getItem("email") || localStorage.getItem("email1");
+bigcalend : any=[];
 bolean :boolean=true
 title : string;
 time : string;
 color : string;
-
+option : string
 
 
   constructor(private jobservice : JobofferService) {}
 
   ngOnInit() {
-  const calend=this.calendardetails
-    if(!this.token){
-      this.token=localStorage.getItem("email1")
-      this.bolean=false
-      
-    }
-    console.log(this.token)
+
+    
+    
     this.jobservice.decode(this.token).subscribe((id)=>{
-     
+    
+     if(localStorage.getItem("email")){
+       this.option=id.email
+     }
+     else if(localStorage.getItem("email1")){
+      this.option=id.email1
+      this.bolean=false
+    }
    
-  this.jobservice.getcalendar(id.email).subscribe((cal)=>{
+  this.jobservice.getcalendar(this.option).subscribe((cal)=>{
     
     this.bigcalend=cal
     console.log(this.bigcalend)
-    for(let i=0;i<cal.length;i++){
-      this.calendardetails.push({
-        title : cal[i].title,
-        start : cal[i].start,
-        end : cal[i].end,
-        color : cal[i].color
-      })
-   }
-   console.log(this.calendardetails)
+  
+   
    let today = new Date();
    let y = today.getFullYear();
    let m = today.getMonth();
@@ -77,7 +72,7 @@ color : string;
        },
      },
      eventLimit: true, // allow "more" link when too many events
-     events: this.calendardetails,
+     events: this.bigcalend,
      eventClick: function(info) {
        info.jsEvent.preventDefault();
        console.log('hey', info)
@@ -107,9 +102,9 @@ color : string;
          let event_title = (document.getElementById("input-field") as HTMLInputElement).value;
          let timestart = (document.getElementById("input-field1") as HTMLInputElement).value;
          let color = (document.getElementById("input-field2") as HTMLInputElement).value;
-         console.log(this.calendardetails)
-         for(let i =0;i<this.calendardetails.length;i++){
-           if(this.calendardetails[i].start === info.startStr+" "+timestart){
+         console.log(this.bigcalend)
+         for(let i =0;i<this.bigcalend.length;i++){
+           if(this.bigcalend[i].start === info.startStr+" "+timestart){
            bol=false
            }
          }
@@ -122,12 +117,12 @@ color : string;
 
            };
            
-
-           this.jobservice.decode(this.token).subscribe((id)=>{
+         console.log(id)
+          
          
             
               let calendar1={
-                id : id.email ,
+                id : this.option ,
                 title:eventData.title,
                 start: eventData.start,
                 end: eventData.end,
@@ -136,7 +131,6 @@ color : string;
               console.log(calendar1)
               this.jobservice.createcalendar(calendar1).subscribe((create)=>console.log(create))
     
-            })
            console.log(eventData)
            calendar.addEvent(eventData);
          }
@@ -157,7 +151,7 @@ color : string;
   
   
   }  
- onSubmit(start,i){
+ onSubmit(start,id){
   
    const day=start.split(" ")[0]
    const obj={
@@ -172,23 +166,23 @@ color : string;
    if(!this.title){
      delete obj.title
    }
-this.jobservice.updatecalendar(this.bigcalend[i]._id,obj).subscribe((update)=>{
+this.jobservice.updatecalendar(id,obj).subscribe((update)=>{
   console.log(update)
-  for(let i =0 ; i < this.calendardetails.length ; i++){
-    if(this.calendardetails[i].start===start){
+  for(let i =0 ; i < this.bigcalend.length ; i++){
+    if(this.bigcalend[i].start===start){
       
-      this.calendardetails[i]=obj
+      this.bigcalend[i]=obj
     }
   }
 })
 
  }
- delete(start,i){
-   this.jobservice.deletecalendar(this.bigcalend[i]._id).subscribe((del)=>{
+ delete(start,id){
+   this.jobservice.deletecalendar(id).subscribe((del)=>{
      console.log(del)
-    for(let i =0 ; i < this.calendardetails.length ; i++){
-      if(this.calendardetails[i].start === start){
-        this.calendardetails.splice(i,1)
+    for(let i =0 ; i < this.bigcalend.length ; i++){
+      if(this.bigcalend[i].start === start){
+        this.bigcalend.splice(i,1)
       }
     }
    })

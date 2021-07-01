@@ -17,6 +17,7 @@ import { PostComponent } from './views/post/post.component';
  import { SearchuComponent } from './views/searchu/searchu.component';
 import { SignupComponent } from './views/signup/signup-u.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
+
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';

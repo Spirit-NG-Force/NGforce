@@ -6,6 +6,7 @@ import { WebsocketService } from "app/service/websocket.service";
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
   styleUrls: ["./sidebar.component.css"],
+  
 })
 export class SidebarComponent implements OnInit {
   @Output() conversationClicked: EventEmitter<any> = new EventEmitter();
