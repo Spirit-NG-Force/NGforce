@@ -4,10 +4,15 @@ import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Notification } from './notifications.schema'
+import { MessagesGateway } from 'src/app.gateway';
 export class NotificationService {
   constructor(
-    @InjectModel('notifications') private notificationModel: Model<Notification>){}
+    @InjectModel('notifications') private notificationModel: Model<Notification> ,
+    private gateway : MessagesGateway
+    ){}
   create(createNotificationDto: CreateNotificationDto) {
+    
+    this.gateway.server.emit('notification',createNotificationDto)
     return this.notificationModel.create(createNotificationDto) ;
   }
 

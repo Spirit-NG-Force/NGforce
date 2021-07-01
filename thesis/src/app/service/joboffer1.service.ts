@@ -13,6 +13,9 @@ export class JobofferService1 {
   addfollow(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl , option);
   }
+  gettallfollow(): Observable<any> {
+    return this.http.get<any>(this.apiUrl );
+  }
   getfollow(option: any,option1 : any): Observable<any> {
     return this.http.get<any>(this.apiUrl + `/${option}`+ `/${option1}`);
   }
