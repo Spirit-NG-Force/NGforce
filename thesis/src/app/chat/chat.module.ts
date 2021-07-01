@@ -11,7 +11,7 @@ import { ChatComponent } from './chat.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, MessagesComponent, ChatComponent],
+  declarations: [SidebarComponent, MessagesComponent, ChatComponent ],
   imports: [
     BrowserModule,
     CommonModule,
@@ -19,6 +19,7 @@ import { ChatComponent } from './chat.component';
     FormsModule,
    
   ]
+
 })
 
 export class ChatModule { }

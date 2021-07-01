@@ -26,7 +26,7 @@ export class JobofferService {
   postCompany(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl1 +"/signup", option);
   }
-  decode(option : any): Observable<any> {
+  decode(option : any ): Observable<any> {
     return this.http.get<any>(this.apiUrl +`/decode/${option}`);
   }
   iduser(option: any): Observable<any> {

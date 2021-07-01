@@ -4,11 +4,15 @@ import { UpdateMessageDto } from './dto/update-message.dto';
 import { Model, Types } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Messages } from './messages.interface';
+import { Company } from 'src/company/company.interface';
+import { CompanyService } from 'src/company/company.service';
 
 @Injectable()
 export class MessagesService {
   constructor(
+    private readonly companyService: CompanyService,
     @InjectModel('messages') private messagesModel: Model<Messages>,
+    @InjectModel('company') private companyModel: Model<Company>
   ) {}
 
   create(createMessageDto: CreateMessageDto) {
@@ -29,7 +33,7 @@ export class MessagesService {
   }
 
   async getConversationsByUser(user_id: string) {
-    return this.messagesModel.aggregate([{
+    const agg = await  this.messagesModel.aggregate([{
       $match: {
         user_id: Types.ObjectId(user_id)
       }
@@ -41,7 +45,7 @@ export class MessagesService {
         createdAt: 1
       }
     }, {
-      $sort: { createdAt: 1 }
+      $sort: { createdAt: -1 }
     }, {
       $group: {
         _id: "$company_id",
@@ -61,6 +65,9 @@ export class MessagesService {
         last: -1
       }
     }])
+
+    const populated = await this.companyModel.populate(agg, {path: '_id'})
+    return populated
   }
 
   async getConversationsByCompany(company_id: string) {
