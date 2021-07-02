@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { MessagesComponent } from './messages/messages.component';
 import { ChatComponent } from './chat.component';
-
+import { Navbar2Component } from 'app/shared/navbar2/navbar2.component';
+import { Navbar3Component } from 'app/shared/navbar3/navbar3.component';
 
 
 @NgModule({
