@@ -21,4 +21,8 @@ export class SubscriptionService {
     return this.subscriptionModel.findOne({_id});
   }
 
+  findByName(name: string) {
+    return this.subscriptionModel.findOne({name})
+  }
+
 }

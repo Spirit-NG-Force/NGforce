@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router, CanActivate } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService  {
-  constructor(public jwtHelper: JwtHelperService) {}
-  // ...
-  public isAuthenticated() : boolean {
+export class AuthService implements CanActivate {
+  constructor( public router: Router) {}
+  canActivate(): boolean {
     let token = localStorage.getItem('email');
-    // Check whether the token is expired and return
-    // true or false
-    return !this.jwtHelper.isTokenExpired(token);
-}
+    let token1=localStorage.getItem('email1')
+    if (token || token1) {
+    
+      
+      return true;
+    }
+    // this.router.navigate(['profil'])
+    this.router.navigate(['views/login'])
+    return false;
+  }
 }
