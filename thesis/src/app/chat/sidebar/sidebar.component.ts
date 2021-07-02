@@ -61,7 +61,6 @@ export class SidebarComponent implements OnInit {
           this.ready = true
         });
         })
-
       } else {
         this.jobservice.decode(this.token).subscribe((id) => {
           this.id = id.email ;
