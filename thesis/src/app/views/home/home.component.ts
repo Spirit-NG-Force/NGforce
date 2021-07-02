@@ -207,14 +207,14 @@ export class HomeComponent implements OnInit {
   onSubmitPayment() {
     const obj = {
       receiverWallet: "60d5d753e1add7620c68faf9",
-      amount: 100,
+      amount: this.amount,
       selectedPaymentMethod: "gateway",
       token: "TND",
-      firstName: "Heni",
-      lastName: "Mezrani",
-      phoneNumber: "55555555",
-      email: "heni@mezrani.com",
-      orderId: "1é11",
+      firstName: this.firstName,
+      lastName: this.lastName,
+      phoneNumber: this.phoneNumber,
+      email: this.email,
+      orderId: this.orderId,
       successUrl: "http://localhost:4200/#/views/successPayment?user=heni&anyinfo=myinfo",
       failUrl: "http://localhost:4200/#/views/failPayment?user=heni&anyinfo=myinfo",
     };
@@ -222,6 +222,15 @@ export class HomeComponent implements OnInit {
       // this.router.navigate(payment);
       window.location.href = payment.payUrl;
     });
+    this.jobservice.decode(this.token).subscribe((id)=>{
+     let obj = this.jobservice.getPayment(id.email1)
+     
+      // if(){
+
+      // }
+
+    })
+    
 
     this.amount = null;
     this.firstName = "";
