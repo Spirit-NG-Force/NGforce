@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 ml-auto mr-auto text-center">
-          <h2 class="title">Welcome {{ data.CompanyName }}</h2>
+          <h2 class="title">Welcome {{ data.companyName }}</h2>
           <h4 class="description text-white">
             Manage your professional image. Build and communicate with your
             professional network.
@@ -181,7 +181,7 @@
         <div class="col-md-4">
           <div class="card card-pricing card-plain">
             <div class="card-body">
-              <h6 class="category">BASIC</h6>
+              <h6 class="category">SILVER</h6>
               <h1 class="card-title"><small></small>300 DT</h1>
               <ul>
                 <li>
@@ -198,7 +198,7 @@
               <a
                 href="#pablo"
                 class="btn btn-primary btn-round"
-                (click)="onSubmitPayment()"
+                (click)="onSubmitPayment('Silver', 300)"
               >
                 Pay Now
               </a>
@@ -211,7 +211,7 @@
             style="background-image: url('assets/img/pricing2.jpg')"
           >
             <div class="card-body">
-              <h6 class="category text-info">PREMIUM</h6>
+              <h6 class="category text-info">DIAMOND</h6>
               <h1 class="card-title"><small></small>1200 DT</h1>
               <ul>
                 <li>
@@ -230,7 +230,7 @@
               <a
                 href="#pablo"
                 class="btn btn-neutral btn-round"
-                (click)="onSubmitPayment()"
+                (click)="onSubmitPayment('Diamond', 1200)"
               >
                 Pay Now
               </a>
@@ -240,7 +240,7 @@
         <div class="col-md-4">
           <div class="card card-pricing card-plain">
             <div class="card-body">
-              <h6 class="category">PRO</h6>
+              <h6 class="category">GOLD</h6>
               <h1 class="card-title"><small></small>500 DT</h1>
               <ul>
                 <li>
@@ -256,7 +256,7 @@
                   <b>Unlimited Candidats</b>
                 </li>
               </ul>
-              <a class="btn btn-primary btn-round" (click)="onSubmitPayment()">
+              <a class="btn btn-primary btn-round" (click)="onSubmitPayment('Gold', 500)">
                 Pay Now
               </a>
             </div>

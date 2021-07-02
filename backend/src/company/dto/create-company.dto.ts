@@ -1,5 +1,5 @@
 
-export class CreateCompanyDto {   
+export class CreateCompanyDto {  
     name:string ;
     adress:string ;
     phonenumber:number ;

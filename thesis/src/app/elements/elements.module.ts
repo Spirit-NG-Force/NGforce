@@ -10,7 +10,6 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { ImageUploadModule } from '../shared/image-upload/image-upload.module';
 import { RouterModule } from '@angular/router';
 
-import { BasicelementsComponent } from './basicelements/basicelements.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TypographyComponent } from './typography/typography.component';
 import { NucleoiconsComponent } from './nucleoicons/nucleoicons.component';
@@ -21,7 +20,6 @@ import { PrefooterAreasComponent } from './prefooter-areas/prefooter-areas.compo
 import { FootersAreasComponent } from './footers-areas/footers-areas.component';
 import { TablesAreasComponent } from './tables-areas/tables-areas.component';
 import { CommentsAreasComponent } from './comments-areas/comments-areas.component';
-import { CardsAreasComponent } from './cards-areas/cards-areas.component';
 
 @NgModule({
     imports: [
@@ -38,7 +36,6 @@ import { CardsAreasComponent } from './cards-areas/cards-areas.component';
     ],
     declarations: [
         ElementsComponent,
-        BasicelementsComponent,
         NavigationComponent,
         TypographyComponent,
         NucleoiconsComponent,
@@ -48,7 +45,6 @@ import { CardsAreasComponent } from './cards-areas/cards-areas.component';
         FootersAreasComponent,
         TablesAreasComponent,
         CommentsAreasComponent,
-        CardsAreasComponent
     ],
     exports:[ ElementsComponent ]
 })

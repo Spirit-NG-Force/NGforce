@@ -10,17 +10,6 @@ import { AgmCoreModule } from '@agm/core';
 import { ImageUploadModule } from '../shared/image-upload/image-upload.module';
 
 import { ExamplesComponent } from './examples.component';
-import { AboutusComponent } from './aboutus/aboutus.component';
-import { BlogpostComponent } from './blogpost/blogpost.component';
-import { BlogpostsComponent } from './blogposts/blogposts.component';
-import { ContactusComponent } from './contactus/contactus.component';
-import { EcommerceComponent } from './ecommerce/ecommerce.component';
-import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component';
-import { ProductpageComponent } from './productpage/productpage.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
-import { PricingComponent } from './pricing/pricing.component';
 
 
 @NgModule({
@@ -39,17 +28,6 @@ import { PricingComponent } from './pricing/pricing.component';
     ],
     declarations: [
         ExamplesComponent,
-        AboutusComponent,
-        BlogpostComponent,
-        BlogpostsComponent,
-        ContactusComponent,
-        EcommerceComponent,
-        LandingComponent,
-        LoginComponent,
-        ProductpageComponent,
-        ProfileComponent,
-        RegisterComponent,
-        PricingComponent
     ]
 })
 export class ExamplesModule { }
