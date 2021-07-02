@@ -20,6 +20,12 @@ export class JobofferService {
   getUser(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + "/login", option);
   }
+  getAllUser(): Observable<any> {
+    return this.http.get<any>(this.apiUrl );
+  }
+  deleteUser(option:any): Observable<any> {
+    return this.http.delete<any>(this.apiUrl+`/${option}` );
+  }
   getCompany(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl1 + "/login" , option);
   }
