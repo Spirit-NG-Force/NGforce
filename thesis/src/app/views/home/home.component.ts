@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
 import { JobofferService } from "app/service/joboffer.service";
+import { JobofferService1 } from 'app/service/joboffer1.service';
 import {Router} from '@angular/router'
 @Component({
   selector: 'app-home',
@@ -124,7 +125,7 @@ export class HomeComponent implements OnInit {
   Salary:string ; 
   YearsOfExperience:string ; 
 
-
+favorites : any=[]
 
 
 
@@ -134,7 +135,7 @@ export class HomeComponent implements OnInit {
   
  token : string=localStorage.getItem("email1")
  datas : any=["NO POST"]
-  constructor(public router: Router,private jobservice :JobofferService) { }
+  constructor(public router: Router,private jobservice :JobofferService,private jobservice1 :JobofferService1) { }
   click(event){
     console.log(event.itemName)
     this.TypeOfContract=event.itemName
@@ -208,9 +209,12 @@ this.datas.splice(i,1)
      this.datas=data
      console.log(data)
     })
-
+ this.jobservice1.getfavorite(id.email1).subscribe((get)=>{this.favorites=get
+console.log(this.favorites)
+})
 
     })
+
   }
 
 
