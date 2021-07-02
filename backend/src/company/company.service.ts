@@ -86,4 +86,7 @@ export class CompanyService {
   remove(id: number) {
     return `This action removes a #${id} company`;
   }
+  async deleteCompany(id: string) {
+    return this.companyModel.findByIdAndDelete({ _id: id });
+  }
 }

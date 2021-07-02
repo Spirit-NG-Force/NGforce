@@ -39,5 +39,9 @@ export class CompanyController {
   decode (@Param('id') id: string) {
     return this.companyService.decode(id);
   }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.companyService.deleteCompany(id);
+  }
 
 }

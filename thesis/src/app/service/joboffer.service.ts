@@ -26,6 +26,12 @@ export class JobofferService {
   deleteUser(option:any): Observable<any> {
     return this.http.delete<any>(this.apiUrl+`/${option}` );
   }
+  getAllCompanies(): Observable<any> {
+    return this.http.get<any>(this.apiUrl1 );
+  }
+  deleteCompany(option:any): Observable<any> {
+    return this.http.delete<any>(this.apiUrl1+`/${option}` );
+  }
   getCompany(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl1 + "/login" , option);
   }
