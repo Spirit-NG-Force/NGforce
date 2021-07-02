@@ -63,23 +63,10 @@ export class UsersService {
   async findAll() {
     return this.userModel.find();
   }
-async decode(id : string){
-  const payload=await this.jwtService.verify(id)
-return JSON.stringify(payload)
-
-}
-  // @Injectable()
-  // export class UsersService {
-  //   constructor(@InjectModel(User.name) private UserModel: Model<UserDocument>) {}
-
-  //   create(createUserDto: CreateUserDto) {
-  //     return 'This action adds a new user';
-  //   }
-
-  //   findAll() {
-
-  //     return `This action returns all users`;
-  //   }
+  async decode(id : string){
+    const payload=await this.jwtService.verify(id)
+  return JSON.stringify(payload)
+  }
 
   async findOne(id: string) {
     return this.userModel.findById({ _id: id });
@@ -99,7 +86,4 @@ return JSON.stringify(payload)
   }
 }
 
-//   remove(id: number) {
-//     return `This action removes a #${id} user`;
-//   }
-// }
+

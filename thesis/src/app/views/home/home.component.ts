@@ -117,50 +117,45 @@ export class HomeComponent implements OnInit {
   ];
 
   selectedItems2 = [];
-  CompanyName:string ; 
-  OfferTitle:string ; 
-  OfferDescription:string ; 
-  TypeOfContract:string ; 
-  Salary:string ; 
-  YearsOfExperience:string ; 
+  companyName:string ; 
+  offerTitle:string ; 
+  offerDescription:string ; 
+  typeOfContract:string ; 
+  salary:string ; 
+  yearsOfExperience:string ; 
 
 
 
-
-
-
-
- 
   
  token : string=localStorage.getItem("email1")
  datas : any=["NO POST"]
   constructor(public router: Router,private jobservice :JobofferService) { }
   click(event){
     console.log(event.itemName)
-    this.TypeOfContract=event.itemName
+    this.typeOfContract=event.itemName
   }
 
   click1(event){
     console.log(event.itemName)
-    this.Salary=event.itemName
+    this.salary=event.itemName
   }
 
   click2(event){
     console.log(event.itemName)
-    this.YearsOfExperience=event.itemName
+    this.yearsOfExperience=event.itemName
   }
   onSubmit(data){
     console.log(data)
     this.jobservice.decode(this.token).subscribe((id)=>{
       console.log(id.email1)
       const obj={
-       id : id.email1,
-       CompanyName: this.CompanyName,
-       OfferTitle: this.OfferTitle,
-       OfferDescription: this.OfferDescription,
-       TypeOfContract: this.TypeOfContract,
-       Salary: this.Salary,
-       YearsOfExperience: this.YearsOfExperience,
+      //  id : id.email1,
+       company: this.companyName,
+       offerTitle: this.offerTitle,
+       offerDescription: this.offerDescription,
+       typeOfContract: this.typeOfContract,
+       salary: this.salary,
+       yearsOfExperience: this.yearsOfExperience,
       }
       this.jobservice.updatepostjob(data._id,obj).subscribe((create)=>{
         this.router.navigate(['views/home'])
@@ -172,25 +167,20 @@ export class HomeComponent implements OnInit {
         console.log(create)
         })
     
-     
-       
-    
   })
   }
-  delete(data){
-   
-this.jobservice.deletepostjob(data._id).subscribe((del)=>
+    delete(data){
+    
+  this.jobservice.deletepostjob(data._id).subscribe((del)=>
 
-console.log(del)
+  console.log(del)
 
-)
-for(let i=0;i<this.datas.length;i++){
-if(this.datas[i]._id===data._id){
-this.datas.splice(i,1)
-}
-}
-
-
+  )
+  for(let i=0;i<this.datas.length;i++){
+  if(this.datas[i]._id===data._id){
+  this.datas.splice(i,1)
+  }
+  }
 
     
   }
@@ -224,7 +214,7 @@ this.datas.splice(i,1)
       lastName: "Mezrani",
       phoneNumber: "55555555",
       email: "heni@mezrani.com",
-      orderId: "1é",
+      orderId: "1é11",
       successUrl: "http://localhost:4200/#/views/successPayment?user=heni&anyinfo=myinfo",
       failUrl: "http://localhost:4200/#/views/failPayment?user=heni&anyinfo=myinfo",
     };

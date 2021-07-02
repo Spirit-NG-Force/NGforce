@@ -10,13 +10,16 @@ import { CreateCvModule } from './create-cv/create-cv.module';
 import { MailModule } from './mail/mail.module';
 import { MessagesModule } from './messages/messages.module';
 import { CalendarModule } from './calendar/calendar.module';
-
+import { FollowsModule } from './follows/follows.module';
+import { NotificationModule } from './notification/notification.module';
+import { SubscriptionModule } from './subscription/subscription.module';
+import { MessagesGateway } from './app.gateway';
 
 @Module({
   imports: [UsersModule,
     MongooseModule.forRoot('mongodb+srv://ngForce:OLXrHGZaaevq0VQX@cluster0.k56k7.mongodb.net/ng_force?retryWrites=true&w=majority'), 
-    CompanyModule, CreateCvModule,PostjobModule, MailModule, CalendarModule , MessagesModule],
+    CompanyModule, CreateCvModule,PostjobModule, MailModule, CalendarModule , MessagesModule,FollowsModule, NotificationModule, SubscriptionModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,MessagesGateway],
 })
 export class AppModule {}

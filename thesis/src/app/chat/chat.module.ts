@@ -11,14 +11,14 @@ import { ChatComponent } from './chat.component';
 
 
 @NgModule({
-  declarations: [SidebarComponent, MessagesComponent, ChatComponent],
+  declarations: [SidebarComponent, MessagesComponent, ChatComponent ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    PickerModule,
   ]
+
 })
 
 export class ChatModule { }

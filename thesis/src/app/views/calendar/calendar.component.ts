@@ -4,6 +4,7 @@ declare const require: any;
 const FullCalendar= require('fullcalendar')
 import swal from 'sweetalert2';
 import { JobofferService } from "app/service/joboffer.service";
+import { BrowserJsonp } from "@angular/http/src/backends/browser_jsonp";
 
 
 @Component({
@@ -12,31 +13,37 @@ import { JobofferService } from "app/service/joboffer.service";
   styleUrls: ["./calendar.component.css"]
 })
 export class CalendarComponent implements OnInit {
-token : string=localStorage.getItem("email") || "";
-calendardetails : any;
+token : string=localStorage.getItem("email") || localStorage.getItem("email1");
+bigcalend : any=[];
 bolean :boolean=true
-
+title : string;
+time : string;
+color : string;
+option : string
 
 
   constructor(private jobservice : JobofferService) {}
 
   ngOnInit() {
-  const calend=this.calendardetails
-    if(!this.token){
-      this.token=localStorage.getItem("email1")
-      this.bolean=false
-      
-    }
-    console.log(this.token)
+
+    
+    
     this.jobservice.decode(this.token).subscribe((id)=>{
-     
+    
+     if(localStorage.getItem("email")){
+       this.option=id.email
+     }
+     else if(localStorage.getItem("email1")){
+      this.option=id.email1
+      this.bolean=false
+    }
    
-  this.jobservice.getcalendar(id.email).subscribe((cal)=>{
-    this.calendardetails=cal
-    for(let i=0;i<this.calendardetails.length;i++){
-    delete this.calendardetails[i]._id
-    delete this.calendardetails[i].id
-   }
+  this.jobservice.getcalendar(this.option).subscribe((cal)=>{
+    
+    this.bigcalend=cal
+    console.log(this.bigcalend)
+  
+   
    let today = new Date();
    let y = today.getFullYear();
    let m = today.getMonth();
@@ -65,7 +72,7 @@ bolean :boolean=true
        },
      },
      eventLimit: true, // allow "more" link when too many events
-     events: this.calendardetails,
+     events: this.bigcalend,
      eventClick: function(info) {
        info.jsEvent.preventDefault();
        console.log('hey', info)
@@ -77,10 +84,8 @@ bolean :boolean=true
          html:
           '<div class="form-group">' +
            '<input class="form-control" type="title" placeholder="Event Title" id="input-field">' +
-           '<input class="form-control" type="date"  placeholder="End Date" id="input-field1">'+
-           '<input class="form-control"  type="time"  placeholder="Time start" id="input-field2">'+ 
-           '<input class="form-control"  type="time"  placeholder="Time end" id="input-field3">'+
-           '<select  id="input-field4" > <option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option></select>'+  
+           '<input class="form-control"  type="time"  placeholder="Time start" id="input-field1">'+ 
+           '<select  id="input-field2" > <option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option></select>'+  
            '</div>'+
            '</form>',
          showCancelButton: true,
@@ -91,25 +96,33 @@ bolean :boolean=true
          buttonsStyling: false,
        }).then((result)=> {
           console.log(this.token)
+          
+          let bol=true
          let eventData;
          let event_title = (document.getElementById("input-field") as HTMLInputElement).value;
-         let enddate = (document.getElementById("input-field1") as HTMLInputElement).value;
-         let timestart = (document.getElementById("input-field2") as HTMLInputElement).value;
-         let timeend = (document.getElementById("input-field3") as HTMLInputElement).value;
-         let color = (document.getElementById("input-field4") as HTMLInputElement).value;
-         if (event_title) {
+         let timestart = (document.getElementById("input-field1") as HTMLInputElement).value;
+         let color = (document.getElementById("input-field2") as HTMLInputElement).value;
+         console.log(this.bigcalend)
+         for(let i =0;i<this.bigcalend.length;i++){
+           if(this.bigcalend[i].start === info.startStr+" "+timestart){
+           bol=false
+           }
+         }
+         if (event_title && bol) {
            eventData = {
              title: event_title,
              start: info.startStr+" "+timestart,
-             end: enddate+" "+timeend,
+             end: info.startStr,
              color: color
 
            };
-           this.jobservice.decode(this.token).subscribe((id)=>{
+           
+         console.log(id)
+          
          
             
               let calendar1={
-                id : id.email ,
+                id : this.option ,
                 title:eventData.title,
                 start: eventData.start,
                 end: eventData.end,
@@ -118,7 +131,6 @@ bolean :boolean=true
               console.log(calendar1)
               this.jobservice.createcalendar(calendar1).subscribe((create)=>console.log(create))
     
-            })
            console.log(eventData)
            calendar.addEvent(eventData);
          }
@@ -139,5 +151,42 @@ bolean :boolean=true
   
   
   }  
- 
+ onSubmit(start,id){
+  
+   const day=start.split(" ")[0]
+   const obj={
+    title: this.title,
+    start: day+" "+this.time,
+    end:day,
+    color: this.color
+   }
+   if(!this.time){
+     obj.start=start
+   }
+   if(!this.title){
+     delete obj.title
+   }
+this.jobservice.updatecalendar(id,obj).subscribe((update)=>{
+  console.log(update)
+  for(let i =0 ; i < this.bigcalend.length ; i++){
+    if(this.bigcalend[i].start===start){
+      
+      this.bigcalend[i]=obj
+    }
+  }
+})
+
+ }
+ delete(start,id){
+   this.jobservice.deletecalendar(id).subscribe((del)=>{
+     console.log(del)
+    for(let i =0 ; i < this.bigcalend.length ; i++){
+      if(this.bigcalend[i].start === start){
+        this.bigcalend.splice(i,1)
+      }
+    }
+   })
+  
+  }
+
 }

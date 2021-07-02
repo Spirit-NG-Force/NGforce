@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import * as Rellax from "rellax";
-import { JobofferService } from "app/service/joboffer.service";
+import { JobofferService } from "app/service/joboffer.service"
+import { JobofferService1 } from "app/service/joboffer1.service";
 import {Router} from '@angular/router'
-
+import io from 'socket.io-client'
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
@@ -111,29 +112,29 @@ export class PostComponent implements OnInit {
   ];
   selectedItems2 = [];
   token : string = localStorage.getItem("email1")
-  CompanyName:string ; 
-  OfferTitle:string ; 
-  OfferDescription:string ; 
-  TypeOfContract:string ; 
-  Salary:string ; 
-  YearsOfExperience:string ; 
+  company:string ; 
+  offerTitle:string ; 
+  offerDescription:string ; 
+  typeOfContract:string ; 
+  salary:string ; 
+  yearsOfExperience:string ; 
+  socket : any;
 
 
-
-  constructor(public router: Router,private jobservice :JobofferService) {}
+  constructor(public router: Router,private jobservice :JobofferService,private jobservice1 :JobofferService1) {this.socket = io('http://localhost:4001')}
   click(event){
     console.log(event.itemName)
-    this.TypeOfContract=event.itemName
+    this.typeOfContract=event.itemName
   }
 
   click1(event){
     console.log(event.itemName)
-    this.Salary=event.itemName
+    this.salary=event.itemName
   }
 
   click2(event){
     console.log(event.itemName)
-    this.YearsOfExperience=event.itemName
+    this.yearsOfExperience=event.itemName
   }
   onSubmit(){
  
@@ -141,19 +142,21 @@ export class PostComponent implements OnInit {
       console.log(id.email1)
       const obj={
        id : id.email1,
-       CompanyName: this.CompanyName,
-       OfferTitle: this.OfferTitle,
-       OfferDescription: this.OfferDescription,
-       TypeOfContract: this.TypeOfContract,
-       Salary: this.Salary,
-       YearsOfExperience: this.YearsOfExperience,
+       company: id.email1,
+       offerTitle: this.offerTitle,
+       offerDescription: this.offerDescription,
+       typeOfContract: this.typeOfContract,
+       salary: this.salary,
+       yearsOfExperience: this.yearsOfExperience,
       }
       this.jobservice.createpostjob(obj).subscribe((create)=>{
         this.router.navigate(['views/home'])
         console.log(create)
         })
+        const obj1= {message : this.company+" has posted a job for "+this.offerTitle,
+      sender : id.email1 }
+    this.jobservice1.addnotification(obj1).subscribe((add)=>console.log(add))
     
-     
      
     
   })
