@@ -55,7 +55,7 @@ export class SidebarComponent implements OnInit {
         this.jobservice.decodecomp(this.token).subscribe((id) => {
           this.id = id.email1  
           console.log(this.id)
-        this.websocket.getConversationsCompany(this.id).subscribe((messages) => {
+        this.websocket.getConversationsCompany(id.email1).subscribe((messages) => {
           this.conversations = messages;
           console.log(this.conversations);
           this.ready = true
@@ -66,7 +66,7 @@ export class SidebarComponent implements OnInit {
         this.jobservice.decode(this.token).subscribe((id) => {
           this.id = id.email ;
         console.log(this.id)
-        this.websocket.getConversationsUser(this.id).subscribe((messages) => {
+        this.websocket.getConversationsUser(id.email).subscribe((messages) => {
           this.conversations = messages;
           console.log(this.conversations);
           this.ready = true

@@ -151,30 +151,8 @@
     </div>
   </div>
   <!--  -->
-  <div class="testimonials-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 ml-auto mr-auto text-center">
-                <h2 class="title">MY Favorites</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-testimonial card-plain">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img img-raised rounded" src="assets/img/michael.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">Andrew John</h3>
-                        <h6 class="category text-primary">Loan Counselor</h6>
-                        <p class="card-description">"Do not go where the path may lead, go instead where there is no path and leave a trail."
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
+  <h2 class="title">My Favorites</h2>
+            <div class="col-md-4" *ngFor="let fav of favorites">
                 <div class="card card-testimonial card-plain">
                     <div class="card-avatar">
                         <a href="#pablo">
@@ -182,31 +160,15 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Zoe Gabriella</h4>
-                        <h6 class="category text-primary">Interpreter OR Translator</h6>
-                        <p class="card-description">"Don't walk behind me; I may not lead. Don't walk in front of me; I may not follow. Just walk beside me and be my friend."
+                        <h4 class="card-title">{{fav.name}}</h4>
+                        <h6 class="category text-primary">{{fav.title}}</h6>
+                        <p class="card-description">{{fav.description}}
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-testimonial card-plain">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img img-raised rounded" src="assets/img/james.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Joshiah Luke</h4>
-                        <h6 class="category text-primary">HR Specialist</h6>
-                        <p class="card-description">"The pessimist complains about the wind; the optimist expects it to change; the realist adjusts the sails."
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+          
+                  
   <!--  -->
   <div class="pricing-2">
     <div class="container">
@@ -219,7 +181,7 @@
         <div class="col-md-4">
           <div class="card card-pricing card-plain">
             <div class="card-body">
-              <h6 class="category">BASIC</h6>
+              <h6 class="category">SILVER</h6>
               <h1 class="card-title"><small></small>300 DT</h1>
               <ul>
                 <li>
@@ -236,7 +198,7 @@
               <a
                 href="#pablo"
                 class="btn btn-primary btn-round"
-                (click)="onSubmitPayment()"
+                (click)="onSubmitPayment('Silver', 300)"
               >
                 Pay Now
               </a>
@@ -249,7 +211,7 @@
             style="background-image: url('assets/img/pricing2.jpg')"
           >
             <div class="card-body">
-              <h6 class="category text-info">PREMIUM</h6>
+              <h6 class="category text-info">DIAMOND</h6>
               <h1 class="card-title"><small></small>1200 DT</h1>
               <ul>
                 <li>
@@ -268,7 +230,7 @@
               <a
                 href="#pablo"
                 class="btn btn-neutral btn-round"
-                (click)="onSubmitPayment()"
+                (click)="onSubmitPayment('Diamond', 1200)"
               >
                 Pay Now
               </a>
@@ -278,7 +240,7 @@
         <div class="col-md-4">
           <div class="card card-pricing card-plain">
             <div class="card-body">
-              <h6 class="category">PRO</h6>
+              <h6 class="category">GOLD</h6>
               <h1 class="card-title"><small></small>500 DT</h1>
               <ul>
                 <li>
@@ -294,7 +256,7 @@
                   <b>Unlimited Candidats</b>
                 </li>
               </ul>
-              <a class="btn btn-primary btn-round" (click)="onSubmitPayment()">
+              <a class="btn btn-primary btn-round" (click)="onSubmitPayment('Gold', 500)">
                 Pay Now
               </a>
             </div>

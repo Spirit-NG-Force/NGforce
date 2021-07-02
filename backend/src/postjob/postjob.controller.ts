@@ -3,13 +3,11 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
 } from '@nestjs/common';
 import { PostjobService } from './postjob.service';
 import { CreatePostjobDto } from './dto/create-postjob.dto';
-import { UpdatePostjobDto } from './dto/update-postjob.dto';
 import { CompanyService } from 'src/company/company.service';
 
 @Controller('postjob')

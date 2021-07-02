@@ -108,7 +108,7 @@ export class JobofferService {
   }
 
   postpayment_to_server(option:any):Observable<any>{
-    return this.http.post<any>(this.apiUrl1+"/payment" , option)
+    return this.http.post<any>(this.apiUrl1+"/payment",option)
   }
 
   postimg (option:any) : Observable<any> {

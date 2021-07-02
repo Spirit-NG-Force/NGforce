@@ -3,11 +3,12 @@ import { DataService } from 'angular2-multiselect-dropdown/lib/multiselect.servi
 import * as Rellax from 'rellax';
 import {JobofferService} from '../../service/joboffer.service'
 import { JobofferService1 } from 'app/service/joboffer1.service';
-
+import { WebsocketService } from 'app/service/websocket.service';
 @Component({
   selector: 'app-searchu',
   templateUrl: './searchu.component.html',
   styleUrls: ['./searchu.component.css'],
+  providers:[WebsocketService]
 })
 export class  SearchuComponent implements OnInit, OnDestroy {
     dropdownList = [];
@@ -29,7 +30,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     Salary : string;
     YearsOfExperience : string
     OfferTitle : string
-    constructor(private jobservice :JobofferService,private jobservice1 :JobofferService1) { }
+    constructor(private jobservice :JobofferService,private jobservice1 :JobofferService1,private websocket :WebsocketService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -136,11 +137,28 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         if(result){
            this.datas=result 
         }
+        
         }
         
         })
        
    
+
+    }
+    apply(data){
+        this.jobservice.decode(this.token).subscribe((id)=>{
+            const msg={
+                text:"i want to apply for "+data.OfferTitle ,
+                sender:"User",
+                company_id:data.id,
+                user_id:id.email
+              }
+              
+              this.websocket.postMessages(msg).subscribe((msg)=>{
+                console.log(msg)
+                
+              })
+           }) 
 
     }
     follow(data){
