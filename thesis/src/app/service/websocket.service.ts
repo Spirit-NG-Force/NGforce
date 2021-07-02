@@ -12,7 +12,7 @@ export class WebsocketService {
 
     private apiUrl = "http://localhost:3000/messages"
     constructor(private http: HttpClient ) {
-      this.socket = io('ws://localhost:3000')
+    
     }
   
     socket: any;
@@ -31,19 +31,9 @@ export class WebsocketService {
     }
 
     getConversationsCompany(option:any): Observable<any>{
-      return this.http.get<any>(this.apiUrl + "/conversations/company",option)
+      return this.http.get<any>(this.apiUrl +  `/conversations/company/${option}`,option)
     }
 
-    listen(eventName: string) {
-      return new Observable((subscriber) => {
-        this.socket.on(eventName, (data) => {
-          subscriber.next(data);
-        })
-      });
-    }
-  
-    emit(eventName: string, data: any) {
-      this.socket.emit(eventName, data);
-    }
+    
   
   }

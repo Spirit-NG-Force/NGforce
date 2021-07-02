@@ -60,6 +60,11 @@ export class CompanyService {
     }
   }
 
+  async decode(id : string){
+    const payload=await this.jwtService.verify(id)
+  return JSON.stringify(payload)
+  }
+
   async findAll() {
     return this.companyModel.find().populate('subscription');
   }

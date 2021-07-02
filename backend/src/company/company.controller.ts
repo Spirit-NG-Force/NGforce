@@ -64,4 +64,9 @@ export class CompanyController {
   update(@Param('id') id: string, @Body() createCompanyDto: UpdateCompanyDto) {
     return this.companyService.update(id, createCompanyDto);
   }
+  @Get("/decodecomp/:id")
+  decode (@Param('id') id: string) {
+    return this.companyService.decode(id);
+  }
+
 }

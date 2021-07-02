@@ -1,254 +1,308 @@
 <app-navbar2></app-navbar2>
 <div class="wrapper">
-    
-    <div class="testimonials-1 section-image" style="background-image: url('assets/img/bg19.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 ml-auto mr-auto text-center">
-                    <h2 class="title">Welcome  Company</h2>
-                    <h4 class="description text-white">Manage your professional image. Build and communicate with your professional network.</h4>
-                </div>
-            </div>
-            <div *ngFor="let data of datas">
-            <div class="row" >
-                <div class="col-md-4">
-                    <div class="card card-testimonial">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img img-raised" src="assets/images/noPic.svg">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-description">
-                                {{data.OfferDescription}}
-                            </p>
-                        </div>
-                        
-                        <div class="card-footer">
-                            <h4 class="card-title"> {{data.OfferTitle}}</h4>
-                            <p class="category">{{data.TypeOfContract}}</p>
-                            <p class="category">{{data.Salary}}</p>
-                            <p class="category">{{data.YearsOfExperience}}</p>
-                        </div>
-
-                        <form class="form" method="" action=""  (ngSubmit)="onSubmit(data)">
-                            <div class="col-md-7">
-                                <label>OfferTitle</label>
-                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
-                                      </div>
-                                 <input type="text" class="form-control"  name="OfferTitle" [(ngModel)]="OfferTitle" placeholder="Your OfferTitle..." (focus)="focus=true"
-                               (blur)="focus=false">
-                                
-                             
-                               </div>
-                            
-                               </div>
-                               <div class="col-md-7">
-                                <label>OfferDescription</label>
-                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                               <div class="input-group-prepend">
-                                 <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
-                               </div>
-                               <input type="text" class="form-control"  name="OfferDescription" [(ngModel)]="OfferDescription" placeholder="Your OfferTitle..." (focus)="focus=true"
-                               (blur)="focus=false">
-                               </div>
-                            
-                               </div>
-                               <div class="row" id="space">
-                                <div class="col-lg-6 col-md-8 col-sm-5">
-                                  <app-multiselect
-                                  [single]="true"
-                                  [text]="'Type of contract'"
-                                  [dropdownList]="dropdownList"
-                                  [selectedItems]="selectedItems"
-                                  (itemSelect)="click($event)"
-                                  (itemDeSelect)="click($event)"
-                                  (selectAll)="console.log($event)"
-                                  (deSelectAll)="console.log($event)"
-                                  ></app-multiselect>
-                                </div> 
-                                </div>
-                  
-                                <div class="row" id="space">
-                                  <div class="col-lg-6 col-md-8 col-sm-5">
-                                    <app-multiselect
-                                    [single]="true"
-                                    [text]="'Salary'"
-                                    [dropdownList]="dropdownList2"
-                                    [selectedItems]="selectedItems2"
-                                    (itemSelect)="click1($event)"
-                                    (itemDeSelect)="click1($event)"
-                                    (selectAll)="test($event)"
-                                    (deSelectAll)="test($event)"
-                                    ></app-multiselect>
-                                  </div>
-                                </div>
-                  
-                                <div class="row" id="space">
-                                <div class="col-lg-6 col-md-8 col-sm-5">
-                                  <app-multiselect
-                                  [single]="true"
-                                  [text]="'Years of experience'"
-                                  [dropdownList]="dropdownList1"
-                                  [selectedItems]="selectedItems1"
-                                  (itemSelect)="click2($event)"
-                                  (itemDeSelect)="click2($event)"
-                                  (selectAll)="test($event)"
-                                  (deSelectAll)="test($event)"
-                                  ></app-multiselect>
-                                </div>
-                              </div>
-                              <input type="submit" class="btn btn-primary btn-raised btn-round" value="Post" />
-                          <input (click)="delete(data)" class="btn btn-primary btn-raised btn-round" value="Delete" />
-                            </form>
-                    </div> 
-                </div>
-               
-                
-            </div>
+  <div
+    class="testimonials-1 section-image"
+    style="background-image: url('assets/img/bg19.jpg')"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ml-auto mr-auto text-center">
+          <h2 class="title">Welcome {{ data.CompanyName }}</h2>
+          <h4 class="description text-white">
+            Manage your professional image. Build and communicate with your
+            professional network.
+          </h4>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="info info-horizontal"></div>
+  <div class="col-md-6 ml-auto mr-auto text-center">
+    <h2 class="title">My Posts</h2>
 </div>
-<div class="pricing-2">
+  <div style="display: flex; flex-wrap: wrap">
+    <div
+      class="container"
+      style="max-width: 500px"
+      *ngFor="let data of datas"
+    >
+      <div class="col-md-8">
+        <div class="card card-testimonial">
+          <div class="card-body">
+            <p class="card-description">
+              {{ data.OfferDescription }}
+            </p>
+          </div>
+
+          <div class="card-footer">
+            <h4 class="card-title">{{ data.OfferTitle }}</h4>
+            <p class="category">{{ data.TypeOfContract }}</p>
+            <p class="category">{{ data.Salary }}</p>
+            <p class="category">{{ data.YearsOfExperience }}</p>
+          </div>
+
+          <form
+            class="form"
+            method=""
+            action=""
+            (ngSubmit)="onSubmit(data)"
+          >
+            <div class="col-md-7">
+              <label>OfferTitle</label>
+              <div
+                class="input-group"
+                [ngClass]="{ 'input-group-focus': focus === true }"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="now-ui-icons users_circle-08"></i
+                  ></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="OfferTitle"
+                  [(ngModel)]="OfferTitle"
+                  placeholder="Your OfferTitle..."
+                  (focus)="focus = true"
+                  (blur)="focus = false"
+                />
+              </div>
+            </div>
+            <div class="col-md-7">
+              <label>OfferDescription</label>
+              <div
+                class="input-group"
+                [ngClass]="{ 'input-group-focus': focus === true }"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="now-ui-icons users_circle-08"></i
+                  ></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="OfferDescription"
+                  [(ngModel)]="OfferDescription"
+                  placeholder="Your OfferTitle..."
+                  (focus)="focus = true"
+                  (blur)="focus = false"
+                />
+              </div>
+            </div>
+            <div class="row" id="space">
+              <div class="col-lg-6 col-md-8 col-sm-5">
+                <app-multiselect
+                  [single]="true"
+                  [text]="'Type of contract'"
+                  [dropdownList]="dropdownList"
+                  [selectedItems]="selectedItems"
+                  (itemSelect)="click($event)"
+                  (itemDeSelect)="click($event)"
+                  (selectAll)="console.log($event)"
+                  (deSelectAll)="console.log($event)"
+                ></app-multiselect>
+              </div>
+            </div>
+
+            <div class="row" id="space">
+              <div class="col-lg-6 col-md-8 col-sm-5">
+                <app-multiselect
+                  [single]="true"
+                  [text]="'Salary'"
+                  [dropdownList]="dropdownList2"
+                  [selectedItems]="selectedItems2"
+                  (itemSelect)="click1($event)"
+                  (itemDeSelect)="click1($event)"
+                  (selectAll)="test($event)"
+                  (deSelectAll)="test($event)"
+                ></app-multiselect>
+              </div>
+            </div>
+
+            <div class="row" id="space">
+              <div class="col-lg-6 col-md-8 col-sm-5">
+                <app-multiselect
+                  [single]="true"
+                  [text]="'Years of experience'"
+                  [dropdownList]="dropdownList1"
+                  [selectedItems]="selectedItems1"
+                  (itemSelect)="click2($event)"
+                  (itemDeSelect)="click2($event)"
+                  (selectAll)="test($event)"
+                  (deSelectAll)="test($event)"
+                ></app-multiselect>
+              </div>
+            </div>
+            <input
+              type="submit"
+              class="btn btn-primary btn-raised btn-round"
+              value="Post"
+            />
+            <input
+              (click)="delete(data)"
+              class="btn btn-primary btn-raised btn-round"
+              value="Delete"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div class="testimonials-3">
     <div class="container">
         <div class="row">
             <div class="col-md-6 ml-auto mr-auto text-center">
-                <h2 class="title">Pick the best plan for you</h2>
-                
+                <h2 class="title">MY Favorites</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-pricing card-plain">
-                    <div class="card-body">
-                        <h6 class="category">BASIC</h6>
-                        <h1 class="card-title">
-                            <small></small>300 DT</h1>
-                        <ul>
-                            <li>
-                                <b>10 POSTS</b></li>
-                            <li>
-                                <b>Video & Chat</b></li>
-                            <li>
-                                <b>Caendar</b></li>
-                            <li>
-                                <b>Unlimited</b> Candidats</li>
-                        </ul>
-                        <a href="#pablo" class="btn btn-primary btn-round" (click)="onSubmitPayment()">
-                            Pay Now
+                <div class="card card-testimonial card-plain">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img img-raised rounded" src="assets/img/michael.jpg" />
                         </a>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Andrew John</h3>
+                        <h6 class="category text-primary">Loan Counselor</h6>
+                        <p class="card-description">"Do not go where the path may lead, go instead where there is no path and leave a trail."
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-pricing card-background card-raised" style="background-image: url('assets/img/pricing2.jpg')">
-                    <div class="card-body">
-                        <h6 class="category text-info">PREMIUM</h6>
-                        <h1 class="card-title">
-                            <small></small>1200 DT</h1>
-                        <ul>
-                            <li>
-                                <b>50 POSTS</b> </li>
-                            <li>
-                                <b>Video & Chat</b>  </li>
-                            <li>
-                                <b>Calendar</b> </li>
-                            <li>
-                                <b>Unlimited Candidats</b> </li>
-                        </ul>
-                        <a href="#pablo" class="btn btn-neutral btn-round" (click)="onSubmitPayment()">
-                            Pay Now
+                <div class="card card-testimonial card-plain">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img img-raised rounded" src="assets/img/olivia.jpg" />
                         </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Zoe Gabriella</h4>
+                        <h6 class="category text-primary">Interpreter OR Translator</h6>
+                        <p class="card-description">"Don't walk behind me; I may not lead. Don't walk in front of me; I may not follow. Just walk beside me and be my friend."
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-pricing card-plain">
-                    <div class="card-body">
-                        <h6 class="category">PRO</h6>
-                        <h1 class="card-title">
-                            <small></small>500 DT</h1>
-                        <ul>
-                            <li>
-                                <b>30 POSTS</b></li>
-                            <li>
-                                <b>Video & Chat</b> </li>
-                            <li>
-                                <b>Calendar</b> </li>
-                            <li>
-                                <b>Unlimited Candidats</b> </li>
-                        </ul>
-                        <a class="btn btn-primary btn-round" (click)="onSubmitPayment()">
-                            Pay Now
+                <div class="card card-testimonial card-plain">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img img-raised rounded" src="assets/img/james.jpg" />
                         </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Joshiah Luke</h4>
+                        <h6 class="category text-primary">HR Specialist</h6>
+                        <p class="card-description">"The pessimist complains about the wind; the optimist expects it to change; the realist adjusts the sails."
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <div class="section section-contact-us text-center">
-        <div class="container">
-            <h2 class="title">Want to work with us?</h2>
-            <p class="description">Your project is very important to us.</p>
-            <div class="row">
-                <div class="col-lg-6 text-center ml-auto mr-auto col-md-8">
-                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
-                      </div>
-                        <input type="text" class="form-control" placeholder="First Name..." (focus)="focus=true" (blur)="focus=false">
-                    </div>
-                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus1===true}">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
-                      </div>
-                        <input type="text" class="form-control" placeholder="Email..."   (focus)="focus1=true" (blur)="focus1=false">
-                    </div>
-                    <div class="textarea-container">
-                        <textarea class="form-control" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
-                    </div>
-                    <div class="send-button">
-                        <a href="#pablo" class="btn btn-primary btn-round btn-block btn-lg">Send Message</a>
-                    </div>
-                </div>
-            </div>
+  <!--  -->
+  <div class="pricing-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ml-auto mr-auto text-center">
+          <h2 class="title">Pick the best plan for you</h2>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card-pricing card-plain">
+            <div class="card-body">
+              <h6 class="category">BASIC</h6>
+              <h1 class="card-title"><small></small>300 DT</h1>
+              <ul>
+                <li>
+                  <b>10 POSTS</b>
+                </li>
+                <li>
+                  <b>Video & Chat</b>
+                </li>
+                <li>
+                  <b>Caendar</b>
+                </li>
+                <li><b>Unlimited</b> Candidats</li>
+              </ul>
+              <a
+                href="#pablo"
+                class="btn btn-primary btn-round"
+                (click)="onSubmitPayment()"
+              >
+                Pay Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div
+            class="card card-pricing card-background card-raised"
+            style="background-image: url('assets/img/pricing2.jpg')"
+          >
+            <div class="card-body">
+              <h6 class="category text-info">PREMIUM</h6>
+              <h1 class="card-title"><small></small>1200 DT</h1>
+              <ul>
+                <li>
+                  <b>50 POSTS</b>
+                </li>
+                <li>
+                  <b>Video & Chat</b>
+                </li>
+                <li>
+                  <b>Calendar</b>
+                </li>
+                <li>
+                  <b>Unlimited Candidats</b>
+                </li>
+              </ul>
+              <a
+                href="#pablo"
+                class="btn btn-neutral btn-round"
+                (click)="onSubmitPayment()"
+              >
+                Pay Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-pricing card-plain">
+            <div class="card-body">
+              <h6 class="category">PRO</h6>
+              <h1 class="card-title"><small></small>500 DT</h1>
+              <ul>
+                <li>
+                  <b>30 POSTS</b>
+                </li>
+                <li>
+                  <b>Video & Chat</b>
+                </li>
+                <li>
+                  <b>Calendar</b>
+                </li>
+                <li>
+                  <b>Unlimited Candidats</b>
+                </li>
+              </ul>
+              <a class="btn btn-primary btn-round" (click)="onSubmitPayment()">
+                Pay Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <footer class="footer footer-default ">
-        <div class="container">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="https://www.creative-tim.com">
-                            Creative Tim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.creative-tim.com/about-us">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://blog.creative-tim.com">
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.creative-tim.com/license">
-                            License
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright">
-                  © {{data | date: 'yyyy'}}, Designed by
-                <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-            </div>
-        </div>
-    </footer>
+  </div>
+  
+ 
 </div>
-

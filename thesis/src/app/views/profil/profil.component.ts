@@ -25,7 +25,8 @@ export class ProfilComponent implements OnInit {
       studylevel: "none",
       expyear :"none ",
       field: "none",
-      phone:"none"
+      phone:"none",
+      img:""
     };
     datas : any;
     token : string=localStorage.getItem("email")
@@ -59,11 +60,13 @@ export class ProfilComponent implements OnInit {
               studylevel: "none",
               expyear :"none ",
               field: "none",
-              phone:"none"
+              phone:"none",
+              img:""
             };
             }
             else{
             this.cv=cv
+            console.log(cv)
             }
         })
 

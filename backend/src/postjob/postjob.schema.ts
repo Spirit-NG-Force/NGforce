@@ -10,19 +10,19 @@ export class Postjob {
     company: Company
     
     @Prop()
-    OfferTitle: string;
+    offerTitle: string;
     
     @Prop()
-    OfferDescription: string;
+    offerDescription: string;
     
     @Prop()
-    TypeOfContract: string;
+    typeOfContract: string;
     
     @Prop()
-    Salary: string;
+    salary: string;
     
     @Prop()
-    YearsOfExperience: string;
+    yearsOfExperience: string;
 
 
 }
