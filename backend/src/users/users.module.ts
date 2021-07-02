@@ -14,5 +14,7 @@ import { MailService } from 'src/mail/mail.service';
   ],
   controllers: [UsersController],
   providers: [UsersService , MailService],
+  exports : [UsersService,MongooseModule]
 })
+
 export class UsersModule {}

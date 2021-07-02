@@ -112,7 +112,7 @@
             <li class="list-group-item">{{ data.YearsOfExperience }}</li>
             <li class="list-group-item">{{ data.TypeOfContract }}</li>
           </ul>
-          <button type="button" class="btn btn-primary btn-link">Apply</button>
+          <button type="button" (click)="apply(data)"  [routerLink]="['/views/chat']" class="btn btn-primary btn-link">Apply</button>
           <button
             *ngIf="!follows[i]"
             type="button"

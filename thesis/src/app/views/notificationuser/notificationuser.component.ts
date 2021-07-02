@@ -14,11 +14,11 @@ export class NotificationuserComponent implements OnInit {
   socket: any;
   token : string=localStorage.getItem("email")
 messages : any=[]
-sended : string;
+
 followss : any;
 
   ngOnInit(): void {
-    console.log(this.sended)
+    
    
 this.jobservice.decode(this.token).subscribe((id)=>{
     this.jobservice1.searchfollow(id.email).subscribe((search)=>{
@@ -41,7 +41,7 @@ this.jobservice.decode(this.token).subscribe((id)=>{
     this.socket.on("notification" , (obj)=>{ 
     for(let i =0;i<follows.length;i++){
       if(follows[i].iduser===id.email && follows[i].idcompany===obj.sender){
-        this.sended=obj.message
+        this.messages.push(obj)
       }
     }
     })

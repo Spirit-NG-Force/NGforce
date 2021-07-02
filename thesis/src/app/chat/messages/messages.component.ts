@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { WebsocketService } from 'app/service/websocket.service';
 import { JobofferService } from 'app/service/joboffer.service';
+import io from "socket.io-client"
 // import {moment} from "moment"
 @Component({
   selector: 'app-messages',
@@ -12,9 +13,30 @@ export class MessagesComponent implements OnInit {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
   emojiPickerVisible;
   message = '';
-  constructor(private websocket :WebsocketService , private jobof :JobofferService ) {}
+  socket : any;
+ 
+  constructor(private websocket :WebsocketService , private jobof :JobofferService ) {this.socket = io('http://localhost:4001') }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+ 
+   if(!localStorage.getItem("email")){
+     this.token=localStorage.getItem("email1")
+   }
+   this.jobof.decode(this.token).subscribe((id)=>{
+     let idjob=id.email
+    if(!id.email){
+      idjob=id.email1
+    }
+    this.socket.on("message",(msg)=>{
+      if(idjob === msg.company_id || idjob ===msg.user_id){
+        this.conversation.messages.unshift(msg)
+        console.log(this.conversation.messages)
+      }
+    
+    })
+   })
+   
+  }
 
   ngOnChanges() {
     console.log(this.conversation._id._id)
@@ -27,7 +49,7 @@ export class MessagesComponent implements OnInit {
   token: string = localStorage.getItem("email");
 
   submitMessage(event) {
-
+console.log(this.conversation)
     this.jobof.decode(this.token).subscribe((id) => {
       
     if(!localStorage.getItem("email")){
@@ -48,11 +70,14 @@ export class MessagesComponent implements OnInit {
       company_id:this.company_id,
       user_id:this.user_id
     }
-    this.conversation.messages.unshift(msg)
+    
     this.websocket.postMessages(msg).subscribe((msg)=>{
       console.log(msg)
+      
     })
+   event.target.value=""
     })
+    
    
   }
 

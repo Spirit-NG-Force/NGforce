@@ -68,7 +68,7 @@
        
         <!--  -->
         <div style="display: flex; flex-wrap: wrap">
-            <div class="container" style="max-width: 500px;"  *ngFor="let data of datas">
+            <div class="container" style="max-width: 500px;"  *ngFor="let data of datas; let i = index">
           
               <div class="card">
                 <a href="#pablo"> <img class="img rounded" src="assets/img/card-blog2.jpg"></a>
@@ -82,9 +82,9 @@
                     <li class="list-group-item">  {{data.expyear}}</li>
                     <li class="list-group-item">  {{data.field}}</li>
                   </ul>
-                  <button type="button" class="btn btn-primary btn-link" [routerLink]="['/views/chat']">Send Message</button> 
-                  <button type="button" class="btn btn-primary btn-just-icon" ngbTooltip="add to favorites"><i class="fa fa-heart"></i></button>
-                  
+                  <button type="button" class="btn btn-primary btn-link" (click)="send(data)" [routerLink]="['/views/chat']">Send Message</button> 
+                  <button *ngIf="!addfavo[i]" type="button" class="btn btn-primary btn-just-icon" (click)="favorite(data,i)" ngbTooltip="add to favorites"><i class="fa fa-heart"></i></button>
+                  <button *ngIf="addfavo[i]" type="button" class="btn btn-primary btn-just-icon" (click)="delete(data,i)" >Delete from favorite</button>
                 </div>
               </div>
             
