@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 import { Model } from 'mongoose';
@@ -13,37 +13,34 @@ export class CompanyService {
   constructor(
     @InjectModel('company') private companyModel: Model<Company>,
     private readonly jwtService: JwtService,
-    
   ) {}
 
-  create(createCompanyDto: CreateCompanyDto) : Promise<Company> {
-    const createdCompany = this.companyModel.create(createCompanyDto) 
-    return createdCompany ;
+  create(createCompanyDto: CreateCompanyDto): Promise<Company> {
+    const createdCompany = this.companyModel.create(createCompanyDto);
+    return createdCompany;
   }
 
   async signup(createCompanyDto: CreateCompanyDto) {
     const saltOrRounds = 10;
     const hash = await bcrypt.hash(createCompanyDto.password, saltOrRounds);
     const emaill = createCompanyDto.email;
-    const findlogin = await  this.companyModel.findOne({email : emaill}).exec()
-    
-      if (findlogin) {
-        return JSON.stringify({msg : 'This email exists'});
-      }
-    
+    const findlogin = await this.companyModel.findOne({ email: emaill }).exec();
+
+    if (findlogin) {
+      return JSON.stringify({ msg: 'This email exists' });
+    }
 
     const createdCompany = await this.companyModel.create({
-      name:createCompanyDto.name,
-      adress:createCompanyDto.adress,
-      phonenumber:createCompanyDto.phonenumber,
-      website:createCompanyDto.website,
-      email:createCompanyDto.email,
-      password:hash,
-      status:createCompanyDto.status,
-      
+      name: createCompanyDto.name,
+      adress: createCompanyDto.adress,
+      phonenumber: createCompanyDto.phonenumber,
+      website: createCompanyDto.website,
+      email: createCompanyDto.email,
+      password: hash,
+      status: createCompanyDto.status,
     });
 
-    return JSON.stringify({msg : "right"});
+    return JSON.stringify({ msg: 'right' });
   }
   async login(updateCompanyDto: UpdateCompanyDto) {
     const company = await this.companyModel
@@ -54,7 +51,7 @@ export class CompanyService {
     const { password } = company;
     const isMatch = await bcrypt.compare(updateCompanyDto.password, password);
     if (isMatch) {
-      const payload = { email1: company._id };
+      const payload = { companyid : company._id };
 
       const token = this.jwtService.sign(payload);
       return JSON.stringify({ token });
@@ -69,24 +66,103 @@ export class CompanyService {
   }
 
   async findAll() {
-    return this.companyModel.find();
+    return this.companyModel.find().populate('subscription');
   }
 
   async findOne(id: string) {
-    return this.companyModel.findById({ _id: id }).exec();
+    return this.companyModel.findOne({ _id: id }).populate('subscription');
   }
 
   async update(id: string, updateCompanyDto): Promise<Company> {
-    const hello = this.companyModel.findOneAndUpdate({ _id: id }, updateCompanyDto, {
+    return this.companyModel.findOneAndUpdate({ _id: id }, updateCompanyDto, {
       new: true,
       useFindAndModify: false,
     });
-    return hello;
   }
   remove(id: number) {
     return `This action removes a #${id} company`;
   }
-  async deleteCompany(id: string) {
-    return this.companyModel.findByIdAndDelete({ _id: id });
+  // async deleteCompany(id: string) {
+  //   return this.companyModel.findByIdAndDelete({ _id: id });}
+
+  setSubscriptionId(_id, subscription, expiration_date) {
+    return this.companyModel.findByIdAndUpdate(
+      { _id },
+      {
+        $set: {
+          subscription,
+          is_active: true,
+          expiration_date,
+          monthly_count: 0,
+        },
+      },
+      {
+        new: true,
+        useFindAndModify: false,
+      },
+    );
+  }
+
+  /**
+   * TODO: Check this
+   */
+
+  async desactivateAccount(_id) {
+    this.companyModel.findByIdAndUpdate(
+      { _id },
+      {
+        $set: { is_active: false },
+      },
+    );
+  }
+
+  async increaseMonthlyCount(_id) {
+    return this.companyModel.findByIdAndUpdate(
+      { _id },
+      {
+        $inc: { monthly_count: 1 },
+      },
+      {
+        new: true,
+        useFindAndModify: false,
+      },
+    );
+  }
+
+  async handlePost(_id) {
+    const company = await this.companyModel
+      .findOne({ _id })
+      .populate('subscription');
+    console.log(company);
+    if (!company.is_active) {
+      throw new UnauthorizedException(
+        'You need to subscribe in order to post a job offer',
+      );
+    }
+
+    const current_date = new Date();
+    console.log(
+      'company.expiration_date < current_date',
+      company.expiration_date,
+      current_date,
+    );
+    if (company.expiration_date < current_date) {
+      this.desactivateAccount(_id);
+      throw new UnauthorizedException(
+        'You subscription has expired, please renew your account',
+      );
+    }
+    console.log(
+      'heeeere ',
+      company.monthly_count,
+      company.subscription.monthly_limit,
+    );
+    if (company.monthly_count >= company.subscription.monthly_limit) {
+      throw new UnauthorizedException(
+        'You have reached the monthly limit, please renew you account',
+      );
+    }
+    await this.increaseMonthlyCount(_id);
+    return true;
   }
 }

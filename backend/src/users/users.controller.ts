@@ -39,11 +39,4 @@ export class UsersController {
   decode (@Param('id') id: string) {
     return this.usersService.decode(id);
   }
-
-
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.deleteUser(id);
-  }
 }

@@ -13,13 +13,13 @@ import { BrowserJsonp } from "@angular/http/src/backends/browser_jsonp";
   styleUrls: ["./calendar.component.css"]
 })
 export class CalendarComponent implements OnInit {
-token : string=localStorage.getItem("email") || localStorage.getItem("email1");
-bigcalend : any=[];
-bolean :boolean=true
-title : string;
-time : string;
-color : string;
-option : string
+  token : string=localStorage.getItem("userid") || localStorage.getItem("companyid");
+  bigcalend : any=[];
+  bolean :boolean=true
+  title : string;
+  time : string;
+  color : string;
+  option : string
 
 
   constructor(private jobservice : JobofferService) {}
@@ -30,11 +30,11 @@ option : string
     
     this.jobservice.decode(this.token).subscribe((id)=>{
     
-     if(localStorage.getItem("email")){
-       this.option=id.email
+     if(localStorage.getItem("userid")){
+       this.option=id.userid
      }
-     else if(localStorage.getItem("email1")){
-      this.option=id.email1
+     else if(localStorage.getItem("companyid")){
+      this.option=id.companyid
       this.bolean=false
     }
    
@@ -140,14 +140,9 @@ option : string
    
    });
    calendar.render();
-   
      
-  })
-
     })
-  
-    
-    
+    })
   
   
   }  

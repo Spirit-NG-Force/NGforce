@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from 'angular2-multiselect-dropdown/lib/multiselect.service';
 import * as Rellax from 'rellax';
 import {JobofferService} from '../../service/joboffer.service'
-import { JobofferService1 } from 'app/service/joboffer1.service';
-
+import { followsService } from 'app/service/follows.service';
+import { WebsocketService } from 'app/service/websocket.service';
 @Component({
   selector: 'app-searchu',
   templateUrl: './searchu.component.html',
   styleUrls: ['./searchu.component.css'],
+  providers:[WebsocketService]
 })
 export class  SearchuComponent implements OnInit, OnDestroy {
     dropdownList = [];
@@ -20,16 +21,16 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     focus;
     focus1;
     iduser : string;
-    token : string=localStorage.getItem("email");
+    token : string=localStorage.getItem("userid");
     data : Date = new Date();
     follows : any=[];
     datas : any
     alldatas : any
-    TypeOfContract : string;
-    Salary : string;
-    YearsOfExperience : string
-    OfferTitle : string
-    constructor(private jobservice :JobofferService,private jobservice1 :JobofferService1) { }
+    typeOfContract : string;
+    salary : string;
+    yearsOfExperience : string
+    offerTitle : string
+    constructor(private jobservice :JobofferService,private followservice :followsService,private websocket :WebsocketService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -60,57 +61,52 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         this.alldatas=post  
         this.datas=post
         for(let i =0 ; i<this.datas.length;i++){
-            this.jobservice1.getfollow(this.iduser,this.datas[i].id).subscribe((get)=>{
+            this.followservice.getfollow(this.iduser,this.datas[i].company).subscribe((get)=>{
                 if(get.length===0){
                     this.follows.push(false)
                 }
                 else{
                     this.follows.push(true)
                 }
-               
-            })
-            
+            }) 
         }
-       
-        
     })
    
     this.jobservice.decode(this.token).subscribe((id)=>{
-        this.iduser=id.email
+        this.iduser=id.userid
  
  })     
  
-    
     }
     
     click(event){
-       
-        this.TypeOfContract=event.target.innerText
+        
+        this.typeOfContract=event.target.innerText
     }
     click1(event){
-       
-        this.Salary=event.target.innerText
+   
+        this.salary=event.target.innerText
       
     }
     click2(event){
        
-        this.YearsOfExperience=event.target.innerText
+        this.yearsOfExperience=event.target.innerText
     }
     onSubmit(){
-         const obj={
-         TypeOfContract:this.TypeOfContract,
-         Salary:this.Salary,
-         YearsOfExperience :this.YearsOfExperience,
+        const obj={
+         typeOfContract:this.typeOfContract,
+         salary:this.salary,
+         yearsOfExperience :this.yearsOfExperience,
       
         }
-      if(!this.TypeOfContract){
-          delete obj.TypeOfContract
+      if(!this.typeOfContract){
+          delete obj.typeOfContract
       }
-      if(!this.Salary){
-        delete obj.Salary
+      if(!this.salary){
+        delete obj.salary
     }
-    if(!this.YearsOfExperience){
-        delete obj.YearsOfExperience
+    if(!this.yearsOfExperience){
+        delete obj.yearsOfExperience
     }
     
         this.jobservice.search(obj).subscribe((search)=>{
@@ -120,11 +116,11 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         else if(!search){
             this.datas=this.alldatas
         }
-        if(this.OfferTitle){
+        if(this.offerTitle){
             let result=[]
         for(let i=0;i<this.datas.length;i++){
-            let dat=this.datas[i].OfferTitle
-         if(dat.indexOf(this.OfferTitle)===0){
+            let dat=this.datas[i].offerTitle
+         if(dat.indexOf(this.offerTitle)===0){
           result.push(this.datas[i])
  
          }
@@ -133,38 +129,50 @@ export class  SearchuComponent implements OnInit, OnDestroy {
            this.datas=result 
         }
         }
-        
         })
-       
-   
+    }
+    apply(data){
+        this.jobservice.decode(this.token).subscribe((id)=>{
+            const msg={
+                text:"i want to apply for "+data.OfferTitle ,
+                sender:"User",
+                company_id:data.company,
+                user_id:id.userid
+              }
+              
+              this.websocket.postMessages(msg).subscribe((msg)=>{
+                console.log(msg)
+                
+              })
+           }) 
 
     }
     follow(data){
       for(let i=0;i<this.datas.length;i++){
-       if(this.datas[i].id===data.id){
+       if(this.datas[i].company===data.company){
            this.follows[i]=!this.follows[i]
        }
       }
-console.log(this.iduser)
-const obj={iduser:this.iduser,idcompany : data.id}
-this.jobservice1.addfollow(obj).subscribe((add)=>console.log(add))
+    console.log(this.iduser)
+    const obj={iduser:this.iduser,idcompany : data.company}
+    this.followservice.addfollow(obj).subscribe((add)=>console.log(add))
 
     }
     unfollow(data){
         for(let i=0;i<this.datas.length;i++){
-            if(this.datas[i].id===data.id){
+            if(this.datas[i].company===data.company){
                 this.follows[i]=!this.follows[i]
             }
            }
-        this.jobservice1.deletefollow(this.iduser,data.id).subscribe((del)=>console.log(del))
+        this.followservice.deletefollow(this.iduser,data.company).subscribe((del)=>console.log(del))
     }
     onItemSelect(item:any){
-        console.log(item);
+      
         console.log(this.selectedItems);
     }
 
     OnItemDeSelect(item:any){
-        console.log(item);
+
         console.log(this.selectedItems);
     }
     onSelectAll(items: any){

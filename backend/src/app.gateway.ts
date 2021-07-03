@@ -18,6 +18,7 @@ import {
     handleConnection(client : Socket) {
       
         client.emit( "connection" , "hello world1")
+        client.emit( "connection1" , `someone connected ${client.id}`)
 
         this.logger.log(`Client connected: ${client.id}`);
        }
@@ -29,9 +30,5 @@ import {
     //  this.server.emit('msgToClient', payload); 
     
     }
-   
 
-    
-   
-   
-   }
+}

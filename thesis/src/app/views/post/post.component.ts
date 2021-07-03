@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import * as Rellax from "rellax";
-import { JobofferService } from "app/service/joboffer.service";
-import { JobofferService1 } from "app/service/joboffer1.service";
-import { Router } from "@angular/router";
-import io from "socket.io-client";
+import { JobofferService } from "app/service/joboffer.service"
+import { followsService } from "app/service/follows.service";
+import {Router} from '@angular/router'
+import io from 'socket.io-client'
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
@@ -107,55 +107,56 @@ export class PostComponent implements OnInit {
     { id: 4, itemName: "More than 1500DT" },
   ];
   selectedItems2 = [];
-  token: string = localStorage.getItem("email1");
-  CompanyName: string;
-  OfferTitle: string;
-  OfferDescription: string;
-  TypeOfContract: string;
-  Salary: string;
-  YearsOfExperience: string;
-  socket: any;
+  token : string = localStorage.getItem("companyid")
+  companyName:string ; 
+  offerTitle:string ; 
+  offerDescription:string ; 
+  typeOfContract:string ; 
+  salary:string ; 
+  yearsOfExperience:string ; 
+  socket : any;
 
-  constructor(
-    public router: Router,
-    private jobservice: JobofferService,
-    private jobservice1: JobofferService1
-  ) {
-    this.socket = io("http://localhost:4001");
-  }
-  click(event) {
-    this.TypeOfContract = event.itemName;
+
+  constructor(public router: Router,private jobservice :JobofferService,private followservice :followsService) {this.socket = io('http://localhost:4001')}
+  click(event){
+   
+    this.typeOfContract=event.itemName
   }
 
-  click1(event) {
-    this.Salary = event.itemName;
+  click1(event){
+  
+    this.salary=event.itemName
   }
 
-  click2(event) {
-    this.YearsOfExperience = event.itemName;
+  click2(event){
+  
+    this.yearsOfExperience=event.itemName
   }
-  onSubmit() {
-    this.jobservice.decode(this.token).subscribe((id) => {
-      const obj = {
-        id: id.email1,
-        CompanyName: this.CompanyName,
-        OfferTitle: this.OfferTitle,
-        OfferDescription: this.OfferDescription,
-        TypeOfContract: this.TypeOfContract,
-        Salary: this.Salary,
-        YearsOfExperience: this.YearsOfExperience,
-      };
-      this.jobservice.createpostjob(obj).subscribe((create) => {
-        this.router.navigate(["views/home"]);
-      });
-      const obj1 = {
-        message: this.CompanyName + " has posted a job for " + this.OfferTitle,
-        sender: id.email1,
-      };
-      this.jobservice1
-        .addnotification(obj1)
-        .subscribe((add) => console.log(add));
-    });
+  onSubmit(){
+ 
+    this.jobservice.decode(this.token).subscribe((id)=>{
+      
+      const obj={
+       company: id.companyid ,
+       companyName : this.companyName,
+       offerTitle: this.offerTitle,
+       offerDescription: this.offerDescription,
+       typeOfContract: this.typeOfContract,
+       salary: this.salary,
+       yearsOfExperience: this.yearsOfExperience,
+      }
+      this.jobservice.createpostjob(obj).subscribe((create)=>{
+        this.router.navigate(['views/home'])
+    
+        })
+        const obj1= {message : this.companyName+" has posted a job for "+this.offerTitle,
+      sender : id.companyid }
+    this.followservice.addnotification(obj1).subscribe((add)=>console.log(add))
+    
+     
+    
+  })
+     
   }
 
   ngOnInit() {

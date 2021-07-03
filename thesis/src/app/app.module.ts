@@ -34,8 +34,6 @@ import { HomeComponent } from './views/home/home.component';
 import { PostComponent } from './views/post/post.component';
 import { ImageComponent } from './components/image/image.component';
 import { ChatComponent } from './chat/chat.component';
-// import { MessagesComponent } from './chat/messages/messages.component';
-// import { SidebarComponent } from './chat/sidebar/sidebar.component';
 import { ChatModule } from './chat/chat.module';
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { SuccessUrlComponent } from './views/success-url/success-url.component';
@@ -66,8 +64,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         PostComponent,
         ImageComponent,
         NotificationuserComponent,
-        // ChatComponent,
-        // MessagesComponent,
         SuccessUrlComponent,
         FailUrlComponent,
         DashboardComponent,

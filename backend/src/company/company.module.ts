@@ -4,9 +4,11 @@ import { CompanyController } from './company.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
 import {CompanySchema} from "./company.schema"
+import { SubscriptionModule } from 'src/subscription/subscription.module';
 
 @Module({
   imports: [
+    SubscriptionModule,
     MongooseModule.forFeature([{ name: 'company', schema: CompanySchema }]),
     JwtModule.register({ secret: "VERY BIG SECRET DON'T SHOW" }),
   ],
