@@ -21,24 +21,24 @@ export class PostjobService {
   findOne(id: string) {
     return this.postjobModel.findById({ _id: id }).exec();
   }
-  findOne1(updateUserDto: UpdateUserDto) {
+  findfrompostjob(updateUserDto: UpdateUserDto) {
     return this.postjobModel.find(updateUserDto).exec();
   }
-  findOne2(id: string) {
-    return this.postjobModel.find({ id });
+  findfromcompany(id: string) {
+    return this.postjobModel.find({ company : id });
   }
 
-  // async update(id: string, updatePostjobDto: UpdatePostjobDto) {
-  //   const job = await this.postjobModel.findOneAndUpdate(
-  //     { _id: id },
-  //     updatePostjobDto,
-  //     {
-  //       new: true,
-  //       useFindAndModify: false,
-  //     },
-  //   );
-  //   return job;
-  // }
+  async update(id: string, updatePostjobDto: UpdatePostjobDto) {
+    const job = await this.postjobModel.findOneAndUpdate(
+      { _id: id },
+      updatePostjobDto,
+      {
+        new: true,
+        useFindAndModify: false,
+      },
+    );
+    return job;
+  }
 
   remove(id: string) {
     return this.postjobModel.findByIdAndDelete({ _id: id });

@@ -29,8 +29,8 @@ export class ProfilComponent implements OnInit {
       img:""
     };
     datas : any;
-    token : string=localStorage.getItem("email")
-    id : string="";
+    token : string=localStorage.getItem("userid")
+    
     constructor(private jobservice :JobofferService) { }
 
     ngOnInit() {
@@ -41,13 +41,11 @@ export class ProfilComponent implements OnInit {
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.add('navbar-transparent');
         this.jobservice.decode(this.token).subscribe((id)=>{
-        this.id=id.email
-        console.log(this.id)
-        this.jobservice.iduser(id.email).subscribe((datas)=>{
+        this.jobservice.iduser(id.userid).subscribe((datas)=>{
           this.datas=datas
           console.log( this.datas)
           })
-          this.jobservice.getonecv(id.email).subscribe((cv)=>{
+          this.jobservice.getonecv(id.userid).subscribe((cv)=>{
             if(!cv){
               this.cv={id : "none",
               name: "none",

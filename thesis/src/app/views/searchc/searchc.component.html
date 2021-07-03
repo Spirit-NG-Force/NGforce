@@ -71,7 +71,7 @@
             <div class="container" style="max-width: 500px;"  *ngFor="let data of datas; let i = index">
           
               <div class="card">
-                <a href="#pablo"> <img class="img rounded" src="assets/img/card-blog2.jpg"></a>
+                <a href="#pablo"> <img class="img rounded" src={{data.img}}></a>
                  <div class="card-body">
                   <h5 class="card-title"><a href="#pablo">{{data.name}}</a></h5>
                   <h4 class="card-title">{{data.email}}</h4>

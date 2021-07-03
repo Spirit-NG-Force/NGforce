@@ -13,8 +13,8 @@ export class NotificationuserComponent implements OnInit {
   constructor(private followservice : followsService ,private jobservice : JobofferService) {  
     this.socket = io('http://localhost:4001')   }
   socket: any;
-  token : string=localStorage.getItem("email")
-  messages : any=[]
+  token : string=localStorage.getItem("userid")
+messages : any=[]
 
   followss : any;
 
@@ -22,7 +22,7 @@ export class NotificationuserComponent implements OnInit {
     
    
     this.jobservice.decode(this.token).subscribe((id)=>{
-      this.followservice.searchfollow(id.email).subscribe((search)=>{
+      this.followservice.searchfollow(id.userid).subscribe((search)=>{
       console.log(search)
       for(let i = 0 ; i<search.length;i++){
       console.log(search[i].idcompany)
@@ -41,7 +41,7 @@ export class NotificationuserComponent implements OnInit {
     
     this.socket.on("notification" , (obj)=>{ 
     for(let i =0;i<follows.length;i++){
-      if(follows[i].iduser===id.email && follows[i].idcompany===obj.sender){
+      if(follows[i].iduser===id.userid && follows[i].idcompany===obj.sender){
         this.messages.push(obj)
       }
     }

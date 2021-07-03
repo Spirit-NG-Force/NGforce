@@ -23,12 +23,13 @@ export class CompanyComponent implements OnInit {
     constructor(public router: Router,private jobservice :JobofferService) { }
 
     ngOnInit() {
-      if (localStorage.getItem("email")) {
+      if (localStorage.getItem("userid")) {
         this.router.navigate(["views/profil"]);
       }
-      else if (localStorage.getItem("email1")) {
+      else if(localStorage.getItem("companyid")){
         this.router.navigate(["views/home"]);
       }
+      
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('signup-page');
         var navbar = document.getElementsByTagName('nav')[0];

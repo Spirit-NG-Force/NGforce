@@ -102,7 +102,15 @@ export class JobofferService {
     return this.http.get<any>(this.apiUrl_konect ,option);
   }
 
+  postpayment_to_server(option:any):Observable<any>{
+    return this.http.post<any>(this.apiUrl+"company/payment",option)
+  }
+
   postimg (option:any) : Observable<any> {
     return this.http.post<any>(this.apiUrl +"create-cv/testcloudinary",option)
+  }
+
+  getsubscription(option:any):Observable<any>{
+    return this.http.get<any>(this.apiUrl+"subscription" ,option)
   }
 }
