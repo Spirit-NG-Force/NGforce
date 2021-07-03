@@ -13,7 +13,7 @@ import { BrowserJsonp } from "@angular/http/src/backends/browser_jsonp";
   styleUrls: ["./calendar.component.css"]
 })
 export class CalendarComponent implements OnInit {
-token : string=localStorage.getItem("email") || localStorage.getItem("email1");
+token : string=localStorage.getItem("userid") || localStorage.getItem("companyid");
 bigcalend : any=[];
 bolean :boolean=true
 title : string;

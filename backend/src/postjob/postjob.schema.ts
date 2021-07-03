@@ -7,7 +7,7 @@ export type PostjobDocument = Postjob & Document ;
 @Schema()
 export class Postjob {
     @Prop({type: SchemaTypes.ObjectId, ref: "Company"})
-    company: Company
+    company: string
     
     @Prop()
     companyName: string;

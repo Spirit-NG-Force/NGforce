@@ -26,10 +26,10 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     follows : any=[];
     datas : any
     alldatas : any
-    TypeOfContract : string;
-    Salary : string;
-    YearsOfExperience : string
-    OfferTitle : string
+    typeOfContract : string;
+    salary : string;
+    yearsOfExperience : string
+    offerTitle : string
     constructor(private jobservice :JobofferService,private jobservice1 :JobofferService1,private websocket :WebsocketService) { }
 
     ngOnInit() {
@@ -88,32 +88,32 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     
     click(event){
         console.log(event.target.innerText)
-        this.TypeOfContract=event.target.innerText
+        this.typeOfContract=event.target.innerText
     }
     click1(event){
         console.log(event.target.innerText)
-        this.Salary=event.target.innerText
+        this.salary=event.target.innerText
       
     }
     click2(event){
         console.log(event.target.innerText)
-        this.YearsOfExperience=event.target.innerText
+        this.yearsOfExperience=event.target.innerText
     }
     onSubmit(){
         const obj={
-         TypeOfContract:this.TypeOfContract,
-         Salary:this.Salary,
-         YearsOfExperience :this.YearsOfExperience,
+         typeOfContract:this.typeOfContract,
+         salary:this.salary,
+         yearsOfExperience :this.yearsOfExperience,
       
         }
-      if(!this.TypeOfContract){
-          delete obj.TypeOfContract
+      if(!this.typeOfContract){
+          delete obj.typeOfContract
       }
-      if(!this.Salary){
-        delete obj.Salary
+      if(!this.salary){
+        delete obj.salary
     }
-    if(!this.YearsOfExperience){
-        delete obj.YearsOfExperience
+    if(!this.yearsOfExperience){
+        delete obj.yearsOfExperience
     }
     
         this.jobservice.search(obj).subscribe((search)=>{
@@ -123,11 +123,11 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         else if(!search){
             this.datas=this.alldatas
         }
-        if(this.OfferTitle){
+        if(this.offerTitle){
             let result=[]
         for(let i=0;i<this.datas.length;i++){
-            let dat=this.datas[i].OfferTitle
-         if(dat.indexOf(this.OfferTitle)===0){
+            let dat=this.datas[i].offerTitle
+         if(dat.indexOf(this.offerTitle)===0){
           result.push(this.datas[i])
           console.log(result)
          }
