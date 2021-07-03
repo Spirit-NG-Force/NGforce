@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import * as Rellax from 'rellax';
-import {JobofferService} from '../../service/joboffer.service'
+import { Component, OnInit } from "@angular/core";
+import * as Rellax from "rellax";
+import { JobofferService } from "../../service/joboffer.service";
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  selector: "app-profil",
+  templateUrl: "./profil.component.html",
+  styleUrls: ["./profil.component.css"],
 })
 export class ProfilComponent implements OnInit {
   zoom: number = 14;
@@ -29,8 +29,8 @@ export class ProfilComponent implements OnInit {
       img:""
     };
     datas : any;
-    token : string=localStorage.getItem("email")
-    id : string="";
+    token : string=localStorage.getItem("userid")
+    
     constructor(private jobservice :JobofferService) { }
 
     ngOnInit() {
@@ -41,13 +41,11 @@ export class ProfilComponent implements OnInit {
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.add('navbar-transparent');
         this.jobservice.decode(this.token).subscribe((id)=>{
-        this.id=id.email
-        console.log(this.id)
-        this.jobservice.iduser(id.email).subscribe((datas)=>{
+        this.jobservice.iduser(id.userid).subscribe((datas)=>{
           this.datas=datas
-          console.log( this.datas)
+        
           })
-          this.jobservice.getonecv(id.email).subscribe((cv)=>{
+          this.jobservice.getonecv(id.userid).subscribe((cv)=>{
             if(!cv){
               this.cv={id : "none",
               name: "none",
@@ -66,21 +64,16 @@ export class ProfilComponent implements OnInit {
             }
             else{
             this.cv=cv
-            console.log(cv)
+            
             }
         })
 
-          
-        })
-       
-        
-       
-    }
-    ngOnDestroy(){
-        var body = document.getElementsByTagName('body')[0];
-        body.classList.remove('profile-page');
-        var navbar = document.getElementsByTagName('nav')[0];
-        navbar.classList.remove('navbar-transparent');
-    }
-
+      })
+  }
+  ngOnDestroy() {
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.remove("profile-page");
+    var navbar = document.getElementsByTagName("nav")[0];
+    navbar.classList.remove("navbar-transparent");
+  }
 }

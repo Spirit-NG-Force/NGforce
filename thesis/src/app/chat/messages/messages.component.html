@@ -6,10 +6,7 @@
         </div>
         <div class="nameSection">{{conversation._id.name}}</div>
       </div>
-      <div class="actionButtons">
-        <img src="../../../assets/images/attached.svg" />
-        <img src="../../../assets/images/moreVertIcon.svg" />
-      </div>
+     
     </div>
     <div id="body">
       <div
@@ -17,9 +14,9 @@
         [ngClass]="{ me: message.me }"
         *ngFor="let message of conversation.messages"
       >
-        <div class="messageContent">
+        <div  class="messageContent">
           {{ message.text }}
-          <div class="time">{{ message.createdAt}}</div>
+          <div class="time">{{message.createdAt}}</div>
         </div>
       </div>
     </div>
@@ -45,7 +42,7 @@
         ></textarea>
       </div>
       <div id="micIcon">
-        <img src="../../../assets/images/voiceIcon.svg" />
+        <img src="https://img.icons8.com/ios/50/000000/incoming-call.png"/>
       </div>
     </div>
   </div>

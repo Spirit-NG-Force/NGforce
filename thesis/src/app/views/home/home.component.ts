@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import * as Rellax from "rellax";
 import { JobofferService } from "app/service/joboffer.service";
-import { JobofferService1 } from "app/service/joboffer1.service";
-import { Router } from "@angular/router";
+import { followsService } from 'app/service/follows.service';
+import {Router} from '@angular/router'
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -53,32 +53,28 @@ export class HomeComponent implements OnInit {
 
   favorites: any = [];
 
-  token: string = localStorage.getItem("email1");
-  datas: any = ["NO POST"];
-  constructor(
-    public router: Router,
-    private jobservice: JobofferService,
-    private jobservice1: JobofferService1
-  ) {}
-  click(event) {
-    console.log(event.itemName);
-    this.typeOfContract = event.itemName;
+  
+ token : string=localStorage.getItem("companyid")
+ datas : any=["NO POST"]
+  constructor(public router: Router,private jobservice :JobofferService,private followservice :followsService) { }
+  click(event){
+    console.log(event.itemName)
+    this.typeOfContract=event.itemName
   }
 
   click1(event) {
-    console.log(event.itemName);
+  
     this.salary = event.itemName;
   }
 
   click2(event) {
-    console.log(event.itemName);
+   
     this.yearsOfExperience = event.itemName;
   }
   onSubmit(data) {
-    console.log(data);
+   
     this.jobservice.decode(this.token).subscribe((id) => {
-      console.log(id.email1);
-      // var company = id.email1
+      
       const obj = { 
         companyName: this.companyName,
         offerTitle: this.offerTitle,
@@ -94,7 +90,7 @@ export class HomeComponent implements OnInit {
             this.datas[i] = create;
           }
         }
-        console.log(create);
+ 
       });
     });
   }
@@ -109,31 +105,33 @@ export class HomeComponent implements OnInit {
     }
   }
   ngOnInit() {
-    var rellaxHeader = new Rellax(".rellax-header");
+    var rellaxHeader = new Rellax('.rellax-header');
 
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.add("landing-page");
-    var navbar = document.getElementsByTagName("nav")[0];
-    navbar.classList.add("navbar-transparent");
-    this.jobservice.decode(this.token).subscribe((id) => {
-      console.log(id);
-      this.jobservice.getpostjobs(id.email1).subscribe((data) => {
-        this.datas = data;
-        console.log(data);
-      });
-      this.jobservice1.getfavorite(id.email1).subscribe((get) => {
-        this.favorites = get;
-        console.log(this.favorites);
-      });
-    });
+    var body = document.getElementsByTagName('body')[0];
+    body.classList.add('landing-page');
+    var navbar = document.getElementsByTagName('nav')[0];
+    navbar.classList.add('navbar-transparent');
+    this.jobservice.decode(this.token).subscribe((id)=>{
+     
+     this.jobservice.getpostjobs(id.companyid).subscribe((data)=>{
+     
+     this.datas=data
+   
+    })
+    this.followservice.getfavorite(id.companyid).subscribe((get)=>{this.favorites=get
+
+    })
+
+    })
+
   }
 
   onSubmitPayment(pack_name, amount) {
 
     this.jobservice.decode(this.token).subscribe((id) => {
-        const company= id.email1
+        const company= id.companyid
        const obj = {
-      receiverWallet: "60d5d753e1add7620c68faf9",
+      receiverWallet: "60e01c4ee1add7620c68fc56",
       amount,
       selectedPaymentMethod: "gateway",
       token: "TND",

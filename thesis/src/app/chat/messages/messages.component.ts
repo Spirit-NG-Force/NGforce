@@ -19,13 +19,13 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
  
-   if(!localStorage.getItem("email")){
-     this.token=localStorage.getItem("email1")
+   if(!localStorage.getItem("userid")){
+     this.token=localStorage.getItem("companyid")
    }
    this.jobof.decode(this.token).subscribe((id)=>{
-     let idjob=id.email
-    if(!id.email){
-      idjob=id.email1
+     let idjob=id.userid
+    if(!id.userid){
+      idjob=id.companyid
     }
     this.socket.on("message",(msg)=>{
       if(idjob === msg.company_id || idjob ===msg.user_id){
@@ -39,36 +39,37 @@ export class MessagesComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log(this.conversation._id._id)
+    
   }
 
   text:string ;
   sender:string;
   company_id:string;
   user_id:string;
-  token: string = localStorage.getItem("email");
+  token: string = localStorage.getItem("userid");
 
   submitMessage(event) {
 console.log(this.conversation)
     this.jobof.decode(this.token).subscribe((id) => {
       
-    if(!localStorage.getItem("email")){
-      this.sender="Company" ;
-       this.company_id = id.email1 ;
+    if(!localStorage.getItem("userid")){
+      this.sender="Company";
+       this.company_id = id.companyid ;
        this.user_id = this.conversation._id._id;
     }
     else{
       this.sender="User" ;
-       this.user_id = id.email;
+       this.user_id = id.userid;
        this.company_id = this.conversation._id._id;
     }
     let value = event.target.value.trim();
-    
+   
     const msg={
       text:value ,
       sender:this.sender,
       company_id:this.company_id,
       user_id:this.user_id
+      
     }
     
     this.websocket.postMessages(msg).subscribe((msg)=>{

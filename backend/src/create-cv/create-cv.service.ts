@@ -41,7 +41,4 @@ export class CreateCvService {
     });
   }
   
-  // remove(id: number) {
-  //   return this.createCv.deleteOne({_id : id});
-  // }
 }
