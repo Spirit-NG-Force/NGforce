@@ -18,6 +18,18 @@ export class JobofferService {
   getUser(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + "users/login", option);
   }
+  getAllUser(): Observable<any> {
+    return this.http.get<any>(this.apiUrl );
+  }
+  deleteUser(option:any): Observable<any> {
+    return this.http.delete<any>(this.apiUrl+`/${option}` );
+  }
+  getAllCompanies(): Observable<any> {
+    return this.http.get<any>(this.apiUrl1 );
+  }
+  deleteCompany(option:any): Observable<any> {
+    return this.http.delete<any>(this.apiUrl1+`/${option}` );
+  }
   getCompany(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + "company/login" , option);
   }

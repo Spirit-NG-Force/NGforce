@@ -63,16 +63,16 @@ export class HomeComponent implements OnInit {
   }
 
   click1(event) {
-    console.log(event.itemName);
+  
     this.salary = event.itemName;
   }
 
   click2(event) {
-    console.log(event.itemName);
+   
     this.yearsOfExperience = event.itemName;
   }
   onSubmit(data) {
-    console.log(data);
+   
     this.jobservice.decode(this.token).subscribe((id) => {
       
       const obj = { 
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
             this.datas[i] = create;
           }
         }
-        console.log(create);
+ 
       });
     });
   }
@@ -112,14 +112,14 @@ export class HomeComponent implements OnInit {
     var navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.add('navbar-transparent');
     this.jobservice.decode(this.token).subscribe((id)=>{
-      console.log(id)
+     
      this.jobservice.getpostjobs(id.companyid).subscribe((data)=>{
      
      this.datas=data
-     console.log(data)
+   
     })
     this.followservice.getfavorite(id.companyid).subscribe((get)=>{this.favorites=get
-    console.log(this.favorites)
+
     })
 
     })

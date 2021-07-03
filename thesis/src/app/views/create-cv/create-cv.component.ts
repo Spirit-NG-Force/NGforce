@@ -73,28 +73,28 @@ export class CreateCvComponent implements OnInit {
   constructor(public router: Router,private jobservice :JobofferService) {}
   click(event){
     
-    console.log(event.itemName)
+    
     this.field=event.itemName
   }
   click1(event){
     
-    console.log(event.itemName)
+    
     this.studylevel=event.itemName
   }
   click2(event){
     
-    console.log(event.itemName)
+    
     this.expyear=event.itemName
   }
 
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
-    console.log(this.fileToUpload)
+  
   }
 
   onSubmit(){
   this.jobservice.decode(this.token).subscribe(id=>{
-    console.log(id.email)
+
     var obj={
       id : id.userid,
       name : this.name,
@@ -114,16 +114,16 @@ export class CreateCvComponent implements OnInit {
      
     const file = new FormData() 
     file.append("file",this.fileToUpload)
-    console.log(file)
+    
     this.jobservice.postimg(file).subscribe(data => {
       obj.img=data.url 
-      console.log(this.img)
-      console.log("OBJ OF CREATECV3 ",obj)
+      
+     
     this.jobservice.updatecv(id.userid,obj).subscribe((update)=>{
     if(!update){
       this.jobservice.createcv(obj).subscribe((create)=>{
         this.router.navigate(['views/profil'])
-        console.log(create)
+        
         return 
         })
     }
@@ -137,7 +137,7 @@ export class CreateCvComponent implements OnInit {
       if(!update){
         this.jobservice.createcv(obj).subscribe((create)=>{
           this.router.navigate(['views/profil'])
-          console.log(create)
+         
           })
       }
       this.router.navigate(['views/profil'])

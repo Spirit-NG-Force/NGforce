@@ -10,6 +10,7 @@ import { ElementsModule } from './elements/elements.module';
 import { ExamplesModule } from './examples/examples.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
+
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
@@ -37,6 +38,8 @@ import { ChatModule } from './chat/chat.module';
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { SuccessUrlComponent } from './views/success-url/success-url.component';
 import { FailUrlComponent } from './views/fail-url/fail-url.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -62,7 +65,9 @@ import { FailUrlComponent } from './views/fail-url/fail-url.component';
         ImageComponent,
         NotificationuserComponent,
         SuccessUrlComponent,
-        FailUrlComponent
+        FailUrlComponent,
+        DashboardComponent,
+   
        
     ],
     imports: [
@@ -78,7 +83,8 @@ import { FailUrlComponent } from './views/fail-url/fail-url.component';
         ExamplesModule,
         HttpClientModule,
         JwtModule,
-        ChatModule
+        ChatModule,
+        
     ],
     providers: [AuthGuardService],
     bootstrap: [AppComponent]

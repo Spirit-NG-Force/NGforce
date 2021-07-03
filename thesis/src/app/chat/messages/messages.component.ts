@@ -39,7 +39,7 @@ export class MessagesComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log(this.conversation._id._id)
+    
   }
 
   text:string ;
@@ -63,12 +63,13 @@ console.log(this.conversation)
        this.company_id = this.conversation._id._id;
     }
     let value = event.target.value.trim();
-    
+   
     const msg={
       text:value ,
       sender:this.sender,
       company_id:this.company_id,
       user_id:this.user_id
+      
     }
     
     this.websocket.postMessages(msg).subscribe((msg)=>{

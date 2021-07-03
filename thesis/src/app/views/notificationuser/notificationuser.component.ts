@@ -4,9 +4,9 @@ import { JobofferService } from 'app/service/joboffer.service'
 import { Router } from '@angular/router'
 import io from 'socket.io-client';
 @Component({
-  selector: 'app-notificationuser',
-  templateUrl: './notificationuser.component.html',
-  styleUrls: ['./notificationuser.component.css']
+  selector: "app-notificationuser",
+  templateUrl: "./notificationuser.component.html",
+  styleUrls: ["./notificationuser.component.css"],
 })
 export class NotificationuserComponent implements OnInit {
  
@@ -23,14 +23,14 @@ messages : any=[]
    
     this.jobservice.decode(this.token).subscribe((id)=>{
       this.followservice.searchfollow(id.userid).subscribe((search)=>{
-      console.log(search)
+    
       for(let i = 0 ; i<search.length;i++){
-      console.log(search[i].idcompany)
+      
       this.followservice.findnotification(search[i].idcompany).subscribe((not)=>{
        
       
        this.messages=not
-        console.log(this.messages)
+       
       })
     }
     
@@ -50,9 +50,6 @@ messages : any=[]
     
 })
 
+}}
 
-
-
-}
-
-}
+ 

@@ -84,6 +84,9 @@ export class UsersService {
     });
     return hello;
   }
+  async deleteUser(id: string) {
+    return this.userModel.findByIdAndDelete({ _id: id });
+  }
 }
 
 

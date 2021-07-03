@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import * as Rellax from 'rellax';
-import {JobofferService} from '../../service/joboffer.service'
+import { Component, OnInit } from "@angular/core";
+import * as Rellax from "rellax";
+import { JobofferService } from "../../service/joboffer.service";
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  selector: "app-profil",
+  templateUrl: "./profil.component.html",
+  styleUrls: ["./profil.component.css"],
 })
 export class ProfilComponent implements OnInit {
   zoom: number = 14;
@@ -43,7 +43,7 @@ export class ProfilComponent implements OnInit {
         this.jobservice.decode(this.token).subscribe((id)=>{
         this.jobservice.iduser(id.userid).subscribe((datas)=>{
           this.datas=datas
-          console.log( this.datas)
+        
           })
           this.jobservice.getonecv(id.userid).subscribe((cv)=>{
             if(!cv){
@@ -64,21 +64,16 @@ export class ProfilComponent implements OnInit {
             }
             else{
             this.cv=cv
-            console.log(cv)
+            
             }
         })
 
-          
-        })
-       
-        
-       
-    }
-    ngOnDestroy(){
-        var body = document.getElementsByTagName('body')[0];
-        body.classList.remove('profile-page');
-        var navbar = document.getElementsByTagName('nav')[0];
-        navbar.classList.remove('navbar-transparent');
-    }
-
+      })
+  }
+  ngOnDestroy() {
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.remove("profile-page");
+    var navbar = document.getElementsByTagName("nav")[0];
+    navbar.classList.remove("navbar-transparent");
+  }
 }
