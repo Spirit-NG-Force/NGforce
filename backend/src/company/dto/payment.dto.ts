@@ -2,5 +2,5 @@
 
 export class PaymentDto {
   company_id: string;
-  subscription: string;
+  subscription_name: string;
 }

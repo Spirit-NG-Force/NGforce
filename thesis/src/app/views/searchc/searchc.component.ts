@@ -19,7 +19,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     dropdownSettings1 = {};
     focus;
     focus1;
-    token : any=localStorage.getItem("email1")
+    token : any=localStorage.getItem("companyid")
     data : Date = new Date();
     alldatas : any;
     datas : any;
@@ -62,7 +62,8 @@ export class  SearchcComponent implements OnInit, OnDestroy {
        this.alldatas=post  
        this.datas=post})
        this.jobservice.decode(this.token).subscribe((id)=>{
-        this.jobservice1.getfavorite(id.email1).subscribe((get)=>{
+        this.jobservice1.getfavorite(id.companyid).subscribe((get)=>{
+            console.log(get)
             for(let i=0;i<this.datas.length;i++){
                 let bol=false
                 for(let j=0;j<get.length;j++){
@@ -152,7 +153,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
         const msg={
             text:"hello user" ,
             sender:"Company",
-            company_id:id.email1,
+            company_id:id.companyid,
             user_id:data.id
           }
           
@@ -171,7 +172,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
            }
         this.jobservice.decode(this.token).subscribe((id)=>{
         const obj={
-            idcompany : id.email1,
+            idcompany : id.companyid,
             iduser : data.id,
             name : data.name,
             title : data.descProfil,
