@@ -23,8 +23,8 @@
           <form class="form" method="" action="" (ngSubmit)="onSubmit()">
             <input
               type="text"
-              name="OfferTitle"
-              [(ngModel)]="OfferTitle"
+              name="offerTitle"
+              [(ngModel)]="offerTitle"
               placeholder="Search"
               class="form-control"
             />
@@ -44,7 +44,7 @@
   <div id="drop-btn">
     <div ngbDropdown class="dropdown" placement="bottom-right">
       <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>
-        type of contract {{ TypeOfContract }}
+        type of contract {{ typeOfContract }}
       </button>
       <div ngbDropdownMenu>
         <a class="dropdown-item" (click)="click($event)">CDI </a>
@@ -73,7 +73,7 @@
     </div>
     <div ngbDropdown class="dropdown" placement="bottom-right">
       <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>
-        Years of experience {{ YearsOfExperience }}
+        Years of experience {{ yearsOfExperience }}
       </button>
       <div ngbDropdownMenu>
         <a class="dropdown-item" (click)="click2($event)">Less than 1 year </a>
@@ -104,15 +104,15 @@
           alt="Card image cap"
         /> -->
         <div class="card-body">
-          <h5 class="card-title">{{ data.CompanyName }}</h5>
-          <h4 class="card-title">{{ data.OfferTitle }}</h4>
-          <p class="card-text">{{ data.OfferDescription }}</p>
+          <h5 class="card-title">{{ data.companyName }}</h5>
+          <h4 class="card-title">{{ data.offerTitle }}</h4>
+          <p class="card-text">{{ data.offerDescription }}</p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ data.Salary }}</li>
-            <li class="list-group-item">{{ data.YearsOfExperience }}</li>
-            <li class="list-group-item">{{ data.TypeOfContract }}</li>
+            <li class="list-group-item">{{ data.salary }}</li>
+            <li class="list-group-item">{{ data.yearsOfExperience }}</li>
+            <li class="list-group-item">{{ data.typeOfContract }}</li>
           </ul>
-          <button type="button" class="btn btn-primary btn-link">Apply</button>
+          <button type="button" (click)="apply(data)"  [routerLink]="['/views/chat']" class="btn btn-primary btn-link">Apply</button>
           <button
             *ngIf="!follows[i]"
             type="button"

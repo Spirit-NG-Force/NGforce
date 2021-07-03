@@ -1,16 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile} from '@nestjs/common';
 import { CreateCvService } from './create-cv.service';
 import { CreateCreateCvDto } from './dto/create-create-cv.dto';
 import { UpdateCreateCvDto } from './dto/update-create-cv.dto';
+import { FileInterceptor } from "@nestjs/platform-express";
 
 @Controller('create-cv')
 export class CreateCvController {
   constructor(private readonly createCvService: CreateCvService) {}
 
   @Post()
+  // @UseInterceptors(FileInterceptor('file'))
   create(@Body() createCreateCvDto: CreateCreateCvDto) {
+    console.log(createCreateCvDto)
     return this.createCvService.create(createCreateCvDto);
   }
+
   @Post("/searchcv")
   find( @Body() updateCreateCvDto: UpdateCreateCvDto) {
     return this.createCvService.findTwo(updateCreateCvDto);
@@ -20,7 +24,6 @@ export class CreateCvController {
   findAll() {
     return this.createCvService.findAll();
   }
-
 
   @Get(':id')
   findOne(@Param('id') id: string) {
@@ -32,8 +35,11 @@ export class CreateCvController {
     return this.createCvService.update(id, updateCreateCvDto);
   }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.createCvService.remove(id);
-  // }
+  @Post("testcloudinary")
+  @UseInterceptors(FileInterceptor('file'))
+  createimage(@UploadedFile() file : Express.Multer.File) {
+    console.log(file)
+    return this.createCvService.uploadImageToCloudinary(file)
+  }
+
 }

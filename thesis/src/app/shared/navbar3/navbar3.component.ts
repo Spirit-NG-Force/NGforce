@@ -19,7 +19,7 @@ export class Navbar3Component implements OnInit {
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
     logout(){
-      localStorage.removeItem("email")
+      localStorage.removeItem("userid")
       
       
   }

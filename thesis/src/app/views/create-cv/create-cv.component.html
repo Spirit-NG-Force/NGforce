@@ -85,7 +85,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
                     </div>
-                    <input type="text" class="form-control" name="lastname" [(ngModel)]="lastname"
+                    <input type="text" class="form-control" name="lastname" [(ngModel)]="lastName"
                       placeholder="Your Last Name..." (focus)="focus=true" (blur)="focus=false">
                   </div>
                 </div>
@@ -181,7 +181,15 @@
                     (selectAll)="test($event)" (deSelectAll)="test($event)"></app-multiselect>
                 </div>
                 <div>
-                  <app-image [isRound]="true"></app-image>
+                  <!-- <app-image [isRound]="true" (ngSubmit)="onSubmit()"></app-image> -->
+                  <div class="form-group">
+                    <label for="file" class="btn">Add Your Picture</label>
+                    <input type="file"
+                           id="file"
+                           (change)="handleFileInput($event.target.files)" 
+                           [(ngModel)]="img"
+                       >
+                </div>
                 </div>
 
               </div>

@@ -6,7 +6,9 @@ import { Routes, RouterModule, RoutesRecognized , CanActivate } from '@angular/r
 import { PresentationComponent } from './presentation/presentation.component';
 import { ElementsComponent } from './elements/elements.component';
 import { SectionsComponent } from './sections/sections.component';
-import { ChatComponent } from './chat/chat.component';;
+import { ChatComponent } from './chat/chat.component';
+import {DashboardComponent  } from './dashboard/dashboard.component';
+
 import { PostComponent } from './views/post/post.component';
  import {  HomeComponent } from './views/home/home.component';
  import { LandingComponent } from './views/landing/landing.component';
@@ -17,14 +19,12 @@ import { PostComponent } from './views/post/post.component';
  import { SearchuComponent } from './views/searchu/searchu.component';
 import { SignupComponent } from './views/signup/signup-u.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
-
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
 import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
-// import { PricingComponent } from './examples/pricing/pricing.component';
 import  {SuccessUrlComponent} from './views/success-url/success-url.component';
 import { FailUrlComponent } from './views/fail-url/fail-url.component';
-
+import { AuthService } from './auth/auth.service';
 
 import { 
     AuthGuardService as AuthGuard 
@@ -41,16 +41,17 @@ import {
      { path: 'views/post',   component: PostComponent ,canActivate: [AuthroleGuard]},
     { path: 'views/createcv',    component: CreateCvComponent,canActivate: [AuthGuard] },
     { path: 'views/notificationuser',    component: NotificationuserComponent,canActivate: [AuthGuard] },
-    { path: 'views/calendar',    component: CalendarComponent },
+    { path: 'views/calendar',    component: CalendarComponent ,canActivate: [AuthService]},
      { path: 'views/landing',     component: LandingComponent },
      { path: 'views/login',       component: LoginComponent },
      { path: 'views/company',     component: CompanyComponent },
     { path: 'views/searchc', component: SearchcComponent,canActivate: [AuthroleGuard] },
      { path: 'views/home',     component:  HomeComponent ,canActivate: [AuthroleGuard]},
-    //  { path: 'views/company',component: CompanyComponent },
+      { path: 'views/dashboard',component: DashboardComponent  },
+     
     { path: 'views/searchu', component: SearchuComponent ,canActivate: [AuthGuard] },
     { path: 'views/profil', component: ProfilComponent, canActivate: [AuthGuard] },
-     { path: 'views/chat',     component: ChatComponent },
+     { path: 'views/chat',     component: ChatComponent ,canActivate: [AuthService]},
      { path: 'views/signup',    component: SignupComponent },
      { path: 'views/failPayment',    component: FailUrlComponent },
      { path: 'views/successPayment',    component: SuccessUrlComponent },

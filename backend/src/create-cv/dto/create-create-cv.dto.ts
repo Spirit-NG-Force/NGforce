@@ -46,10 +46,7 @@ export class CreateCreateCvDto {
   field: string;
   @IsInt()
   phone:number;
-  @MinLength(1, {
-    message: 'Title is too short',
-  })
+ 
   img:string;
-
 
 }

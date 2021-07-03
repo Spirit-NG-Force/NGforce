@@ -12,72 +12,7 @@ export class CreateCvComponent implements OnInit {
   zoom: number = 14;
   lat: number = 44.445248;
   lng: number = 26.099672;
-  styles: any[] = [
-    {
-      featureType: "water",
-      elementType: "geometry",
-      stylers: [{ color: "#e9e9e9" }, { lightness: 17 }],
-    },
-    {
-      featureType: "landscape",
-      elementType: "geometry",
-      stylers: [{ color: "#f5f5f5" }, { lightness: 20 }],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "geometry.fill",
-      stylers: [{ color: "#ffffff" }, { lightness: 17 }],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "geometry.stroke",
-      stylers: [{ color: "#ffffff" }, { lightness: 29 }, { weight: 0.2 }],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "geometry",
-      stylers: [{ color: "#ffffff" }, { lightness: 18 }],
-    },
-    {
-      featureType: "road.local",
-      elementType: "geometry",
-      stylers: [{ color: "#ffffff" }, { lightness: 16 }],
-    },
-    {
-      featureType: "poi",
-      elementType: "geometry",
-      stylers: [{ color: "#f5f5f5" }, { lightness: 21 }],
-    },
-    {
-      featureType: "poi.park",
-      elementType: "geometry",
-      stylers: [{ color: "#dedede" }, { lightness: 21 }],
-    },
-    {
-      elementType: "labels.text.stroke",
-      stylers: [{ visibility: "on" }, { color: "#ffffff" }, { lightness: 16 }],
-    },
-    {
-      elementType: "labels.text.fill",
-      stylers: [{ saturation: 36 }, { color: "#333333" }, { lightness: 40 }],
-    },
-    { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-    {
-      featureType: "transit",
-      elementType: "geometry",
-      stylers: [{ color: "#f2f2f2" }, { lightness: 19 }],
-    },
-    {
-      featureType: "administrative",
-      elementType: "geometry.fill",
-      stylers: [{ color: "#fefefe" }, { lightness: 20 }],
-    },
-    {
-      featureType: "administrative",
-      elementType: "geometry.stroke",
-      stylers: [{ color: "#fefefe" }, { lightness: 17 }, { weight: 1.2 }],
-    },
-  ];
+
   data: Date = new Date();
   focus;
   focus1;
@@ -114,7 +49,7 @@ export class CreateCvComponent implements OnInit {
     { id: 3, itemName: "Marketing" },
    
   ];
-  token : string=localStorage.getItem("email")
+  token : string=localStorage.getItem("userid")
   name: string;
   lastName: string;
   age: number;
@@ -126,7 +61,9 @@ export class CreateCvComponent implements OnInit {
   expyear :string;
   field: string;
   phone:number;
-  
+  img : string;
+  fileToUpload: File | null = null;
+
   email1 : string
   name1 :string;
   lastname1 : string;
@@ -136,46 +73,76 @@ export class CreateCvComponent implements OnInit {
   constructor(public router: Router,private jobservice :JobofferService) {}
   click(event){
     
-    console.log(event.itemName)
+    
     this.field=event.itemName
   }
   click1(event){
     
-    console.log(event.itemName)
+    
     this.studylevel=event.itemName
   }
   click2(event){
     
-    console.log(event.itemName)
+    
     this.expyear=event.itemName
   }
-onSubmit(){
- 
-  this.jobservice.decode(this.token).subscribe((id)=>{
-    console.log(id.email)
-    const obj={
-     id : id.email,
-     name : this.name,
-     lastname : this.lastName,
-     age: this.age,
-     email: this.email ,
-     adress: this.adress,
-     descProfil: this.descProfil,
-     ProfExp: this.ProfExp,
-     studylevel: this.studylevel,
-     expyear :this.expyear,
-     field: this.field,
-     phone:this.phone
-    }
-   this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
-   if(!update){
-    this.jobservice.createcv(obj).subscribe((create)=>{
-      this.router.navigate(['views/profil'])
-      console.log(create)
-      })
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
   
-   }
-   })
+  }
+
+  onSubmit(){
+  this.jobservice.decode(this.token).subscribe(id=>{
+
+    var obj={
+      id : id.userid,
+      name : this.name,
+      lastname : this.lastName,
+      age: this.age,
+      email: this.email ,
+      adress: this.adress,
+      descProfil: this.descProfil,
+      ProfExp: this.ProfExp,
+      studylevel: this.studylevel,
+      expyear :this.expyear,
+      field: this.field,
+      phone:this.phone, 
+      img:"https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
+     }
+     if(this.fileToUpload) {
+     
+    const file = new FormData() 
+    file.append("file",this.fileToUpload)
+    
+    this.jobservice.postimg(file).subscribe(data => {
+      obj.img=data.url 
+      
+     
+    this.jobservice.updatecv(id.userid,obj).subscribe((update)=>{
+    if(!update){
+      this.jobservice.createcv(obj).subscribe((create)=>{
+        this.router.navigate(['views/profil'])
+        
+        return 
+        })
+    }
+    this.router.navigate(['views/profil'])
+    return
+    })
+    })
+  }
+    else {
+         this.jobservice.updatecv(id.userid,obj).subscribe((update)=>{
+      if(!update){
+        this.jobservice.createcv(obj).subscribe((create)=>{
+          this.router.navigate(['views/profil'])
+         
+          })
+      }
+      this.router.navigate(['views/profil'])
+      })
+    }
   })
    
 }
@@ -199,7 +166,7 @@ onSubmit1(){
     delete obj.password
   }
   this.jobservice.decode(this.token).subscribe((id)=>{
-this.jobservice.updatuser(id.email,obj).subscribe((upd)=>
+this.jobservice.updatuser(id.userid,obj).subscribe((upd)=>
 console.log(upd)
 )
   })

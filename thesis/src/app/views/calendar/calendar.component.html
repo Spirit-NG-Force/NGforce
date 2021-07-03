@@ -17,8 +17,8 @@
         <div class="card-body">
           <div id='calendar'></div>
           <!-- <div id='destination-calendar'></div> -->
-          <div *ngFor="let cal of calendardetails;let i = index">
-           <form class="form" method="" action="" (ngSubmit)="onSubmit(cal.start,i)">
+          <div *ngFor="let cal of bigcalend">
+           <form class="form" method="" action="" (ngSubmit)="onSubmit(cal.start,cal._id)">
             <div class="form-group">
               
               
@@ -26,13 +26,13 @@
               </div>
              
             <div>{{cal.title}}</div>
-            <input class="form-control" type="title" name="title" [(ngModel)]="title" placeholder="Event Title" id="input-field">
+            <input class="form-control" type="title" name="title" [(ngModel)]="title" placeholder="Event Title" >
            <div>{{cal.start}}</div>
-           <input class="form-control"  type="time" name="time" [(ngModel)]="time" placeholder="Time start" id="input-field1">
+           <input class="form-control"  type="time" name="time" [(ngModel)]="time" placeholder="Time start" >
            <div>{{cal.color}}</div>
-           <select name="color" [(ngModel)]="color"  id="input-field2" > <option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option></select>' 
+           <select name="color" [(ngModel)]="color"   > <option value="red">Red</option><option value="blue">Blue</option><option value="green">Green</option><option value="pink">Pink</option></select>' 
            <input type="submit" class="btn btn-primary btn-raised btn-round" value="Modify" />
-           <input  (click)="delete(cal.start,i)"class="btn btn-primary btn-raised btn-round" value="Delete" />
+           <input  (click)="delete(cal.start,cal._id)"class="btn btn-primary btn-raised btn-round" value="Delete" />
           </form>
           </div>
         </div>

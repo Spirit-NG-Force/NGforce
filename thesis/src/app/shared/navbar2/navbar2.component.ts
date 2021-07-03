@@ -19,7 +19,7 @@ export class Navbar2Component implements OnInit {
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     }
     logout(){
-        localStorage.removeItem("email1")
+        localStorage.removeItem("companyid")
         }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
