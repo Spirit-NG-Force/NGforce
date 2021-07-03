@@ -7,8 +7,8 @@ import { Signup } from "../Signup";
 })
 export class JobofferService {
   private apiUrl = "http://localhost:3000/"; 
-  private apiUrl_initkonect = "https://api.preprod.konnect.network/api/v1/payments/init-payment"; 
-  private apiUrl_konect="https://api.preprod.konnect.network/api/v1/payments/:id";
+  private apiUrl_initkonect = "https://api.konnect.network/api/v1/payments/init-payment"; 
+  private apiUrl_konect="https://api.konnect.network/api/v1/payments/:id";
   
   constructor(private http: HttpClient) {}
 
@@ -25,10 +25,10 @@ export class JobofferService {
     return this.http.delete<any>(this.apiUrl+`/${option}` );
   }
   getAllCompanies(): Observable<any> {
-    return this.http.get<any>(this.apiUrl1 );
+    return this.http.get<any>(this.apiUrl + "company");
   }
   deleteCompany(option:any): Observable<any> {
-    return this.http.delete<any>(this.apiUrl1+`/${option}` );
+    return this.http.delete<any>(this.apiUrl+`company/${option}` );
   }
   getCompany(option: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + "company/login" , option);
