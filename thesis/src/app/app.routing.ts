@@ -3,7 +3,6 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule, RoutesRecognized , CanActivate } from '@angular/router';
-import { PresentationComponent } from './presentation/presentation.component';
 import { ElementsComponent } from './elements/elements.component';
 import { SectionsComponent } from './sections/sections.component';
 import { ChatComponent } from './chat/chat.component';;
@@ -20,8 +19,6 @@ import { CreateCvComponent } from './views/create-cv/create-cv.component';
 
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
-import { NucleoiconsComponent } from './elements/nucleoicons/nucleoicons.component';
-// import { PricingComponent } from './examples/pricing/pricing.component';
 import  {SuccessUrlComponent} from './views/success-url/success-url.component';
 import { FailUrlComponent } from './views/fail-url/fail-url.component';
 import { AuthService } from './auth/auth.service';
@@ -34,10 +31,6 @@ import {
   } from './auth/role-guard.service';
   let routes: Routes =[
     { path: '', redirectTo: 'views/profil', pathMatch: 'full' },
-    { path: 'presentation',         component: PresentationComponent },
-    { path: 'elements',           component: ElementsComponent },
-    { path: 'sections',             component: SectionsComponent },
-    { path: 'nucleoicons',          component: NucleoiconsComponent },
      { path: 'views/post',   component: PostComponent ,canActivate: [AuthroleGuard]},
     { path: 'views/createcv',    component: CreateCvComponent,canActivate: [AuthGuard] },
     { path: 'views/notificationuser',    component: NotificationuserComponent,canActivate: [AuthGuard] },
@@ -47,13 +40,12 @@ import {
      { path: 'views/company',     component: CompanyComponent },
     { path: 'views/searchc', component: SearchcComponent,canActivate: [AuthroleGuard] },
      { path: 'views/home',     component:  HomeComponent ,canActivate: [AuthroleGuard]},
-    //  { path: 'views/company',component: CompanyComponent },
     { path: 'views/searchu', component: SearchuComponent ,canActivate: [AuthGuard] },
     { path: 'views/profil', component: ProfilComponent, canActivate: [AuthGuard] },
      { path: 'views/chat',     component: ChatComponent ,canActivate: [AuthService]},
      { path: 'views/signup',    component: SignupComponent },
-     { path: 'views/failPayment',    component: FailUrlComponent },
-     { path: 'views/successPayment',    component: SuccessUrlComponent },
+     { path: 'views/failPayment',    component: FailUrlComponent,canActivate: [AuthroleGuard] },
+     { path: 'views/successPayment',    component: SuccessUrlComponent,canActivate: [AuthroleGuard] },
      
 ];
 
@@ -64,7 +56,6 @@ import {
         FormsModule,
         
         RouterModule.forRoot(routes,{
-          //enableTracing:true,
           useHash: true
         })
     ],

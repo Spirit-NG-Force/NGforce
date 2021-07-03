@@ -7,14 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { SectionsModule } from './sections/sections.module';
 import { ElementsModule } from './elements/elements.module';
-import { ExamplesModule } from './examples/examples.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AppComponent } from './app.component';
-import { PresentationComponent } from './presentation/presentation.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { PresentationModule } from './presentation/presentation.module';
 import { LandingComponent } from './views/landing/landing.component';
 import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup-u.component';
@@ -33,8 +30,6 @@ import { HomeComponent } from './views/home/home.component';
 import { PostComponent } from './views/post/post.component';
 import { ImageComponent } from './components/image/image.component';
 import { ChatComponent } from './chat/chat.component';
-// import { MessagesComponent } from './chat/messages/messages.component';
-// import { SidebarComponent } from './chat/sidebar/sidebar.component';
 import { ChatModule } from './chat/chat.module';
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { SuccessUrlComponent } from './views/success-url/success-url.component';
@@ -76,10 +71,8 @@ import { FailUrlComponent } from './views/fail-url/fail-url.component';
         FormsModule,
         RouterModule,
         AppRoutingModule,
-        PresentationModule,
         SectionsModule,
         ElementsModule,
-        ExamplesModule,
         HttpClientModule,
         JwtModule,
         ChatModule
