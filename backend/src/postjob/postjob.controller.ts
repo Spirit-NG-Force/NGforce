@@ -5,9 +5,11 @@ import {
   Body,
   Param,
   Delete,
+  Patch
 } from '@nestjs/common';
 import { PostjobService } from './postjob.service';
 import { CreatePostjobDto } from './dto/create-postjob.dto';
+import { UpdatePostjobDto } from './dto/update-postjob.dto';
 import { CompanyService } from 'src/company/company.service';
 
 @Controller('postjob')
@@ -25,7 +27,7 @@ export class PostjobController {
   }
   @Post('/searchps')
   find(@Body() updatePostjobDto: any) {
-    return this.postjobService.findOne1(updatePostjobDto);
+    return this.postjobService. findfrompostjob(updatePostjobDto);
   }
 
   @Get()
@@ -39,13 +41,13 @@ export class PostjobController {
   }
   @Get('/:id/find')
   findTwo(@Param('id') id: string) {
-    return this.postjobService.findOne2(id);
+    return this.postjobService. findfromcompany(id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updatePostjobDto: UpdatePostjobDto) {
-  //   return this.postjobService.update(id, updatePostjobDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updatePostjobDto: UpdatePostjobDto) {
+    return this.postjobService.update(id, updatePostjobDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

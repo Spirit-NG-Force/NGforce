@@ -6,6 +6,4 @@ export interface Calendar extends Document{
   start: string;
   end:string;
   color : string;
-  
-
 }

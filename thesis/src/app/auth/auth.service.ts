@@ -7,8 +7,8 @@ import { Router, CanActivate } from '@angular/router';
 export class AuthService implements CanActivate {
   constructor( public router: Router) {}
   canActivate(): boolean {
-    let token = localStorage.getItem('email');
-    let token1=localStorage.getItem('email1')
+    let token = localStorage.getItem('userid');
+    let token1=localStorage.getItem('companyid')
     if (token || token1) {
     
       

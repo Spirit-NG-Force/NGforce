@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 ml-auto mr-auto text-center">
-          <h2 class="title">Welcome </h2>
+          <h2 class="title">Welcome {{ datas.companyName }}</h2>
           <h4 class="description text-white">
             Manage your professional image. Build and communicate with your
             professional network.
@@ -30,15 +30,15 @@
         <div class="card card-testimonial">
           <div class="card-body">
             <p class="card-description">
-              {{ data.OfferDescription }}
+              {{ data.offerDescription }}
             </p>
           </div>
 
           <div class="card-footer">
-            <h4 class="card-title">{{ data.OfferTitle }}</h4>
-            <p class="category">{{ data.TypeOfContract }}</p>
-            <p class="category">{{ data.Salary }}</p>
-            <p class="category">{{ data.YearsOfExperience }}</p>
+            <h4 class="card-title">{{ data.offerTitle }}</h4>
+            <p class="category">{{ data.typeOfContract }}</p>
+            <p class="category">{{ data.salary }}</p>
+            <p class="category">{{ data.yearsOfExperience }}</p>
           </div>
 
           <form
@@ -62,7 +62,7 @@
                   type="text"
                   class="form-control"
                   name="OfferTitle"
-                  [(ngModel)]="OfferTitle"
+                  [(ngModel)]="offerTitle"
                   placeholder="Your OfferTitle..."
                   (focus)="focus = true"
                   (blur)="focus = false"
@@ -84,7 +84,7 @@
                   type="text"
                   class="form-control"
                   name="OfferDescription"
-                  [(ngModel)]="OfferDescription"
+                  [(ngModel)]="offerDescription"
                   placeholder="Your OfferTitle..."
                   (focus)="focus = true"
                   (blur)="focus = false"

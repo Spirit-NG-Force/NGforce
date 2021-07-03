@@ -8,10 +8,7 @@ import {InjectModel} from "@nestjs/mongoose";
 export class FavoriteService {
   constructor(@InjectModel('favorite') private readonly favorite: Model<Favorite>){}
   create(createFavoriteDto: CreateFavoriteDto) {
-   
       return this.favorite.create(createFavoriteDto)
-   
-    
   }
 
   findAll() {

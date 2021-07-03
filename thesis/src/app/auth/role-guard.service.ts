@@ -7,7 +7,7 @@ export class RoleGuardService implements CanActivate {
 
   constructor(public router: Router) { }
   canActivate(): boolean {
-    let token = localStorage.getItem('email1');
+    let token = localStorage.getItem('companyid');
     if (token) {
     
       

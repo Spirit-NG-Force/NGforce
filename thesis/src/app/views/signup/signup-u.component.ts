@@ -25,10 +25,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
   
-    if (localStorage.getItem("email")) {
+    if (localStorage.getItem("userid")) {
       this.router.navigate(["views/profil"]);
     }
-    else if (localStorage.getItem("email1")) {
+    else if (localStorage.getItem("companyid")) {
       this.router.navigate(["views/home"]);
     }
     var body = document.getElementsByTagName("body")[0];
@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     navbar.classList.remove("fixed-top");
   }
   onSubmit(){
-    console.log("hello")
+    
     const obj = {
       name: this.name,
       lastname: this.lastname,

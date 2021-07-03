@@ -55,9 +55,10 @@
     flex-direction: column;
 }
 #container #body .message .messageContent {
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 10px;
+   
 }
 #container #body .message .messageContent .time {
     text-align: right;

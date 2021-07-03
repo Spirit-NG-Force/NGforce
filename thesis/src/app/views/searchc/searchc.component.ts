@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as Rellax from 'rellax';
 import {JobofferService} from '../../service/joboffer.service'
-import { JobofferService1} from '../../service/joboffer1.service'
+import { followsService} from '../../service/follows.service'
 import {WebsocketService} from '../../service/websocket.service'
 @Component({
   selector: 'app-searchc',
@@ -19,7 +19,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     dropdownSettings1 = {};
     focus;
     focus1;
-    token : any=localStorage.getItem("email1")
+    token : any=localStorage.getItem("companyid")
     data : Date = new Date();
     alldatas : any;
     datas : any;
@@ -29,11 +29,11 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     studylevel : string;
     addfavo : any=[]
 
-    constructor(private jobservice :JobofferService,private jobservice1 :JobofferService1,private websocket :WebsocketService) { }
+    constructor(private jobservice :JobofferService,private followservice :followsService,private websocket :WebsocketService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
-      // var rellaxText = new Rellax('.rellax-text');
+      
 
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('about-us');
@@ -50,9 +50,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
         this.dropdownSettings = {
                                   singleSelection: true,
                                   text:"Speciality",
-                                  // selectAllText:'Select All',
-                                  // unSelectAllText:'UnSelect All',
-                                  // enableSearchFilter: true,
+                                 
                                   classes:"",
                                   lazyLoading: true,
                                   maxHeight: 100
@@ -62,7 +60,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
        this.alldatas=post  
        this.datas=post})
        this.jobservice.decode(this.token).subscribe((id)=>{
-        this.jobservice1.getfavorite(id.email1).subscribe((get)=>{
+        this.followservice.getfavorite(id.companyid).subscribe((get)=>{
             for(let i=0;i<this.datas.length;i++){
                 let bol=false
                 for(let j=0;j<get.length;j++){
@@ -85,22 +83,21 @@ export class  SearchcComponent implements OnInit, OnDestroy {
 
     }
     click(event){
-        console.log(event.target.innerText)
+       
         this.field=event.target.innerText
     }
     click1(event){
-        console.log(event.target.innerText)
+        
         this.studylevel=event.target.innerText
       
     }
     click2(event){
-        console.log(event.target.innerText)
+     
         this.expyear=event.target.innerText
     }
 
     onSubmit(){
-        console.log(this.datas)
-        console.log(this.descProfil)
+       
         const obj={
          descProfil:this.descProfil,
          field:this.field,
@@ -133,7 +130,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
             let dat=this.datas[i].descProfil
          if(dat.indexOf(this.descProfil)===0){
           result.push(this.datas[i])
-          console.log(result)
+         
          }
         }
         if(result){
@@ -152,7 +149,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
         const msg={
             text:"hello user" ,
             sender:"Company",
-            company_id:id.email1,
+            company_id:id.companyid,
             user_id:data.id
           }
           
@@ -171,14 +168,14 @@ export class  SearchcComponent implements OnInit, OnDestroy {
            }
         this.jobservice.decode(this.token).subscribe((id)=>{
         const obj={
-            idcompany : id.email1,
+            idcompany : id.companyid,
             iduser : data.id,
             name : data.name,
             title : data.descProfil,
             description : data.ProfExp
         }
         console.log(obj)
-        this.jobservice1.createfavorite(obj).subscribe((create)=>console.log(create))
+        this.followservice.createfavorite(obj).subscribe((create)=>console.log(create))
         })
     }
     delete(data){
@@ -187,7 +184,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
                 this.addfavo[i]=!this.addfavo[i]
             }
            }
-        this.jobservice1.deletefavorite(data.id).subscribe((del)=>console.log(del))
+        this.followservice.deletefavorite(data.id).subscribe((del)=>console.log(del))
     }
 
     onItemSelect(item:any){

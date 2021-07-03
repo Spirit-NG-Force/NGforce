@@ -5,7 +5,9 @@ import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule, RoutesRecognized , CanActivate } from '@angular/router';
 import { ElementsComponent } from './elements/elements.component';
 import { SectionsComponent } from './sections/sections.component';
-import { ChatComponent } from './chat/chat.component';;
+import { ChatComponent } from './chat/chat.component';
+import {DashboardComponent  } from './dashboard/dashboard.component';
+
 import { PostComponent } from './views/post/post.component';
  import {  HomeComponent } from './views/home/home.component';
  import { LandingComponent } from './views/landing/landing.component';
@@ -16,7 +18,6 @@ import { PostComponent } from './views/post/post.component';
  import { SearchuComponent } from './views/searchu/searchu.component';
 import { SignupComponent } from './views/signup/signup-u.component';
 import { CreateCvComponent } from './views/create-cv/create-cv.component';
-
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
 import  {SuccessUrlComponent} from './views/success-url/success-url.component';
@@ -40,6 +41,8 @@ import {
      { path: 'views/company',     component: CompanyComponent },
     { path: 'views/searchc', component: SearchcComponent,canActivate: [AuthroleGuard] },
      { path: 'views/home',     component:  HomeComponent ,canActivate: [AuthroleGuard]},
+      { path: 'views/dashboard',component: DashboardComponent  },
+     
     { path: 'views/searchu', component: SearchuComponent ,canActivate: [AuthGuard] },
     { path: 'views/profil', component: ProfilComponent, canActivate: [AuthGuard] },
      { path: 'views/chat',     component: ChatComponent ,canActivate: [AuthService]},
