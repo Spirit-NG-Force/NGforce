@@ -11,8 +11,8 @@ export class JobofferService {
   private apiUrl2 = "http://localhost:3000/create-cv";
   private apiUrl3 = "http://localhost:3000/postjob"; 
   private apiUrl4 = "http://localhost:3000/calendar"; 
-  private apiUrl5 = "https://api.preprod.konnect.network/api/v1/payments/init-payment"; 
-  private apiUrl6="https://api.preprod.konnect.network/api/v1/payments/:id"
+  private apiUrl5 = "https://api.konnect.network/api/v1/payments/init-payment"; 
+  private apiUrl6="https://api.².network/api/v1/payments/:id"
   private apiUrl7="http://localhost:3000/subscription"
   constructor(private http: HttpClient) {}
 

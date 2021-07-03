@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit {
     this.jobservice.decode(this.token).subscribe((id) => {
         const company= id.email1
        const obj = {
-      receiverWallet: "60d5d753e1add7620c68faf9",
+      receiverWallet: "60e01c4ee1add7620c68fc56",
       amount,
       selectedPaymentMethod: "gateway",
       token: "TND",
