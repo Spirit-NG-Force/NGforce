@@ -14,8 +14,11 @@ export class LandingComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {
-    if(localStorage.getItem("email")){
+    if(localStorage.getItem("userid")){
       this.router.navigate(['views/profil'])
+      }
+      else if(localStorage.getItem("companyid")){
+        this.router.navigate(['views/home'])
       }
     var rellaxHeader = new Rellax('.rellax-header');
 

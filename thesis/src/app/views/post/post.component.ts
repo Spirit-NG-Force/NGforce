@@ -111,8 +111,8 @@ export class PostComponent implements OnInit {
   
   ];
   selectedItems2 = [];
-  token : string = localStorage.getItem("email1")
-  company:string ; 
+  token : string = localStorage.getItem("companyid")
+  companyName:string ; 
   offerTitle:string ; 
   offerDescription:string ; 
   typeOfContract:string ; 
@@ -139,10 +139,10 @@ export class PostComponent implements OnInit {
   onSubmit(){
  
     this.jobservice.decode(this.token).subscribe((id)=>{
-      console.log(id.email1)
+      
       const obj={
-       id : id.email1,
-       company: id.email1,
+       company: id.companyid ,
+       companyName : this.companyName,
        offerTitle: this.offerTitle,
        offerDescription: this.offerDescription,
        typeOfContract: this.typeOfContract,
@@ -153,8 +153,8 @@ export class PostComponent implements OnInit {
         this.router.navigate(['views/home'])
         console.log(create)
         })
-        const obj1= {message : this.company+" has posted a job for "+this.offerTitle,
-      sender : id.email1 }
+        const obj1= {message : this.companyName+" has posted a job for "+this.offerTitle,
+      sender : id.companyid }
     this.jobservice1.addnotification(obj1).subscribe((add)=>console.log(add))
     
      
