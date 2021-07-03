@@ -10,6 +10,9 @@ export class Postjob {
     company: Company
     
     @Prop()
+    companyName: string;
+
+    @Prop()
     offerTitle: string;
     
     @Prop()

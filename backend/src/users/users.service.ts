@@ -51,7 +51,7 @@ export class UsersService {
     const { password } = user;
     const isMatch = await bcrypt.compare(updateUserDto.password, password);
     if (isMatch) {
-      const payload = { email: user._id };
+      const payload = { userid : user._id };
 
       const token = this.jwtService.sign(payload);
       return JSON.stringify({ token });

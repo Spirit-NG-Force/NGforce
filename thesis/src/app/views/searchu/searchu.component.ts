@@ -21,7 +21,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     focus;
     focus1;
     iduser : string;
-    token : string=localStorage.getItem("email");
+    token : string=localStorage.getItem("userid");
     data : Date = new Date();
     follows : any=[];
     datas : any
@@ -63,7 +63,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         this.alldatas=post  
         this.datas=post
         for(let i =0 ; i<this.datas.length;i++){
-            this.jobservice1.getfollow(this.iduser,this.datas[i].id).subscribe((get)=>{
+            this.jobservice1.getfollow(this.iduser,this.datas[i].company).subscribe((get)=>{
                 if(get.length===0){
                     this.follows.push(false)
                 }
@@ -79,7 +79,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     })
    
     this.jobservice.decode(this.token).subscribe((id)=>{
-        this.iduser=id.email
+        this.iduser=id.userid
  
  })     
  
@@ -100,8 +100,6 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         this.YearsOfExperience=event.target.innerText
     }
     onSubmit(){
-        console.log(this.datas)
-        console.log(this.OfferTitle)
         const obj={
          TypeOfContract:this.TypeOfContract,
          Salary:this.Salary,
@@ -137,7 +135,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         if(result){
            this.datas=result 
         }
-        
+
         }
         
         })
@@ -150,8 +148,8 @@ export class  SearchuComponent implements OnInit, OnDestroy {
             const msg={
                 text:"i want to apply for "+data.OfferTitle ,
                 sender:"User",
-                company_id:data.id,
-                user_id:id.email
+                company_id:data.company,
+                user_id:id.userid
               }
               
               this.websocket.postMessages(msg).subscribe((msg)=>{
@@ -163,22 +161,22 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     }
     follow(data){
       for(let i=0;i<this.datas.length;i++){
-       if(this.datas[i].id===data.id){
+       if(this.datas[i].company===data.company){
            this.follows[i]=!this.follows[i]
        }
       }
 console.log(this.iduser)
-const obj={iduser:this.iduser,idcompany : data.id}
+const obj={iduser:this.iduser , idcompany : data.company}
 this.jobservice1.addfollow(obj).subscribe((add)=>console.log(add))
 
     }
     unfollow(data){
         for(let i=0;i<this.datas.length;i++){
-            if(this.datas[i].id===data.id){
+            if(this.datas[i].company===data.company){
                 this.follows[i]=!this.follows[i]
             }
            }
-        this.jobservice1.deletefollow(this.iduser,data.id).subscribe((del)=>console.log(del))
+        this.jobservice1.deletefollow(this.iduser, data.company).subscribe((del)=>console.log(del))
     }
     onItemSelect(item:any){
         console.log(item);

@@ -114,7 +114,7 @@ export class CreateCvComponent implements OnInit {
     { id: 3, itemName: "Marketing" },
    
   ];
-  token : string=localStorage.getItem("email")
+  token : string=localStorage.getItem("userid")
   name: string;
   lastName: string;
   age: number;
@@ -161,7 +161,7 @@ export class CreateCvComponent implements OnInit {
   this.jobservice.decode(this.token).subscribe(id=>{
     console.log(id.email)
     var obj={
-      id : id.email,
+      id : id.userid,
       name : this.name,
       lastname : this.lastName,
       age: this.age,
@@ -184,7 +184,7 @@ export class CreateCvComponent implements OnInit {
       obj.img=data.url 
       console.log(this.img)
       console.log("OBJ OF CREATECV3 ",obj)
-    this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
+    this.jobservice.updatecv(id.userid,obj).subscribe((update)=>{
     if(!update){
       this.jobservice.createcv(obj).subscribe((create)=>{
         this.router.navigate(['views/profil'])
@@ -198,7 +198,7 @@ export class CreateCvComponent implements OnInit {
     })
   }
     else {
-         this.jobservice.updatecv(id.email,obj).subscribe((update)=>{
+         this.jobservice.updatecv(id.userid,obj).subscribe((update)=>{
       if(!update){
         this.jobservice.createcv(obj).subscribe((create)=>{
           this.router.navigate(['views/profil'])
@@ -231,7 +231,7 @@ onSubmit1(){
     delete obj.password
   }
   this.jobservice.decode(this.token).subscribe((id)=>{
-this.jobservice.updatuser(id.email,obj).subscribe((upd)=>
+this.jobservice.updatuser(id.userid,obj).subscribe((upd)=>
 console.log(upd)
 )
   })

@@ -30,11 +30,11 @@ option : string
     
     this.jobservice.decode(this.token).subscribe((id)=>{
     
-     if(localStorage.getItem("email")){
-       this.option=id.email
+     if(localStorage.getItem("userid")){
+       this.option=id.userid
      }
-     else if(localStorage.getItem("email1")){
-      this.option=id.email1
+     else if(localStorage.getItem("companyid")){
+      this.option=id.companyid
       this.bolean=false
     }
    

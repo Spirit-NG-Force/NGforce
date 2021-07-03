@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
 
   favorites: any = [];
 
-  token: string = localStorage.getItem("email1");
+  token: string = localStorage.getItem("companyid");
   datas: any = ["NO POST"];
   constructor(
     public router: Router,
@@ -77,8 +77,7 @@ export class HomeComponent implements OnInit {
   onSubmit(data) {
     console.log(data);
     this.jobservice.decode(this.token).subscribe((id) => {
-      console.log(id.email1);
-      // var company = id.email1
+      
       const obj = { 
         companyName: this.companyName,
         offerTitle: this.offerTitle,
@@ -117,11 +116,11 @@ export class HomeComponent implements OnInit {
     navbar.classList.add("navbar-transparent");
     this.jobservice.decode(this.token).subscribe((id) => {
       console.log(id);
-      this.jobservice.getpostjobs(id.email1).subscribe((data) => {
+      this.jobservice.getpostjobs(id.companyid).subscribe((data) => {
         this.datas = data;
         console.log(data);
       });
-      this.jobservice1.getfavorite(id.email1).subscribe((get) => {
+      this.jobservice1.getfavorite(id.companyid).subscribe((get) => {
         this.favorites = get;
         console.log(this.favorites);
       });
@@ -131,7 +130,7 @@ export class HomeComponent implements OnInit {
   onSubmitPayment(pack_name, amount) {
 
     this.jobservice.decode(this.token).subscribe((id) => {
-        const company= id.email1
+        const company= id.companyid
        const obj = {
       receiverWallet: "60d5d753e1add7620c68faf9",
       amount,
