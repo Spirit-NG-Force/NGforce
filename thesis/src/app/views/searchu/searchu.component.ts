@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from 'angular2-multiselect-dropdown/lib/multiselect.service';
 import * as Rellax from 'rellax';
 import {JobofferService} from '../../service/joboffer.service'
-import { JobofferService1 } from 'app/service/joboffer1.service';
-
+import { followsService } from 'app/service/follows.service';
+import { WebsocketService } from 'app/service/websocket.service';
 @Component({
   selector: 'app-searchu',
   templateUrl: './searchu.component.html',
   styleUrls: ['./searchu.component.css'],
+  providers:[WebsocketService]
 })
 export class  SearchuComponent implements OnInit, OnDestroy {
     dropdownList = [];
@@ -29,7 +30,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     Salary : string;
     YearsOfExperience : string
     OfferTitle : string
-    constructor(private jobservice :JobofferService,private jobservice1 :JobofferService1) { }
+    constructor(private jobservice :JobofferService,private followservice :followsService,private websocket :WebsocketService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -62,19 +63,15 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         this.alldatas=post  
         this.datas=post
         for(let i =0 ; i<this.datas.length;i++){
-            this.jobservice1.getfollow(this.iduser,this.datas[i].id).subscribe((get)=>{
+            this.followservice.getfollow(this.iduser,this.datas[i].id).subscribe((get)=>{
                 if(get.length===0){
                     this.follows.push(false)
                 }
                 else{
                     this.follows.push(true)
                 }
-               
-            })
-            
+            }) 
         }
-       
-        
     })
    
     this.jobservice.decode(this.token).subscribe((id)=>{
@@ -82,7 +79,6 @@ export class  SearchuComponent implements OnInit, OnDestroy {
  
  })     
  
-    
     }
     
     click(event){
@@ -137,10 +133,22 @@ export class  SearchuComponent implements OnInit, OnDestroy {
            this.datas=result 
         }
         }
-        
         })
-       
-   
+    }
+    apply(data){
+        this.jobservice.decode(this.token).subscribe((id)=>{
+            const msg={
+                text:"i want to apply for "+data.OfferTitle ,
+                sender:"User",
+                company_id:data.id,
+                user_id:id.email
+              }
+              
+              this.websocket.postMessages(msg).subscribe((msg)=>{
+                console.log(msg)
+                
+              })
+           }) 
 
     }
     follow(data){
@@ -151,7 +159,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
       }
 console.log(this.iduser)
 const obj={iduser:this.iduser,idcompany : data.id}
-this.jobservice1.addfollow(obj).subscribe((add)=>console.log(add))
+this.followservice.addfollow(obj).subscribe((add)=>console.log(add))
 
     }
     unfollow(data){
@@ -160,7 +168,7 @@ this.jobservice1.addfollow(obj).subscribe((add)=>console.log(add))
                 this.follows[i]=!this.follows[i]
             }
            }
-        this.jobservice1.deletefollow(this.iduser,data.id).subscribe((del)=>console.log(del))
+        this.followservice.deletefollow(this.iduser,data.id).subscribe((del)=>console.log(del))
     }
     onItemSelect(item:any){
         console.log(item);

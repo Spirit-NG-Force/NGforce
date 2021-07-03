@@ -1,22 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMessageDto } from './dto/create-message.dto';
-import { UpdateMessageDto } from './dto/update-message.dto';
 import { Model, Types } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Messages } from './messages.interface';
 import { Company } from 'src/company/company.interface';
+import { User } from 'src/users/user.interface';
 import { CompanyService } from 'src/company/company.service';
-
+import { MessagesGateway } from 'src/app.gateway';
+import { UsersService } from 'src/users/users.service';
 @Injectable()
 export class MessagesService {
   constructor(
     private readonly companyService: CompanyService,
+    private readonly userService: UsersService,
     @InjectModel('messages') private messagesModel: Model<Messages>,
-    @InjectModel('company') private companyModel: Model<Company>
+    @InjectModel('company') private companyModel: Model<Company>,
+    @InjectModel('User') private userModel: Model<User>,
+    private gateway : MessagesGateway
+
   ) {}
 
   create(createMessageDto: CreateMessageDto) {
+    this.gateway.server.emit("message",createMessageDto)
     const createdmessages = this.messagesModel.create(createMessageDto);
+    
     return createdmessages;
   }
 
@@ -71,7 +78,7 @@ export class MessagesService {
   }
 
   async getConversationsByCompany(company_id: string) {
-    return this.messagesModel.aggregate([{
+    const agg =await this.messagesModel.aggregate([{
       $match: {
         company_id: Types.ObjectId(company_id)
       }
@@ -103,18 +110,7 @@ export class MessagesService {
         last: -1
       }
     }])
-    
+    const populated = await this.userModel.populate(agg, {path: '_id'})
+    return populated
   }
-
-  //   findOne(id: number) {
-  //     return `This action returns a #${id} message`;
-  //   }
-
-  //   update(id: number, updateMessageDto: UpdateMessageDto) {
-  //     return `This action updates a #${id} message`;
-  //   }
-
-  //   remove(id: number) {
-  //     return `This action removes a #${id} message`;
-  //   }
 }

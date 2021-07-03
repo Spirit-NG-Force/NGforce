@@ -34,6 +34,4 @@ export class WebsocketService {
       return this.http.get<any>(this.apiUrl +  `/conversations/company/${option}`,option)
     }
 
-    
-  
-  }
+}

@@ -1,10 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as Rellax from 'rellax';
 import {JobofferService} from '../../service/joboffer.service'
+import { followsService} from '../../service/follows.service'
+import {WebsocketService} from '../../service/websocket.service'
 @Component({
   selector: 'app-searchc',
   templateUrl: './searchc.component.html',
   styleUrls: ['./searchc.component.css'],
+  providers:[WebsocketService]
 })
 export class  SearchcComponent implements OnInit, OnDestroy {
     dropdownList = [];
@@ -16,6 +19,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     dropdownSettings1 = {};
     focus;
     focus1;
+    token : any=localStorage.getItem("email1")
     data : Date = new Date();
     alldatas : any;
     datas : any;
@@ -23,9 +27,9 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     field : string ;
     expyear : string;
     studylevel : string;
+    addfavo : any=[]
 
-
-    constructor(private jobservice :JobofferService) { }
+    constructor(private jobservice :JobofferService,private followservice :followsService,private websocket :WebsocketService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -57,7 +61,27 @@ export class  SearchcComponent implements OnInit, OnDestroy {
        this.jobservice.getallcv().subscribe((post)=>{
        this.alldatas=post  
        this.datas=post})
-
+       this.jobservice.decode(this.token).subscribe((id)=>{
+        this.followservice.getfavorite(id.email1).subscribe((get)=>{
+            for(let i=0;i<this.datas.length;i++){
+                let bol=false
+                for(let j=0;j<get.length;j++){
+                    if(this.datas[i].id===get[j].iduser ){
+                   this.addfavo.push(true)
+                   bol=true
+                    }
+                }
+                if(!bol){
+                this.addfavo.push(false)
+                }
+               
+            }
+            console.log(this.addfavo)
+          
+            
+        })
+       })
+     
 
     }
     click(event){
@@ -121,6 +145,49 @@ export class  SearchcComponent implements OnInit, OnDestroy {
        
         
 
+    }
+    send(data){
+        console.log(data)
+       this.jobservice.decode(this.token).subscribe((id)=>{
+        const msg={
+            text:"hello user" ,
+            sender:"Company",
+            company_id:id.email1,
+            user_id:data.id
+          }
+          
+          this.websocket.postMessages(msg).subscribe((msg)=>{
+            console.log(msg)
+            
+          })
+       }) 
+      
+    }
+    favorite(data){
+        for(let i=0;i<this.datas.length;i++){
+            if(this.datas[i].id===data.id){
+                this.addfavo[i]=!this.addfavo[i]
+            }
+           }
+        this.jobservice.decode(this.token).subscribe((id)=>{
+        const obj={
+            idcompany : id.email1,
+            iduser : data.id,
+            name : data.name,
+            title : data.descProfil,
+            description : data.ProfExp
+        }
+        console.log(obj)
+        this.followservice.createfavorite(obj).subscribe((create)=>console.log(create))
+        })
+    }
+    delete(data){
+        for(let i=0;i<this.datas.length;i++){
+            if(this.datas[i].id===data.id){
+                this.addfavo[i]=!this.addfavo[i]
+            }
+           }
+        this.followservice.deletefavorite(data.id).subscribe((del)=>console.log(del))
     }
 
     onItemSelect(item:any){
