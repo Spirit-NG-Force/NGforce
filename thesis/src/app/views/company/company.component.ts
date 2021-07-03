@@ -52,8 +52,6 @@ export class CompanyComponent implements OnInit {
           this.router.navigate(['views/login'])
          }
       });
-      
-        
         this.name=""
         this.email=""
         this.password=""

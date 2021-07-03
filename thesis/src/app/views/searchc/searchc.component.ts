@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as Rellax from 'rellax';
 import {JobofferService} from '../../service/joboffer.service'
-import { JobofferService1} from '../../service/joboffer1.service'
+import { followsService} from '../../service/follows.service'
 import {WebsocketService} from '../../service/websocket.service'
 @Component({
   selector: 'app-searchc',
@@ -29,7 +29,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     studylevel : string;
     addfavo : any=[]
 
-    constructor(private jobservice :JobofferService,private jobservice1 :JobofferService1,private websocket :WebsocketService) { }
+    constructor(private jobservice :JobofferService,private followservice :followsService,private websocket :WebsocketService) { }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -62,8 +62,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
        this.alldatas=post  
        this.datas=post})
        this.jobservice.decode(this.token).subscribe((id)=>{
-        this.jobservice1.getfavorite(id.companyid).subscribe((get)=>{
-            console.log(get)
+        this.followservice.getfavorite(id.companyid).subscribe((get)=>{
             for(let i=0;i<this.datas.length;i++){
                 let bol=false
                 for(let j=0;j<get.length;j++){
@@ -179,7 +178,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
             description : data.ProfExp
         }
         console.log(obj)
-        this.jobservice1.createfavorite(obj).subscribe((create)=>console.log(create))
+        this.followservice.createfavorite(obj).subscribe((create)=>console.log(create))
         })
     }
     delete(data){
@@ -188,7 +187,7 @@ export class  SearchcComponent implements OnInit, OnDestroy {
                 this.addfavo[i]=!this.addfavo[i]
             }
            }
-        this.jobservice1.deletefavorite(data.id).subscribe((del)=>console.log(del))
+        this.followservice.deletefavorite(data.id).subscribe((del)=>console.log(del))
     }
 
     onItemSelect(item:any){

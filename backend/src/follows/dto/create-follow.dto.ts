@@ -1,4 +1,4 @@
 export class CreateFollowDto {
-iduser : string;
-idcompany : string;
+    iduser : string;
+    idcompany : string;
 }

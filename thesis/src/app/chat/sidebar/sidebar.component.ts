@@ -58,7 +58,6 @@ export class SidebarComponent implements OnInit {
           this.ready = true
         });
         })
-
       } else {
         this.jobservice.decode(this.token).subscribe((id) => {
         this.websocket.getConversationsUser(id.userid).subscribe((messages) => {

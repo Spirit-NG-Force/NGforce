@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMessageDto } from './dto/create-message.dto';
-import { UpdateMessageDto } from './dto/update-message.dto';
 import { Model, Types } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Messages } from './messages.interface';
@@ -114,16 +113,4 @@ export class MessagesService {
     const populated = await this.userModel.populate(agg, {path: '_id'})
     return populated
   }
-
-  //   findOne(id: number) {
-  //     return `This action returns a #${id} message`;
-  //   }
-
-  //   update(id: number, updateMessageDto: UpdateMessageDto) {
-  //     return `This action updates a #${id} message`;
-  //   }
-
-  //   remove(id: number) {
-  //     return `This action removes a #${id} message`;
-  //   }
 }

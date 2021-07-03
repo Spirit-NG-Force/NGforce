@@ -133,7 +133,6 @@ export class CompanyService {
       .populate('subscription');
     console.log(company);
     if (!company.is_active) {
-      console.log('company not active');
       throw new UnauthorizedException(
         'You need to subscribe in order to post a job offer',
       );
@@ -146,7 +145,6 @@ export class CompanyService {
       current_date,
     );
     if (company.expiration_date < current_date) {
-      console.log('company expiration date');
       this.desactivateAccount(_id);
       throw new UnauthorizedException(
         'You subscription has expired, please renew your account',
@@ -158,12 +156,10 @@ export class CompanyService {
       company.subscription.monthly_limit,
     );
     if (company.monthly_count >= company.subscription.monthly_limit) {
-      console.log('wfet flousek');
       throw new UnauthorizedException(
         'You have reached the monthly limit, please renew you account',
       );
     }
-    console.log('increasing count');
     await this.increaseMonthlyCount(_id);
     return true;
   }

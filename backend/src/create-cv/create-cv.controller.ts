@@ -42,9 +42,4 @@ export class CreateCvController {
     return this.createCvService.uploadImageToCloudinary(file)
   }
 
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.createCvService.remove(id);
-  // }
 }

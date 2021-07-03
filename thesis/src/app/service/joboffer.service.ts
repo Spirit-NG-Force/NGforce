@@ -6,116 +6,111 @@ import { Signup } from "../Signup";
   providedIn: "root",
 })
 export class JobofferService {
-  private apiUrl = "http://localhost:3000/users";
-  private apiUrl1 = "http://localhost:3000/company";
-  private apiUrl2 = "http://localhost:3000/create-cv";
-  private apiUrl3 = "http://localhost:3000/postjob"; 
-  private apiUrl4 = "http://localhost:3000/calendar"; 
-  private apiUrl5 = "https://api.preprod.konnect.network/api/v1/payments/init-payment"; 
-  private apiUrl6="https://api.preprod.konnect.network/api/v1/payments/:id"
-  private apiUrl7="http://localhost:3000/subscription"
+  private apiUrl = "http://localhost:3000/"; 
+  private apiUrl_initkonect = "https://api.preprod.konnect.network/api/v1/payments/init-payment"; 
+  private apiUrl_konect="https://api.preprod.konnect.network/api/v1/payments/:id";
+  
   constructor(private http: HttpClient) {}
 
   postUser(option: Signup): Observable<any> {
-    return this.http.post<any>(this.apiUrl + "/signup", option);
+    return this.http.post<any>(this.apiUrl + "users/signup", option);
   }
   getUser(option: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl + "/login", option);
+    return this.http.post<any>(this.apiUrl + "users/login", option);
   }
   getCompany(option: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl1 + "/login" , option);
+    return this.http.post<any>(this.apiUrl + "company/login" , option);
   }
   postCompany(option: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl1 +"/signup", option);
+    return this.http.post<any>(this.apiUrl +"company/signup", option);
   }
   decode(option : any ): Observable<any> {
-    return this.http.get<any>(this.apiUrl +`/decode/${option}`);
+    return this.http.get<any>(this.apiUrl +`users/decode/${option}`);
   }
 
   decodecomp(option : any ): Observable<any> {
-    return this.http.get<any>(this.apiUrl1 +`/decodecomp/${option}`);
+    return this.http.get<any>(this.apiUrl +`company/decodecomp/${option}`);
   }
 
   iduser(option: any): Observable<any> {
-    return this.http.get<any>(this.apiUrl + `/${option}`);
+    return this.http.get<any>(this.apiUrl + `users/${option}`);
   }
   getonecv(option: any): Observable<any> {
-    return this.http.get<any>(this.apiUrl2 + `/${option}`);
+    return this.http.get<any>(this.apiUrl + `create-cv/${option}`);
   }
   createcv(option: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl2 , option);
+    return this.http.post<any>(this.apiUrl + "create-cv" , option);
   }
   updatecv(option: any,option1 : any ): Observable<any> {
-    return this.http.patch<any>(this.apiUrl2 + `/${option}`,option1);
+    return this.http.patch<any>(this.apiUrl + `create-cv/${option}`,option1);
   }
   updatuser(option: any,option1 : any ): Observable<any> {
-    return this.http.patch<any>(this.apiUrl + `/${option}`,option1);
+    return this.http.patch<any>(this.apiUrl + `users/${option}`,option1);
   }
   idcompany(option:any):Observable<any> {
-    return this.http.get<any>(this.apiUrl1 + `/${option}`); 
+    return this.http.get<any>(this.apiUrl+ `company/${option}`); 
   }
   getonepostjob(option: any) : Observable<any> {
-    return this.http.get<any>(this.apiUrl3 + `/${option}`);
+    return this.http.get<any>(this.apiUrl + `postjob/${option}`);
   }
   createpostjob(option: any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl3 , option);
+    return this.http.post<any>(this.apiUrl +"postjob", option);
   }
   updatepostjob (option: any,option1 : any ): Observable<any> {
-    return this.http.patch<any>(this.apiUrl3 + `/${option}`,option1);
+    return this.http.patch<any>(this.apiUrl + `postjob/${option}`,option1);
   }
   updatecompany(option: any,option1 : any ): Observable<any> {
-    return this.http.patch<any>(this.apiUrl1 + `/${option}`,option1);
+    return this.http.patch<any>(this.apiUrl + `company/${option}`,option1);
   }
   getallpostjob() : Observable<any> {
-    return this.http.get<any>(this.apiUrl3);
+    return this.http.get<any>(this.apiUrl+"postjob");
   }
   getallcv() : Observable<any> {
-    return this.http.get<any>(this.apiUrl2);
+    return this.http.get<any>(this.apiUrl +"create-cv");
   }
   search(option : any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl3+"/searchps",option);
+    return this.http.post<any>(this.apiUrl+"postjob/searchps",option);
   }
   getpostjobs(option : any) : Observable<any> {
-    return this.http.get<any>(this.apiUrl3+`/${option}/find`);
+    return this.http.get<any>(this.apiUrl+`postjob/${option}/find`);
   }
   deletepostjob(option : any) : Observable<any> {
-    return this.http.delete<any>(this.apiUrl3+ `/${option}`);
+    return this.http.delete<any>(this.apiUrl+ `postjob/${option}`);
   }
   
   searchcv(option : any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl2+"/searchcv",option);
+    return this.http.post<any>(this.apiUrl+"create-cv/searchcv",option);
   }
   getcalendar(option : any) : Observable<any> {
-    return this.http.get<any>(this.apiUrl4+`/${option}`);
+    return this.http.get<any>(this.apiUrl+`calendar/${option}`);
   }
   createcalendar(option : any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl4,option);
+    return this.http.post<any>(this.apiUrl +"calendar",option);
   }
   updatecalendar(option : any,option1 : any) : Observable<any> {
-    return this.http.patch<any>(this.apiUrl4+`/${option}`,option1);
+    return this.http.patch<any>(this.apiUrl+`calendar/${option}`,option1);
   }
   deletecalendar(option : any) : Observable<any> {
-    return this.http.delete<any>(this.apiUrl4+`/${option}`);
+    return this.http.delete<any>(this.apiUrl+`calendar/${option}`);
   }
 
-// payment subscription
   postPayment (option:any): Observable<any> {
-    return this.http.post<any>(this.apiUrl5, option);
+    return this.http.post<any>(this.apiUrl_initkonect, option);
   }
 
   getPayment (option:any): Observable<any>{
-    return this.http.get<any>(this.apiUrl6,option);
+    return this.http.get<any>(this.apiUrl_konect ,option);
   }
 
   postpayment_to_server(option:any):Observable<any>{
-    return this.http.post<any>(this.apiUrl1+"/payment",option)
+    return this.http.post<any>(this.apiUrl+"company/payment",option)
   }
 
   postimg (option:any) : Observable<any> {
-    return this.http.post<any>(this.apiUrl2+"/testcloudinary",option)
+    return this.http.post<any>(this.apiUrl +"create-cv/testcloudinary",option)
   }
 
   getsubscription(option:any):Observable<any>{
-    return this.http.get<any>(this.apiUrl7 ,option)
+    return this.http.get<any>(this.apiUrl+"subscription" ,option)
   }
 }

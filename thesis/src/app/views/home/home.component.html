@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 ml-auto mr-auto text-center">
-          <h2 class="title">Welcome {{ data.companyName }}</h2>
+          <h2 class="title">Welcome {{ datas.companyName }}</h2>
           <h4 class="description text-white">
             Manage your professional image. Build and communicate with your
             professional network.
@@ -62,7 +62,7 @@
                   type="text"
                   class="form-control"
                   name="OfferTitle"
-                  [(ngModel)]="OfferTitle"
+                  [(ngModel)]="offerTitle"
                   placeholder="Your OfferTitle..."
                   (focus)="focus = true"
                   (blur)="focus = false"
@@ -84,7 +84,7 @@
                   type="text"
                   class="form-control"
                   name="OfferDescription"
-                  [(ngModel)]="OfferDescription"
+                  [(ngModel)]="offerDescription"
                   placeholder="Your OfferTitle..."
                   (focus)="focus = true"
                   (blur)="focus = false"
