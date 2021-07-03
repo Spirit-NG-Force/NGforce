@@ -33,7 +33,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
-      // var rellaxText = new Rellax('.rellax-text');
+  
 
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('about-us');
@@ -50,9 +50,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         this.dropdownSettings = {
                                   singleSelection: true,
                                   text:"Speciality",
-                                  // selectAllText:'Select All',
-                                  // unSelectAllText:'UnSelect All',
-                                  // enableSearchFilter: true,
+                                  
                                   classes:"",
                                   lazyLoading: true,
                                   maxHeight: 100
@@ -86,22 +84,20 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     }
     
     click(event){
-        console.log(event.target.innerText)
+       
         this.TypeOfContract=event.target.innerText
     }
     click1(event){
-        console.log(event.target.innerText)
+       
         this.Salary=event.target.innerText
       
     }
     click2(event){
-        console.log(event.target.innerText)
+       
         this.YearsOfExperience=event.target.innerText
     }
     onSubmit(){
-        console.log(this.datas)
-        console.log(this.OfferTitle)
-        const obj={
+         const obj={
          TypeOfContract:this.TypeOfContract,
          Salary:this.Salary,
          YearsOfExperience :this.YearsOfExperience,
@@ -130,7 +126,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
             let dat=this.datas[i].OfferTitle
          if(dat.indexOf(this.OfferTitle)===0){
           result.push(this.datas[i])
-          console.log(result)
+ 
          }
         }
         if(result){

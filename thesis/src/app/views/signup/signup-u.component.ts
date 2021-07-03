@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     navbar.classList.remove("fixed-top");
   }
   onSubmit(){
-    console.log("hello")
+    
     const obj = {
       name: this.name,
       lastname: this.lastname,

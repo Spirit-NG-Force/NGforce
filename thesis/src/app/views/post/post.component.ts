@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import * as Rellax from "rellax";
-import { JobofferService } from "app/service/joboffer.service"
+import { JobofferService } from "app/service/joboffer.service";
 import { JobofferService1 } from "app/service/joboffer1.service";
-import {Router} from '@angular/router'
-import io from 'socket.io-client'
+import { Router } from "@angular/router";
+import io from "socket.io-client";
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
@@ -91,8 +91,6 @@ export class PostComponent implements OnInit {
     { id: 3, itemName: "Traineeship" },
     { id: 4, itemName: "Freelance" },
     { id: 5, itemName: "Alernation" },
-    
-    
   ];
   selectedItems = [];
   dropdownList1 = [
@@ -100,67 +98,64 @@ export class PostComponent implements OnInit {
     { id: 2, itemName: "Between 1 and 2 years" },
     { id: 3, itemName: "Between 2 and 5 years" },
     { id: 4, itemName: "More than 5 years" },
-  
   ];
   selectedItems1 = [];
-  dropdownList2= [
+  dropdownList2 = [
     { id: 1, itemName: "Less than 600DT " },
     { id: 2, itemName: "Between 600DT and 1200DT" },
     { id: 3, itemName: "Between 1200DT and 1500DT" },
     { id: 4, itemName: "More than 1500DT" },
-  
   ];
   selectedItems2 = [];
-  token : string = localStorage.getItem("email1")
-  CompanyName:string ; 
-  OfferTitle:string ; 
-  OfferDescription:string ; 
-  TypeOfContract:string ; 
-  Salary:string ; 
-  YearsOfExperience:string ; 
-socket : any;
+  token: string = localStorage.getItem("email1");
+  CompanyName: string;
+  OfferTitle: string;
+  OfferDescription: string;
+  TypeOfContract: string;
+  Salary: string;
+  YearsOfExperience: string;
+  socket: any;
 
-
-  constructor(public router: Router,private jobservice :JobofferService,private jobservice1 :JobofferService1) {this.socket = io('http://localhost:4001')}
-  click(event){
-    console.log(event.itemName)
-    this.TypeOfContract=event.itemName
+  constructor(
+    public router: Router,
+    private jobservice: JobofferService,
+    private jobservice1: JobofferService1
+  ) {
+    this.socket = io("http://localhost:4001");
+  }
+  click(event) {
+    this.TypeOfContract = event.itemName;
   }
 
-  click1(event){
-    console.log(event.itemName)
-    this.Salary=event.itemName
+  click1(event) {
+    this.Salary = event.itemName;
   }
 
-  click2(event){
-    console.log(event.itemName)
-    this.YearsOfExperience=event.itemName
+  click2(event) {
+    this.YearsOfExperience = event.itemName;
   }
-  onSubmit(){
- 
-    this.jobservice.decode(this.token).subscribe((id)=>{
-      console.log(id.email1)
-      const obj={
-       id : id.email1,
-       CompanyName: this.CompanyName,
-       OfferTitle: this.OfferTitle,
-       OfferDescription: this.OfferDescription,
-       TypeOfContract: this.TypeOfContract,
-       Salary: this.Salary,
-       YearsOfExperience: this.YearsOfExperience,
-      }
-      this.jobservice.createpostjob(obj).subscribe((create)=>{
-        this.router.navigate(['views/home'])
-        console.log(create)
-        })
-        const obj1= {message : this.CompanyName+" has posted a job for "+this.OfferTitle,
-      sender : id.email1 }
-    this.jobservice1.addnotification(obj1).subscribe((add)=>console.log(add))
-    
-     
-    
-  })
-     
+  onSubmit() {
+    this.jobservice.decode(this.token).subscribe((id) => {
+      const obj = {
+        id: id.email1,
+        CompanyName: this.CompanyName,
+        OfferTitle: this.OfferTitle,
+        OfferDescription: this.OfferDescription,
+        TypeOfContract: this.TypeOfContract,
+        Salary: this.Salary,
+        YearsOfExperience: this.YearsOfExperience,
+      };
+      this.jobservice.createpostjob(obj).subscribe((create) => {
+        this.router.navigate(["views/home"]);
+      });
+      const obj1 = {
+        message: this.CompanyName + " has posted a job for " + this.OfferTitle,
+        sender: id.email1,
+      };
+      this.jobservice1
+        .addnotification(obj1)
+        .subscribe((add) => console.log(add));
+    });
   }
 
   ngOnInit() {

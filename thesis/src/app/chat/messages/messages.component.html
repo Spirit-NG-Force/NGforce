@@ -14,9 +14,9 @@
         [ngClass]="{ me: message.me }"
         *ngFor="let message of conversation.messages"
       >
-        <div class="messageContent">
+        <div  class="messageContent">
           {{ message.text }}
-          <div class="time">{{ message.createdAt}}</div>
+          <div class="time">{{message.createdAt}}</div>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import { ElementsModule } from './elements/elements.module';
 import { ExamplesModule } from './examples/examples.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
+
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
@@ -86,7 +87,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         ExamplesModule,
         HttpClientModule,
         JwtModule,
-        ChatModule
+        ChatModule,
+        
     ],
     providers: [AuthGuardService],
     bootstrap: [AppComponent]

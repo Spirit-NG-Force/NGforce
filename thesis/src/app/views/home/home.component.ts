@@ -136,23 +136,23 @@ export class HomeComponent implements OnInit {
  datas : any=["NO POST"]
   constructor(public router: Router,private jobservice :JobofferService) { }
   click(event){
-    console.log(event.itemName)
+    
     this.TypeOfContract=event.itemName
   }
 
   click1(event){
-    console.log(event.itemName)
+ 
     this.Salary=event.itemName
   }
 
   click2(event){
-    console.log(event.itemName)
+
     this.YearsOfExperience=event.itemName
   }
   onSubmit(data){
-    console.log(data)
+   
     this.jobservice.decode(this.token).subscribe((id)=>{
-      console.log(id.email1)
+     
       const obj={
        id : id.email1,
        CompanyName: this.CompanyName,
@@ -169,7 +169,7 @@ export class HomeComponent implements OnInit {
             this.datas[i]=create
           }
         }
-        console.log(create)
+     
         })
     
      

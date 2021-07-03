@@ -41,7 +41,7 @@ option : string
   this.jobservice.getcalendar(this.option).subscribe((cal)=>{
     
     this.bigcalend=cal
-    console.log(this.bigcalend)
+    
   
    
    let today = new Date();
@@ -75,10 +75,10 @@ option : string
      events: this.bigcalend,
      eventClick: function(info) {
        info.jsEvent.preventDefault();
-       console.log('hey', info)
+       
      },
      select:(info)=> {
-       console.log(info)
+       
        swal.fire({
          title: 'Create an Event',
          html:
@@ -102,7 +102,7 @@ option : string
          let event_title = (document.getElementById("input-field") as HTMLInputElement).value;
          let timestart = (document.getElementById("input-field1") as HTMLInputElement).value;
          let color = (document.getElementById("input-field2") as HTMLInputElement).value;
-         console.log(this.bigcalend)
+         
          for(let i =0;i<this.bigcalend.length;i++){
            if(this.bigcalend[i].start === info.startStr+" "+timestart){
            bol=false
@@ -117,7 +117,7 @@ option : string
 
            };
            
-         console.log(id)
+         
           
          
             
@@ -128,10 +128,10 @@ option : string
                 end: eventData.end,
                 color : eventData.color
               }
-              console.log(calendar1)
+              
               this.jobservice.createcalendar(calendar1).subscribe((create)=>console.log(create))
     
-           console.log(eventData)
+          
            calendar.addEvent(eventData);
          }
        });
@@ -167,7 +167,7 @@ option : string
      delete obj.title
    }
 this.jobservice.updatecalendar(id,obj).subscribe((update)=>{
-  console.log(update)
+  
   for(let i =0 ; i < this.bigcalend.length ; i++){
     if(this.bigcalend[i].start===start){
       
@@ -179,7 +179,7 @@ this.jobservice.updatecalendar(id,obj).subscribe((update)=>{
  }
  delete(start,id){
    this.jobservice.deletecalendar(id).subscribe((del)=>{
-     console.log(del)
+     
     for(let i =0 ; i < this.bigcalend.length ; i++){
       if(this.bigcalend[i].start === start){
         this.bigcalend.splice(i,1)

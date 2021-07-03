@@ -1,23 +1,27 @@
 <app-navbar3></app-navbar3>
 <div class="wrapper">
-    <div class="page-header page-header-small" filter-color="orange">
-        <div class="page-header-image rellax-header" data-rellax-speed="-8" style="background-image: url('assets/img/project5.jpg') ;">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8" style="background-image: url('assets/img/bg32.jpg');">
         </div>
-        <div class="content-center">
-            <div class="photo-container phot">
-               
-           
-             </div>
         
     </div>
-    </div>
+<div  > <h1  >NOTIFICATIONS</h1></div>
     <div class="section">
-        <h3 class="title">NOTIFICATIONS</h3>
+       
         <div class="container" *ngFor="let msg of messages">
+            <button
+            class="text-right"
+             class="btn btn-danger btn-icon btn-sm   btn-neutral  margin-right"
+           >
+             <i class="now-ui-icons ui-1_simple-remove"></i></button>
             
-            <h2 class="description text-center">{{msg.message}}</h2>
-
+            <h2  id="border" >{{msg.message}}</h2>
+           
 </div>
 <h2 class="description text-center">{{sended}}</h2>
+
+
 </div>
+
 </div>
+
