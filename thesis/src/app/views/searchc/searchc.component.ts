@@ -99,14 +99,12 @@ export class  SearchcComponent implements OnInit, OnDestroy {
     onSubmit(){
        
         const obj={
-         descProfil:this.descProfil,
+         
          field:this.field,
          expyear :this.expyear,
          studylevel:this.studylevel
         }
-        if(!this.descProfil){
-            delete obj.descProfil
-        }
+       
         if(!this.field){
         delete obj.field
         }

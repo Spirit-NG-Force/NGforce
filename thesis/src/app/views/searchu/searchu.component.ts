@@ -134,7 +134,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     apply(data){
         this.jobservice.decode(this.token).subscribe((id)=>{
             const msg={
-                text:"i want to apply for "+data.OfferTitle ,
+                text:"i want to apply for "+data.offerTitle ,
                 sender:"User",
                 company_id:data.company,
                 user_id:id.userid

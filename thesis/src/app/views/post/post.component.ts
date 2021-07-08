@@ -4,6 +4,7 @@ import { JobofferService } from "app/service/joboffer.service"
 import { followsService } from "app/service/follows.service";
 import {Router} from '@angular/router'
 import io from 'socket.io-client'
+import { WindowScrollController } from "fullcalendar/src/common/scroll-controller";
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
@@ -146,9 +147,11 @@ export class PostComponent implements OnInit {
        yearsOfExperience: this.yearsOfExperience,
       }
       this.jobservice.createpostjob(obj).subscribe((create)=>{
-        this.router.navigate(['views/home'])
-    
-        })
+           this.router.navigate(['views/home'])
+           
+          })
+         
+        
         const obj1= {message : this.companyName+" has posted a job for "+this.offerTitle,
       sender : id.companyid }
     this.followservice.addnotification(obj1).subscribe((add)=>console.log(add))
