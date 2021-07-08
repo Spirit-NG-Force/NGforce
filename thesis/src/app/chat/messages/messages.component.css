@@ -47,15 +47,24 @@
     padding: 20px 50px;
     overflow: scroll;
 }
-#container #body .message {
+#container #body .message{
+  
     margin-top: 10px;
     display: flex;
     align-items: flex-start;
     color: #767676;
     flex-direction: column;
 }
-#container #body .message .messageContent {
+
+#container #body .message .messageContentreceiver {
     background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 20px 200px;
+    padding: 10px;
+}
+#container #body .message .messageContentsender {
+    background-color: rgb(144, 210, 236);
+    
     border-radius: 5px;
     padding: 10px;
    
@@ -66,12 +75,14 @@
     font-size: 13px;
     margin-top: 5px;
 }
+
 #container #body .message.me {
     align-items: flex-end;
 }
-#container #body .message.me .messageContent {
+#container #body .message.me .messageContentsender {
     background-color: #dcf7c5;
 }
+
 #container #footer {
     min-height: 67px;
     background-color: #f0eeed;

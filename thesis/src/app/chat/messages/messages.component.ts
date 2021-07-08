@@ -14,6 +14,7 @@ export class MessagesComponent implements OnInit {
   emojiPickerVisible;
   message = '';
   socket : any;
+  messagesending : any=[];
  
   constructor(private websocket :WebsocketService , private jobof :JobofferService ) {this.socket = io('http://localhost:4001') }
 
@@ -32,10 +33,46 @@ export class MessagesComponent implements OnInit {
         this.conversation.messages.unshift(msg)
         console.log(this.conversation.messages)
       }
-    
+      if(id.userid){
+        if(msg.sender==="User"){
+          this.messagesending.unshift(true)
+        }
+        else{
+          this.messagesending.unshift(false)
+        }
+      }
+      else if(id.companyid){
+        if(msg.sender==="Company"){
+          this.messagesending.unshift(true)
+        }
+        else{
+          this.messagesending.unshift(false)
+        }
+        
+      }
+      
+      console.log(this.messagesending)
     })
    })
-   
+   for(let i=0;i<this.conversation.messages.length;i++){
+    if(localStorage.getItem("userid")){
+    if(this.conversation.messages[i].sender==="User"){
+      this.messagesending.push(true)
+    }
+    else{
+      this.messagesending.push(false)
+    }
+   }
+   else {
+    if(this.conversation.messages[i].sender==="Company"){
+      this.messagesending.push(true)
+    }
+    else{
+      this.messagesending.push(false)
+    }
+   }
+  }
+  console.log(this.messagesending)
   }
 
   ngOnChanges() {

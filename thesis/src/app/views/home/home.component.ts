@@ -136,7 +136,7 @@ export class HomeComponent implements OnInit {
       selectedPaymentMethod: "gateway",
       token: "TND",
       successUrl:
-        `http://localhost:4200/#/views/successPayment?pack=${pack_name}&company=${company}`,
+        `http://localhost:4200/#/views/successPayment?subscription_name=${pack_name}&company_id=${company}`,
       failUrl:
         "http://localhost:4200/#/views/failPayment",
     };

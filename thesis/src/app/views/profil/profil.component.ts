@@ -46,6 +46,7 @@ export class ProfilComponent implements OnInit {
         
           })
           this.jobservice.getonecv(id.userid).subscribe((cv)=>{
+            console.log(cv)
             if(!cv){
               this.cv={id : "none",
               name: "none",

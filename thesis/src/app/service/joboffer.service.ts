@@ -7,8 +7,8 @@ import { Signup } from "../Signup";
 })
 export class JobofferService {
   private apiUrl = "http://localhost:3000/"; 
-  private apiUrl_initkonect = "https://api.konnect.network/api/v1/payments/init-payment"; 
-  private apiUrl_konect="https://api.konnect.network/api/v1/payments/:id";
+  private apiUrl_initkonect = "https://api.preprod.konnect.network/api/v1/payments/init-payment"; 
+  private apiUrl_konect="https://api.preprod.konnect.network/api/v1/payments/:id";
   
   constructor(private http: HttpClient) {}
 

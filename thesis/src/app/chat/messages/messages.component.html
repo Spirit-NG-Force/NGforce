@@ -12,12 +12,17 @@
       <div
         class="message"
         [ngClass]="{ me: message.me }"
-        *ngFor="let message of conversation.messages"
+        *ngFor="let message of conversation.messages;let i = index "
       >
-        <div  class="messageContent">
+        <div  *ngIf="messagesending[i]" class="messageContentsender" >
           {{ message.text }}
           <div class="time">{{message.createdAt}}</div>
+         
         </div>
+         <div  *ngIf="!messagesending[i]" class="messageContentreceiver" >
+            {{ message.text }}
+            <div class="time">{{message.createdAt}}</div>
+            </div>
       </div>
     </div>
     <div id="footer">
