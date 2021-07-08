@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import * as Rellax from "rellax";
 import { JobofferService } from "app/service/joboffer.service"
-import { JobofferService1 } from "app/service/joboffer1.service";
+import { followsService } from "app/service/follows.service";
 import {Router} from '@angular/router'
 import io from 'socket.io-client'
+import { WindowScrollController } from "fullcalendar/src/common/scroll-controller";
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
@@ -91,8 +92,6 @@ export class PostComponent implements OnInit {
     { id: 3, itemName: "Traineeship" },
     { id: 4, itemName: "Freelance" },
     { id: 5, itemName: "Alernation" },
-    
-    
   ];
   selectedItems = [];
   dropdownList1 = [
@@ -100,15 +99,13 @@ export class PostComponent implements OnInit {
     { id: 2, itemName: "Between 1 and 2 years" },
     { id: 3, itemName: "Between 2 and 5 years" },
     { id: 4, itemName: "More than 5 years" },
-  
   ];
   selectedItems1 = [];
-  dropdownList2= [
+  dropdownList2 = [
     { id: 1, itemName: "Less than 600DT " },
     { id: 2, itemName: "Between 600DT and 1200DT" },
     { id: 3, itemName: "Between 1200DT and 1500DT" },
     { id: 4, itemName: "More than 1500DT" },
-  
   ];
   selectedItems2 = [];
   token : string = localStorage.getItem("companyid")
@@ -121,19 +118,19 @@ export class PostComponent implements OnInit {
   socket : any;
 
 
-  constructor(public router: Router,private jobservice :JobofferService,private jobservice1 :JobofferService1) {this.socket = io('http://localhost:4001')}
+  constructor(public router: Router,private jobservice :JobofferService,private followservice :followsService) {this.socket = io('http://localhost:4001')}
   click(event){
-    console.log(event.itemName)
+   
     this.typeOfContract=event.itemName
   }
 
   click1(event){
-    console.log(event.itemName)
+  
     this.salary=event.itemName
   }
 
   click2(event){
-    console.log(event.itemName)
+  
     this.yearsOfExperience=event.itemName
   }
   onSubmit(){
@@ -150,12 +147,14 @@ export class PostComponent implements OnInit {
        yearsOfExperience: this.yearsOfExperience,
       }
       this.jobservice.createpostjob(obj).subscribe((create)=>{
-        this.router.navigate(['views/home'])
-        console.log(create)
-        })
+           this.router.navigate(['views/home'])
+           
+          })
+         
+        
         const obj1= {message : this.companyName+" has posted a job for "+this.offerTitle,
       sender : id.companyid }
-    this.jobservice1.addnotification(obj1).subscribe((add)=>console.log(add))
+    this.followservice.addnotification(obj1).subscribe((add)=>console.log(add))
     
      
     
