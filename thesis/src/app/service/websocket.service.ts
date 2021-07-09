@@ -10,7 +10,7 @@ import {JobofferService} from '../service/joboffer.service'
 
 export class WebsocketService {
 
-    private apiUrl = "http://localhost:3000/messages"
+    private apiUrl = "/messages"
     constructor(private http: HttpClient ) {
     
     }
