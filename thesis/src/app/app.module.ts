@@ -7,14 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { SectionsModule } from './sections/sections.module';
 import { ElementsModule } from './elements/elements.module';
-import { ExamplesModule } from './examples/examples.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+
 
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AppComponent } from './app.component';
-import { PresentationComponent } from './presentation/presentation.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { PresentationModule } from './presentation/presentation.module';
 import { LandingComponent } from './views/landing/landing.component';
 import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup-u.component';
@@ -37,6 +35,8 @@ import { ChatModule } from './chat/chat.module';
 import { NotificationuserComponent } from './views/notificationuser/notificationuser.component';
 import { SuccessUrlComponent } from './views/success-url/success-url.component';
 import { FailUrlComponent } from './views/fail-url/fail-url.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -62,8 +62,8 @@ import { FailUrlComponent } from './views/fail-url/fail-url.component';
         ImageComponent,
         NotificationuserComponent,
         SuccessUrlComponent,
-        FailUrlComponent
-       
+        FailUrlComponent,
+        DashboardComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -72,13 +72,12 @@ import { FailUrlComponent } from './views/fail-url/fail-url.component';
         FormsModule,
         RouterModule,
         AppRoutingModule,
-        PresentationModule,
         SectionsModule,
         ElementsModule,
-        ExamplesModule,
         HttpClientModule,
         JwtModule,
-        ChatModule
+        ChatModule,
+        
     ],
     providers: [AuthGuardService],
     bootstrap: [AppComponent]

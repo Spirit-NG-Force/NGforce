@@ -28,10 +28,9 @@ export class SuccessUrlComponent implements OnInit {
   }
   ngOnInit(): void {
     this.route.queryParams.subscribe(({subscription_name, company_id}) => {
-      this.jobservice.postpayment_to_server({subscription_name, company_id}).subscribe((result)=> {
+      this.jobservice.postpayment_to_server({subscription_name , company_id}).subscribe((result)=> {
         console.log(result)
       })
-      console.log(subscription_name)
     });
   }
 }

@@ -34,7 +34,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
-      // var rellaxText = new Rellax('.rellax-text');
+  
 
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('about-us');
@@ -51,9 +51,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         this.dropdownSettings = {
                                   singleSelection: true,
                                   text:"Speciality",
-                                  // selectAllText:'Select All',
-                                  // unSelectAllText:'UnSelect All',
-                                  // enableSearchFilter: true,
+                                  
                                   classes:"",
                                   lazyLoading: true,
                                   maxHeight: 100
@@ -82,16 +80,16 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     }
     
     click(event){
-        console.log(event.target.innerText)
+        
         this.typeOfContract=event.target.innerText
     }
     click1(event){
-        console.log(event.target.innerText)
+   
         this.salary=event.target.innerText
       
     }
     click2(event){
-        console.log(event.target.innerText)
+       
         this.yearsOfExperience=event.target.innerText
     }
     onSubmit(){
@@ -124,7 +122,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
             let dat=this.datas[i].offerTitle
          if(dat.indexOf(this.offerTitle)===0){
           result.push(this.datas[i])
-          console.log(result)
+ 
          }
         }
         if(result){
@@ -136,7 +134,7 @@ export class  SearchuComponent implements OnInit, OnDestroy {
     apply(data){
         this.jobservice.decode(this.token).subscribe((id)=>{
             const msg={
-                text:"i want to apply for "+data.OfferTitle ,
+                text:"i want to apply for "+data.offerTitle ,
                 sender:"User",
                 company_id:data.company,
                 user_id:id.userid
@@ -169,12 +167,12 @@ export class  SearchuComponent implements OnInit, OnDestroy {
         this.followservice.deletefollow(this.iduser,data.company).subscribe((del)=>console.log(del))
     }
     onItemSelect(item:any){
-        console.log(item);
+      
         console.log(this.selectedItems);
     }
 
     OnItemDeSelect(item:any){
-        console.log(item);
+
         console.log(this.selectedItems);
     }
     onSelectAll(items: any){

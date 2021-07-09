@@ -24,7 +24,7 @@ import { join } from 'path';
     MongooseModule.forRoot('mongodb+srv://ngForce:OLXrHGZaaevq0VQX@cluster0.k56k7.mongodb.net/ng_force?retryWrites=true&w=majority'), 
     CompanyModule, CreateCvModule,PostjobModule, MailModule, CalendarModule , MessagesModule,FollowsModule, NotificationModule,FavoriteModule, SubscriptionModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../../thesis/dist'),
+      rootPath: join(__dirname, '../dist' ),
     }),
   ],
   controllers: [AppController],

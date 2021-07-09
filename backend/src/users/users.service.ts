@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from './user.schema';
+import { User } from './user.schema';
 import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { JwtService } from '@nestjs/jwt';
@@ -83,6 +83,9 @@ export class UsersService {
       useFindAndModify: false,
     });
     return hello;
+  }
+  async deleteUser(id: string) {
+    return this.userModel.findByIdAndDelete({ _id: id });
   }
 }
 

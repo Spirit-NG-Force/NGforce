@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { JobofferService } from "app/service/joboffer.service";
 import { WebsocketService } from "app/service/websocket.service";
-
+import * as moment from 'moment';
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   @Output() conversationClicked: EventEmitter<any> = new EventEmitter();
   searchText: string;
   ready: boolean = false;
+  today: string = moment().format('LT');
   conversations = [
     // {
     //     name: 'Rock',

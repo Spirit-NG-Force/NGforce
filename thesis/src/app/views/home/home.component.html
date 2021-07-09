@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 ml-auto mr-auto text-center">
-          <h2 class="title">Welcome {{ datas.companyName }}</h2>
+          <h2 class="title">Welcome {{datas.companyName}}</h2>
           <h4 class="description text-white">
             Manage your professional image. Build and communicate with your
             professional network.
@@ -62,7 +62,7 @@
                   type="text"
                   class="form-control"
                   name="OfferTitle"
-                  [(ngModel)]="offerTitle"
+                  [(ngModel)]="OfferTitle"
                   placeholder="Your OfferTitle..."
                   (focus)="focus = true"
                   (blur)="focus = false"
@@ -84,7 +84,7 @@
                   type="text"
                   class="form-control"
                   name="OfferDescription"
-                  [(ngModel)]="offerDescription"
+                  [(ngModel)]="OfferDescription"
                   placeholder="Your OfferTitle..."
                   (focus)="focus = true"
                   (blur)="focus = false"
@@ -156,7 +156,7 @@
                 <div class="card card-testimonial card-plain">
                     <div class="card-avatar">
                         <a href="#pablo">
-                            <img class="img img-raised rounded" src="assets/img/olivia.jpg" />
+                            <img class="img img-raised rounded" src={{fav.img}} />
                         </a>
                     </div>
                     <div class="card-body">
