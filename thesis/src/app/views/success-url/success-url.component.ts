@@ -31,8 +31,6 @@ export class SuccessUrlComponent implements OnInit {
       this.jobservice.postpayment_to_server({subscription_name , company_id}).subscribe((result)=> {
         console.log(result)
       })
-      console.log(subscription_name)
-      console.log(company_id)
     });
   }
 }

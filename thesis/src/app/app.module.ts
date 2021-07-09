@@ -64,8 +64,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         SuccessUrlComponent,
         FailUrlComponent,
         DashboardComponent,
-   
-       
     ],
     imports: [
         BrowserAnimationsModule,

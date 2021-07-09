@@ -15,11 +15,18 @@ import { NotificationModule } from './notification/notification.module';
 import { SubscriptionModule } from './subscription/subscription.module';
 import { MessagesGateway } from './app.gateway';
 import { FavoriteModule } from './favorite/favorite.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
 
 @Module({
   imports: [UsersModule,
     MongooseModule.forRoot('mongodb+srv://ngForce:OLXrHGZaaevq0VQX@cluster0.k56k7.mongodb.net/ng_force?retryWrites=true&w=majority'), 
-    CompanyModule, CreateCvModule,PostjobModule, MailModule, CalendarModule , MessagesModule,FollowsModule, NotificationModule,FavoriteModule, SubscriptionModule],
+    CompanyModule, CreateCvModule,PostjobModule, MailModule, CalendarModule , MessagesModule,FollowsModule, NotificationModule,FavoriteModule, SubscriptionModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../dist' ),
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService,MessagesGateway],
 })

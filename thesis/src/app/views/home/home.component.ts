@@ -58,7 +58,6 @@ export class HomeComponent implements OnInit {
  datas : any=["NO POST"]
   constructor(public router: Router,private jobservice :JobofferService,private followservice :followsService) { }
   click(event){
-    console.log(event.itemName)
     this.typeOfContract=event.itemName
   }
 

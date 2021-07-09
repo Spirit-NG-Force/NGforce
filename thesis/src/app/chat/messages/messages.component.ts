@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { WebsocketService } from 'app/service/websocket.service';
 import { JobofferService } from 'app/service/joboffer.service';
-import io from "socket.io-client"
-// import {moment} from "moment"
+import io from "socket.io-client";
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -115,8 +115,6 @@ console.log(this.conversation)
     })
    event.target.value=""
     })
-    
-   
   }
 
   emojiClicked(event) {
